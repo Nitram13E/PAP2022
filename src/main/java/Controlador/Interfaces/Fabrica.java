@@ -1,13 +1,13 @@
 package Controlador.Interfaces;
 
-/**
- *
- * @author Shifter
- */
+import Controlador.CActDeportiva;
+import Controlador.CClase;
+import Controlador.CInstDeportiva;
+import Controlador.CUsuario;
+
 public class Fabrica {
 
     private static Fabrica instancia = null;
-
     private Fabrica() {
     }
 
@@ -15,11 +15,22 @@ public class Fabrica {
         if (instancia == null) {
             instancia = new Fabrica();
         }
-
         return instancia;
     }
 
-    public IControlador getIControlador() {
-        return new Controlador();
+    public ICActDeportiva getICActDeportiva(){
+        return new CActDeportiva();
+    }
+
+    public ICClase getICClase(){
+        return new CClase();
+    }
+
+    public ICInstDeportiva getICInstDeportiva(){
+        return new CInstDeportiva();
+    }
+
+    public ICUsuario getICUsuario(){
+        return new CUsuario();
     }
 }
