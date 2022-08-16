@@ -16,7 +16,7 @@ public class Clase {
     private LocalTime horaInicio;
     private String url;
     private Date fechaReg;
-    private List<Socio> socios;
+    private List<Registro> registros;
 
     public Clase(String nombre, Date fecha, LocalTime horaInicio, String url, Date fechaReg) {
         this.nombre = nombre;
@@ -24,7 +24,7 @@ public class Clase {
         this.horaInicio = horaInicio;
         this.url = url;
         this.fechaReg = fechaReg;
-        this.socios = new ArrayList<Socio>();
+        this.registros = new ArrayList<Registro>();
     }
 
     public String getNombre() {
@@ -67,12 +67,12 @@ public class Clase {
         this.fechaReg = fechaReg;
     }
 
-    public List<Socio> getSocios() {
-        return socios;
+    public List<Registro> getRegistros() {
+        return registros;
     }
 
-    public void setSocios(List<Socio> socios) {
-        this.socios = socios;
+    public void setRegistros(List<Registro> registros) {
+        this.registros = registros;
     }
 
 }
