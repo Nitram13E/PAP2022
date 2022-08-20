@@ -2,16 +2,27 @@
 
 Tarea 1:
 
-- [ ] ➢ Alta de usuario - Felipe
-- [ ] ➢ Consulta de Usuario - Felipe
-- [ ] ➢ Alta de Actividad Deportiva - Diego
-- [ ] ➢ Consulta de Actividad Deportiva - Diego
-- [ ] ➢ Alta de dictado de Clase - Carlos
-- [ ] ➢ Registro a dictado de Clase - Martin
-- [ ] ➢ Alta de Institución Deportiva - Martin
-- [ ] ➢ Consulta de dictado de Clase - Carlos
-- [ ] ➢ Modificar Datos de Usuario - Lucia
-- [ ] ➢ Modificar Actividad Deportiva - Lucia
-- [ ] ➢ Modificar Institución Deportiva - Martin
-- [ ] ➢ Ranking de dictado de clases -
-- [ ] ➢ Ranking de Actividades Deportivas -
+Felipe:
+- [ ] ➢ Alta de usuario
+- [ ] ➢ Consulta de Usuario
+
+Diego:
+- [ ] ➢ Alta de Actividad Deportiva
+- [ ] ➢ Consulta de Actividad Deportiva 
+
+Carlos:
+- [ ] ➢ Alta de dictado de Clase
+- [ ] ➢ Consulta de dictado de Clase
+
+Martin:
+- [ ] ➢ Registro a dictado de Clase
+- [ ] ➢ Alta de Institución Deportiva
+- [ ] ➢ Modificar Institución Deportiva
+
+Lucia:
+- [ ] ➢ Modificar Datos de Usuario
+- [ ] ➢ Modificar Actividad Deportiva
+
+Grupo:
+- [ ] ➢ Ranking de dictado de clases
+- [ ] ➢ Ranking de Actividades Deportivas
