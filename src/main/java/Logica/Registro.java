@@ -4,46 +4,35 @@
  */
 package Logica;
 
+import Datatypes.DtClase;
+import Datatypes.DtSocio;
+
 import java.util.Date;
 
 /**
  *
- * @author Shifter
+ *
  */
 public class Registro {
-
-    private Socio socio;
-    private Clase clase;
+    private DtSocio socio;
+    private DtClase clase;
     private Date fechaReg;
 
-    public Registro(Date fechaReg, Clase clase, Socio socio) {
+    public Registro(Date fechaReg, DtClase clase, DtSocio socio) {
         this.fechaReg = fechaReg;
         this.clase = clase;
         this.socio = socio;
     }
 
-    public Socio getSocio() {
-        return socio;
-    }
-
-    public void setSocio(Socio socio) {
-        this.socio = socio;
+    public DtSocio getSocio() {
+        return new DtSocio(socio.getNickname(), socio.getNombre(), socio.getApellido(), socio.getMail(), socio.getFechaNac());
     }
 
     public Date getFechaReg() {
         return fechaReg;
     }
 
-    public void setFechaReg(Date fechaReg) {
-        this.fechaReg = fechaReg;
+    public DtClase getClase() {
+        return new DtClase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(),  clase.getFechaReg());
     }
-
-    public Clase getClase() {
-        return clase;
-    }
-
-    public void setClase(Clase clase) {
-        this.clase = clase;
-    }
-
 }
