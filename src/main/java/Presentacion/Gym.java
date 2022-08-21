@@ -4,6 +4,7 @@
  */
 package Presentacion;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
 /**
  *
  * @author marti
@@ -927,6 +928,13 @@ public class Gym extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
+        javax.swing.UIManager.setLookAndFeel( new FlatDarculaLaf());
+        } catch( Exception ex ) {
+            System.err.println( "Failed to initialize LaF" );
+        }
+        
+        /*
+        try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -943,7 +951,8 @@ public class Gym extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Gym.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        */
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
