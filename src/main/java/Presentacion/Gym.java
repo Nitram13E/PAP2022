@@ -106,6 +106,7 @@ public class Gym extends javax.swing.JFrame {
         LabelFechaNac2 = new javax.swing.JLabel();
         LabelDescripcion2 = new javax.swing.JLabel();
         LabelSitioWeb2 = new javax.swing.JLabel();
+        BtnModificarActividad = new javax.swing.JButton();
         PanelRegistro = new javax.swing.JPanel();
         PanelClase = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -622,6 +623,13 @@ public class Gym extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        BtnModificarActividad.setText("Modificar");
+        BtnModificarActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarActividadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelActividadDeportivaLayout = new javax.swing.GroupLayout(PanelActividadDeportiva);
         PanelActividadDeportiva.setLayout(PanelActividadDeportivaLayout);
         PanelActividadDeportivaLayout.setHorizontalGroup(
@@ -630,9 +638,13 @@ public class Gym extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelActividadDeportivaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelActividadDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                     .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnAgregarActividad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PanelActividadDeportivaLayout.createSequentialGroup()
+                        .addComponent(BtnAgregarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtnModificarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(153, 153, 153)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(142, 142, 142))
@@ -652,7 +664,9 @@ public class Gym extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnAgregarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelActividadDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnAgregarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnModificarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -850,8 +864,7 @@ public class Gym extends javax.swing.JFrame {
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(PanelClaseLayout.createSequentialGroup()
                                 .addGap(46, 46, 46)
-                                .addComponent(BtnAgregarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(BtnAgregarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(PanelClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelClaseLayout.createSequentialGroup()
                                 .addGap(29, 29, 29)
@@ -917,6 +930,12 @@ public class Gym extends javax.swing.JFrame {
         agregarUsuarioFrame.setLocationRelativeTo(null);
     }//GEN-LAST:event_BtnAgregarUsuarioActionPerformed
 
+    private void BtnModificarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActividadActionPerformed
+        ModificarActividadDeportiva modificarActividadFrame = new ModificarActividadDeportiva();
+        modificarActividadFrame.setVisible(true);
+        modificarActividadFrame.setLocationRelativeTo(null);
+    }//GEN-LAST:event_BtnModificarActividadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -971,6 +990,7 @@ public class Gym extends javax.swing.JFrame {
     private javax.swing.JButton BtnAgregarClase;
     private javax.swing.JButton BtnAgregarInstitucion;
     private javax.swing.JButton BtnAgregarUsuario;
+    private javax.swing.JButton BtnModificarActividad;
     private javax.swing.JButton BtnModificarInstitucion;
     private javax.swing.JButton BtnModificarUsuario;
     private javax.swing.JList<String> JListInstituciones;
