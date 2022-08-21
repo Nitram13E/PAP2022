@@ -1,6 +1,10 @@
 package Controlador;
 
 import Controlador.Interfaces.ICUsuario;
+import Logica.Usuario;
+import Manejadores.ManejadorUsuario;
+
+import java.util.Date;
 
 public class CUsuario implements ICUsuario {
     @Override
@@ -14,7 +18,15 @@ public class CUsuario implements ICUsuario {
     }
 
     @Override
-    public void modificarDatos() {
+    public void modificarDatos(String nickname, String nombre, String apellido, Date fechaNac) {
+        //Nickname y email son unicos, no se pueden modificar
+        ManejadorUsuario mU = ManejadorUsuario.getInstancia();
+        Usuario usuario = mU.buscarUsuario(nickname);
 
+        usuario.setNombre(nombre);
+        usuario.setApellido(apellido);
+        usuario.setFechaNac(fechaNac);
+
+        mU.modificarUsuario(usuario);
     }
 }
