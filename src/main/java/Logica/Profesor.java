@@ -15,7 +15,7 @@ public class Profesor extends Usuario {
     private InstitucionDeportiva institucion;
     private List <Clase> clases;
 
-    public Profesor(String descripcion, String biografia, String sitioWeb, InstitucionDeportiva institucion, String nickname, String nombre, String apellido, String mail, Date fechaNac) {
+    public Profesor(String nickname, String nombre, String apellido, String mail, Date fechaNac,String descripcion, String sitioWeb, String biografia, InstitucionDeportiva institucion) {
         super(nickname, nombre, apellido, mail, fechaNac);
         this.descripcion = descripcion;
         this.biografia = biografia;

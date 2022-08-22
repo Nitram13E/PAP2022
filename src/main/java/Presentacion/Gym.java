@@ -910,9 +910,11 @@ public class Gym extends javax.swing.JFrame {
     private void BtnModificarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarInstitucionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnModificarInstitucionActionPerformed
-
+    
+    //Evento al intentar agregar un nuevo usuario
     private void BtnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarUsuarioActionPerformed
-        AgregarUsuario agregarUsuarioFrame = new AgregarUsuario();
+        AgregarUsuario agregarUsuarioFrame = new AgregarUsuario(); 
+        //Mostrar panel de usuario y centrarlo
         agregarUsuarioFrame.setVisible(true);
         agregarUsuarioFrame.setLocationRelativeTo(null);
     }//GEN-LAST:event_BtnAgregarUsuarioActionPerformed

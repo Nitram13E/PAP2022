@@ -21,4 +21,10 @@ public class ManejadorInstDeportiva {
     public void agregarInstitucionDeportiva(DtInstitucionDeportiva institucion){
         instituciones.add(new InstitucionDeportiva(institucion.getNombre(), institucion.getDesc(), institucion.getUrl()));
     }
+
+    public List<InstitucionDeportiva> getInstituciones() {
+        return instituciones;
+    }
+    
+    
 }
