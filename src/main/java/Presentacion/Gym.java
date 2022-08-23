@@ -364,6 +364,11 @@ public class Gym extends javax.swing.JFrame {
         });
 
         BtnAgregarInstitucion.setText("Agregar");
+        BtnAgregarInstitucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregarInstitucionActionPerformed(evt);
+            }
+        });
 
         jLabelNombreInstitucion.setText("Nombre");
 
@@ -681,6 +686,11 @@ public class Gym extends javax.swing.JFrame {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         BtnAgregarClase.setText("Agregar");
+        BtnAgregarClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregarClaseActionPerformed(evt);
+            }
+        });
 
         jLabelNickName1.setText("Nombre");
 
@@ -851,8 +861,7 @@ public class Gym extends javax.swing.JFrame {
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(PanelClaseLayout.createSequentialGroup()
                                 .addGap(46, 46, 46)
-                                .addComponent(BtnAgregarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(BtnAgregarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(PanelClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelClaseLayout.createSequentialGroup()
                                 .addGap(29, 29, 29)
@@ -917,6 +926,18 @@ public class Gym extends javax.swing.JFrame {
         agregarUsuarioFrame.setVisible(true);
         agregarUsuarioFrame.setLocationRelativeTo(null);
     }//GEN-LAST:event_BtnAgregarUsuarioActionPerformed
+
+    private void BtnAgregarClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarClaseActionPerformed
+        AgregarClase agregarClaseFrame = new AgregarClase();
+        agregarClaseFrame.setVisible(true);
+        agregarClaseFrame.setLocationRelativeTo(null);
+    }//GEN-LAST:event_BtnAgregarClaseActionPerformed
+
+    private void BtnAgregarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarInstitucionActionPerformed
+        AgregarInstitucion agregarInstitucionFrame = new AgregarInstitucion();
+        agregarInstitucionFrame.setVisible(true);
+        agregarInstitucionFrame.setLocationRelativeTo(null);
+    }//GEN-LAST:event_BtnAgregarInstitucionActionPerformed
 
     /**
      * @param args the command line arguments
