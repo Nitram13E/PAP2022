@@ -22,9 +22,9 @@ public class ManejadorInstDeportiva {
         instituciones.add(new InstitucionDeportiva(institucion.getNombre(), institucion.getDesc(), institucion.getUrl()));
     }
 
-    public List<InstitucionDeportiva> getInstituciones() {
-        return instituciones;
+    public List<DtInstitucionDeportiva> getInstituciones() {
+        List<DtInstitucionDeportiva> dtInstituciones = new ArrayList<>();
+        instituciones.forEach(institucion -> dtInstituciones.add(new DtInstitucionDeportiva(institucion.getNombre(), institucion.getDesc(), institucion.getUrl())));
+        return dtInstituciones;
     }
-    
-    
 }
