@@ -4,6 +4,7 @@
  */
 package Presentacion;
 
+import Manejadores.ManejadorInstDeportiva;
 import com.formdev.flatlaf.FlatDarculaLaf;
 /**
  *
@@ -915,6 +916,7 @@ public class Gym extends javax.swing.JFrame {
         ModificarUsuario modificarUsuarioFrame = new ModificarUsuario();
         modificarUsuarioFrame.setVisible(true);
         modificarUsuarioFrame.setLocationRelativeTo(null);
+        modificarUsuarioFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_BtnModificarUsuarioActionPerformed
 
     private void BtnModificarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarInstitucionActionPerformed
@@ -925,54 +927,32 @@ public class Gym extends javax.swing.JFrame {
         AgregarUsuario agregarUsuarioFrame = new AgregarUsuario();
         agregarUsuarioFrame.setVisible(true);
         agregarUsuarioFrame.setLocationRelativeTo(null);
+        agregarUsuarioFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_BtnAgregarUsuarioActionPerformed
 
     private void BtnAgregarClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarClaseActionPerformed
         AgregarClase agregarClaseFrame = new AgregarClase();
         agregarClaseFrame.setVisible(true);
         agregarClaseFrame.setLocationRelativeTo(null);
+        agregarClaseFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_BtnAgregarClaseActionPerformed
 
     private void BtnAgregarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarInstitucionActionPerformed
         AgregarInstitucion agregarInstitucionFrame = new AgregarInstitucion();
         agregarInstitucionFrame.setVisible(true);
         agregarInstitucionFrame.setLocationRelativeTo(null);
+        agregarInstitucionFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_BtnAgregarInstitucionActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
         javax.swing.UIManager.setLookAndFeel( new FlatDarculaLaf());
         } catch( Exception ex ) {
             System.err.println( "Failed to initialize LaF" );
         }
-        
-        /*
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gym.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gym.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gym.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gym.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        */
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -996,6 +976,13 @@ public class Gym extends javax.swing.JFrame {
         jSeparator7.setVisible(esProfesor);
     }
 
+    public void cargarListaInstituciones(){
+        //JListInstituciones.setListData(manejadorInstitucion().getInstituciones());
+    }
+
+    public ManejadorInstDeportiva manejadorInstitucion(){
+        return ManejadorInstDeportiva.getInstancia();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregarActividad;
     private javax.swing.JButton BtnAgregarClase;

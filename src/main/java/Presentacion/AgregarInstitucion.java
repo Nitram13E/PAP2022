@@ -68,6 +68,11 @@ public class AgregarInstitucion extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -150,6 +155,10 @@ public class AgregarInstitucion extends javax.swing.JFrame {
         ManejadorInstDeportiva manejador = ManejadorInstDeportiva.getInstancia();
         manejador.agregarInstitucionDeportiva(new DtInstitucionDeportiva(TxtFieldNombreInstitucion.getText(), TxtFieldURLInstitucion.getText(), TxtFieldURLInstitucion.getText()));
     }//GEN-LAST:event_BtnAgregarInstitucionActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
