@@ -323,29 +323,29 @@ public class AgregarUsuario extends javax.swing.JFrame {
         String tipoUsuario = JcomboTipoUsuario.getSelectedItem().toString();
         String nickname = TxtFieldNickname.getText();
  
-        //Usuario buscarUsuario = manejadorUsu.buscarUsuario(nickname);
+        Usuario buscarUsuario = manejadorUsu.buscarUsuario(nickname);
         
 //        //Si no hay un usuario con el mismo nickname
-//        if (buscarUsuario == null) {
-//            String nombre = TxtFieldNombre.getText();
-//            String apellido = TxtFieldApellido.getText();
-//            String email = TxtFieldEmail.getText();
-//            String fechaNac = TxtFieldFechaNac.getText();
-//
-//            if (tipoUsuario == "Profesor") {
-//                String descripcion = TxtFieldDescripcion.getText();
-//                String sitioweb = TxtFieldSitioWeb.getText();
-//                String biografia = TextBiografia.getText();
-//                String institucion = jComboBoxInstituciones.getSelectedItem().toString();
-//                
-//                //Buscar institucion dentro de lista general de institucion
-//                DtInstitucionDeportiva institucionObj = null;
-//
-//                //manejadorUsu.agregarUsuario(new DtProfesor(nickname, nombre, apellido, email, new Date(), institucionObj,descripcion, sitioweb, biografia));
-//            } else if (tipoUsuario == "Socio") {
-//                //manejadorUsu.agregarUsuario(new DtSocio(nickname, nombre, apellido, email, new Date()));
-//            }
-//        }
+        if (buscarUsuario == null) {
+            String nombre = TxtFieldNombre.getText();
+            String apellido = TxtFieldApellido.getText();
+            String email = TxtFieldEmail.getText();
+            String fechaNac = TxtFieldFechaNac.getText();
+
+            if (tipoUsuario == "Profesor") {
+                String descripcion = TxtFieldDescripcion.getText();
+                String sitioweb = TxtFieldSitioWeb.getText();
+                String biografia = TextBiografia.getText();
+                String institucion = jComboBoxInstituciones.getSelectedItem().toString();
+                
+                //Buscar institucion dentro de lista general de institucion
+                DtInstitucionDeportiva institucionObj = null;
+
+                //manejadorUsu.agregarUsuario(new DtProfesor(nickname, nombre, apellido, email, new Date(), institucionObj,descripcion, sitioweb, biografia));
+            } else if (tipoUsuario == "Socio") {
+                //manejadorUsu.agregarUsuario(new DtSocio(nickname, nombre, apellido, email, new Date()));
+            }
+        }
 
     }//GEN-LAST:event_BtnAgregarUsuarioActionPerformed
 
