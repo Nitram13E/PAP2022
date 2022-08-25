@@ -27,5 +27,4 @@ public class ManejadorInstDeportiva {
         instituciones.forEach(institucion -> dtInstituciones.add(new DtInstitucionDeportiva(institucion.getNombre(), institucion.getDesc(), institucion.getUrl())));
         return dtInstituciones;
     }
-
 }
