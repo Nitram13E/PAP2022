@@ -19,7 +19,7 @@ public class CInstDeportiva implements ICInstDeportiva {
     @Override
     public void altaInstitucion(DtInstitucionDeportiva institucion) throws InstitucionExistenteException{
         if(manejador.existeInstitucion(institucion.getNombre())) throw new InstitucionExistenteException("La institucion ya existe.");
-        manejador.agregarInstitucionDeportiva(new InstitucionDeportiva(institucion.getNombre(), institucion.getUrl(), institucion.getDesc()));
+        manejador.agregarInstitucionDeportiva(new InstitucionDeportiva(institucion.getNombre(), institucion.getDesc(), institucion.getUrl()));
     }
     @Override
     public void modificarInstitucion(DtInstitucionDeportiva institucion) throws InstitucionExistenteException{

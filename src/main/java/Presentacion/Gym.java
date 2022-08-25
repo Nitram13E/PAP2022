@@ -975,7 +975,6 @@ public class Gym extends javax.swing.JFrame {
         //Nombre
         LabelNombreInstitucion.setText(JListInstituciones.getSelectedValue().getNombre());
         //URL
-        //TODO: Encontrar problema de asignacion
         LabelURLInstitucion.setText(JListInstituciones.getSelectedValue().getUrl());
         //Descripcion
         TextDescripcionInstitucion.setText(JListInstituciones.getSelectedValue().getDesc());

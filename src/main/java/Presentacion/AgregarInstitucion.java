@@ -155,12 +155,17 @@ public class AgregarInstitucion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarInstitucionActionPerformed
+        if(txtFieldNombreInstitucion.getText().isBlank() || textDescripcionInstitucion.getText().isBlank() || txtFieldURLInstitucion.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
         try{
-            controlador.altaInstitucion(new DtInstitucionDeportiva(txtFieldNombreInstitucion.getText(), txtFieldURLInstitucion.getText(), textDescripcionInstitucion.getText()));
+            controlador.altaInstitucion(new DtInstitucionDeportiva(txtFieldNombreInstitucion.getText(), textDescripcionInstitucion.getText(), txtFieldURLInstitucion.getText()));
+            dispose();
         }catch (InstitucionExistenteException e){
             JOptionPane.showMessageDialog(this, "La institucion ya existe!", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
         }
-        dispose();
     }//GEN-LAST:event_btnAgregarInstitucionActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

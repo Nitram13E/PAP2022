@@ -36,18 +36,18 @@ public class ModificarInstitucion extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jSeparator21 = new javax.swing.JSeparator();
         jLabelNombreInstitucion = new javax.swing.JLabel();
+        txtFieldNombre = new javax.swing.JTextField();
         jSeparator15 = new javax.swing.JSeparator();
         jLabelURLInstitucion = new javax.swing.JLabel();
+        txtFieldURL = new javax.swing.JTextField();
         jSeparator16 = new javax.swing.JSeparator();
         jLabelDescripcionInstitucion = new javax.swing.JLabel();
-        btnModificarInstitucion = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-        txtFieldNombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         textDescripcion = new javax.swing.JTextArea();
-        txtFieldURL = new javax.swing.JTextField();
+        jSeparator21 = new javax.swing.JSeparator();
+        btnCancelar = new javax.swing.JButton();
+        btnModificarInstitucion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -58,16 +58,17 @@ public class ModificarInstitucion extends javax.swing.JFrame {
 
         jLabelNombreInstitucion.setText("Nombre");
 
+        txtFieldNombre.setEnabled(false);
+
         jLabelURLInstitucion.setText("URL");
 
         jLabelDescripcionInstitucion.setText("Descripcion");
 
-        btnModificarInstitucion.setText("Modificar");
-        btnModificarInstitucion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarInstitucionActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setEnabled(false);
+
+        textDescripcion.setColumns(20);
+        textDescripcion.setRows(5);
+        jScrollPane1.setViewportView(textDescripcion);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -76,13 +77,12 @@ public class ModificarInstitucion extends javax.swing.JFrame {
             }
         });
 
-        txtFieldNombre.setEnabled(false);
-
-        jScrollPane1.setEnabled(false);
-
-        textDescripcion.setColumns(20);
-        textDescripcion.setRows(5);
-        jScrollPane1.setViewportView(textDescripcion);
+        btnModificarInstitucion.setText("Modificar");
+        btnModificarInstitucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarInstitucionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -159,7 +159,8 @@ public class ModificarInstitucion extends javax.swing.JFrame {
 
     private void btnModificarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarInstitucionActionPerformed
         try {
-            controlador.modificarInstitucion(new DtInstitucionDeportiva(txtFieldNombre.getText(), txtFieldURL.getText(), textDescripcion.getText()));
+            //TODO:Arreglar problema con descripcion y URL
+            controlador.modificarInstitucion(new DtInstitucionDeportiva(txtFieldNombre.getText(), textDescripcion.getText(), txtFieldURL.getText()));
         }catch (InstitucionExistenteException e){
             JOptionPane.showMessageDialog(this, "La institucion no existe!", "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
         }

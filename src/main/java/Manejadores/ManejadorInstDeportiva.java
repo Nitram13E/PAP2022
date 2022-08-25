@@ -5,7 +5,6 @@ import Logica.InstitucionDeportiva;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ManejadorInstDeportiva {
     private static ManejadorInstDeportiva instancia = null;

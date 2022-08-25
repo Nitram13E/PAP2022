@@ -116,11 +116,14 @@
             <Property name="text" type="java.lang.String" value="Modificar institucion"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSeparator" name="jSeparator21">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabelNombreInstitucion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nombre"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtFieldNombre">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator15">
@@ -130,32 +133,13 @@
             <Property name="text" type="java.lang.String" value="URL"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JTextField" name="txtFieldURL">
+        </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator16">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelDescripcionInstitucion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Descripcion"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnModificarInstitucion">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Modificar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarInstitucionActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnCancelar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cancelar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtFieldNombre">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -179,7 +163,23 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="txtFieldURL">
+        <Component class="javax.swing.JSeparator" name="jSeparator21">
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCancelar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cancelar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnModificarInstitucion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Modificar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarInstitucionActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
