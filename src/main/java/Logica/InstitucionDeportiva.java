@@ -1,5 +1,6 @@
 package Logica;
 
+import Datatypes.DtActividadDeportiva;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,15 +13,13 @@ public class InstitucionDeportiva {
     private String nombre;
     private String desc;
     private String url;
-    //List<Profesor> profesores; Duda para el profesor
-    private List<ActividadDeportiva> actividades;
+    private List<DtActividadDeportiva> actividades;
 
-    public InstitucionDeportiva(String nombre, String desc, String url/*List<Profesor> profesores*/) {
+    public InstitucionDeportiva(String nombre, String desc, String url) {
         this.nombre = nombre;
         this.desc = desc;
         this.url = url;
-        //this.profesores = profesores;
-        this.actividades = new ArrayList<ActividadDeportiva>();
+        this.actividades = new ArrayList<DtActividadDeportiva>();
     }
 
     public String getNombre() {
@@ -47,18 +46,11 @@ public class InstitucionDeportiva {
         this.url = url;
     }
 
-//    public List<Profesor> getProfesores() {
-//        return profesores;
-//    }
-//
-//    public void setProfesores(List<Profesor> profesores) {
-//        this.profesores = profesores;
-//    }
-    public List<ActividadDeportiva> getActividades() {
+    public List<DtActividadDeportiva> getActividades() {
         return actividades;
     }
 
-    public void setActividades(List<ActividadDeportiva> actividades) {
+    public void setActividades(List<DtActividadDeportiva> actividades) {
         this.actividades = actividades;
     }
 

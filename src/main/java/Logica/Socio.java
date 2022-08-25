@@ -1,5 +1,6 @@
 package Logica;
 
+import Datatypes.DtRegistro;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,18 +11,18 @@ import java.util.List;
  */
 public class Socio extends Usuario {
     
-    private List<Registro> registros;
+    private List<DtRegistro> registros;
     
     public Socio(String nickname, String nombre, String apellido, String mail, Date fechaNac) {
         super(nickname, nombre, apellido, mail, fechaNac);
-        this.registros = new ArrayList<Registro>();
+        this.registros = new ArrayList<DtRegistro>();
     }
 
-    public List<Registro> getRegistros() {
+    public List<DtRegistro> getRegistros() {
         return registros;
     }
 
-    public void setRegistros(List<Registro> registros) {
+    public void setRegistros(List<DtRegistro> registros) {
         this.registros = registros;
     }
     
