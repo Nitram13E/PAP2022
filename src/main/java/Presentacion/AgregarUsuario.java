@@ -318,7 +318,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
     private void BtnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarUsuarioActionPerformed
         Fabrica fabrica = Fabrica.getInstancia();
         ICUsuario controlUsuario = fabrica.getICUsuario();
-        ManejadorUsuario manejadorUsu = ManejadorUsuario.getInstancia();
 
         String tipoUsuario = JcomboTipoUsuario.getSelectedItem().toString();
         String nickname = TxtFieldNickname.getText();
@@ -331,16 +330,16 @@ public class AgregarUsuario extends javax.swing.JFrame {
         String biografia = TextBiografia.getText();
         DtInstitucionDeportiva institucion = (DtInstitucionDeportiva)jComboBoxInstituciones.getSelectedItem();
 
-        DtUsuario usuario;
+        DtUsuario usuario = null;
 
-//        if (tipoUsuario == "Profesor") {
-//            usuario = new DtProfesor(nickname, nombre, apellido, email, new Date(), institucion, descripcion, sitioweb, biografia);
-//        } else {
-//            //usuario = new DtSocio();
-//        }
-
-        //controlUsuario.altaUsuario(usuario);
-
+        if (tipoUsuario == "Profesor") {
+            usuario = new DtProfesor(nickname, nombre, apellido, email, new Date(), institucion, descripcion, sitioweb, biografia);
+        } else if(tipoUsuario == "Socio") {
+            usuario = new DtSocio(nickname, nombre, apellido, email, new Date());
+        }
+        
+        //Llamando a alta usuario
+        controlUsuario.altaUsuario(usuario);
     }//GEN-LAST:event_BtnAgregarUsuarioActionPerformed
 
     //Al clickear el boton Cancelar

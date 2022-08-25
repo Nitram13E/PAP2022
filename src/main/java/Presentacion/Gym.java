@@ -4,8 +4,12 @@
  */
 package Presentacion;
 
+import Datatypes.DtUsuario;
 import Manejadores.ManejadorInstDeportiva;
+import Manejadores.ManejadorUsuario;
 import com.formdev.flatlaf.FlatDarculaLaf;
+import java.util.List;
+import javax.swing.DefaultListModel;
 /**
  *
  * @author marti
@@ -58,6 +62,7 @@ public class Gym extends javax.swing.JFrame {
         LabelFechaNac = new javax.swing.JLabel();
         LabelDescripcion = new javax.swing.JLabel();
         LabelSitioWeb = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         PanelInstitucionDeportiva = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -145,10 +150,10 @@ public class Gym extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        JListUsuarios.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        JListUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JListUsuariosMouseClicked(evt);
+            }
         });
         jScrollPane1.setViewportView(JListUsuarios);
         JListUsuarios.getAccessibleContext().setAccessibleName("UsuariosList");
@@ -201,6 +206,13 @@ public class Gym extends javax.swing.JFrame {
 
         LabelSitioWeb.setText("-");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelInfoUsuarioLayout = new javax.swing.GroupLayout(PanelInfoUsuario);
         PanelInfoUsuario.setLayout(PanelInfoUsuarioLayout);
         PanelInfoUsuarioLayout.setHorizontalGroup(
@@ -231,7 +243,7 @@ public class Gym extends javax.swing.JFrame {
                         .addComponent(LabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
                         .addComponent(jLabelFechaNac)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
                         .addComponent(LabelFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
                         .addComponent(jLabelDescripcion)
@@ -239,6 +251,8 @@ public class Gym extends javax.swing.JFrame {
                         .addComponent(LabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
                         .addComponent(jLabelBiografia)
+                        .addGap(121, 121, 121)
+                        .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
                         .addComponent(jLabelSitioWeb)
@@ -288,11 +302,16 @@ public class Gym extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelBiografia)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                        .addComponent(jLabelBiografia)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -315,7 +334,7 @@ public class Gym extends javax.swing.JFrame {
                         .addComponent(BtnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BtnAgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(PanelInfoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -946,6 +965,14 @@ public class Gym extends javax.swing.JFrame {
         agregarInstitucionFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_BtnAgregarInstitucionActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        agregarListaUsuarios();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void JListUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JListUsuariosMouseClicked
+        System.out.println("clicke");
+    }//GEN-LAST:event_JListUsuariosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -964,6 +991,19 @@ public class Gym extends javax.swing.JFrame {
                 gymFrame.setLocationRelativeTo(null);
             }
         });
+    }
+    
+        //Llena la lista de usuarios con los usuarios del sistema
+    public void agregarListaUsuarios()
+    {
+        ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
+        
+        List<String> usuariosAMostrar = mJUsuario.getUsuarios();
+        DefaultListModel<String> model = new DefaultListModel<>();
+        
+        usuariosAMostrar.forEach(nickname -> model.addElement(nickname));
+        
+        JListUsuarios.setModel(model);
     }
     
     public void infoTipoUsuario(boolean esProfesor){
@@ -1027,6 +1067,7 @@ public class Gym extends javax.swing.JFrame {
     private javax.swing.JTextArea TextBiografia1;
     private javax.swing.JTextArea TextBiografia2;
     private javax.swing.JTextArea TextDescripcionInstitucion;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
