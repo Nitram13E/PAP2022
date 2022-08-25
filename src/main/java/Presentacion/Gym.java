@@ -977,7 +977,7 @@ public class Gym extends javax.swing.JFrame {
     }
 
     public void cargarListaInstituciones(){
-        //JListInstituciones.setListData(manejadorInstitucion().getInstituciones());
+        JListInstituciones.setListData(manejadorInstitucion().getInstituciones());
     }
 
     public ManejadorInstDeportiva manejadorInstitucion(){
