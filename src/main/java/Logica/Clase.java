@@ -1,5 +1,6 @@
 package Logica;
 
+import DataType.DtClase;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,7 +27,11 @@ public class Clase {
         this.fechaReg = fechaReg;
         this.registros = new ArrayList<Registro>();
     }
-
+    
+    
+    
+    
+    
     public String getNombre() {
         return nombre;
     }
