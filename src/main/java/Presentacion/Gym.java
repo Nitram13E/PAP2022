@@ -4,8 +4,15 @@
  */
 package Presentacion;
 
+import Controlador.CInstDeportiva;
+import Controlador.Interfaces.ICInstDeportiva;
+import Datatypes.DtInstitucionDeportiva;
 import Manejadores.ManejadorInstDeportiva;
 import com.formdev.flatlaf.FlatDarculaLaf;
+
+import javax.swing.*;
+import java.util.Vector;
+
 /**
  *
  * @author marti
@@ -65,7 +72,7 @@ public class Gym extends javax.swing.JFrame {
         JListInstituciones = new javax.swing.JList<>();
         BtnModificarInstitucion = new javax.swing.JButton();
         BtnAgregarInstitucion = new javax.swing.JButton();
-        PanelInfoUsuario2 = new javax.swing.JPanel();
+        PanelInfoInstitucion = new javax.swing.JPanel();
         jLabelNombreInstitucion = new javax.swing.JLabel();
         jSeparator15 = new javax.swing.JSeparator();
         jSeparator16 = new javax.swing.JSeparator();
@@ -144,6 +151,13 @@ public class Gym extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         JListUsuarios.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -350,14 +364,15 @@ public class Gym extends javax.swing.JFrame {
         jLabel7.setText("Lista de instituciones");
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        JListInstituciones.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        JListInstituciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JListInstitucionesMouseClicked(evt);
+            }
         });
         jScrollPane5.setViewportView(JListInstituciones);
 
         BtnModificarInstitucion.setText("Modificar");
+        BtnModificarInstitucion.setEnabled(false);
         BtnModificarInstitucion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnModificarInstitucionActionPerformed(evt);
@@ -371,6 +386,8 @@ public class Gym extends javax.swing.JFrame {
             }
         });
 
+        PanelInfoInstitucion.setEnabled(false);
+
         jLabelNombreInstitucion.setText("Nombre");
 
         jLabelURLInstitucion.setText("URL");
@@ -383,50 +400,51 @@ public class Gym extends javax.swing.JFrame {
 
         TextDescripcionInstitucion.setColumns(20);
         TextDescripcionInstitucion.setRows(5);
+        TextDescripcionInstitucion.setEnabled(false);
         jScrollPane6.setViewportView(TextDescripcionInstitucion);
 
         LabelNombreInstitucion.setText("-");
 
         LabelURLInstitucion.setText("-");
 
-        javax.swing.GroupLayout PanelInfoUsuario2Layout = new javax.swing.GroupLayout(PanelInfoUsuario2);
-        PanelInfoUsuario2.setLayout(PanelInfoUsuario2Layout);
-        PanelInfoUsuario2Layout.setHorizontalGroup(
-            PanelInfoUsuario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInfoUsuario2Layout.createSequentialGroup()
+        javax.swing.GroupLayout PanelInfoInstitucionLayout = new javax.swing.GroupLayout(PanelInfoInstitucion);
+        PanelInfoInstitucion.setLayout(PanelInfoInstitucionLayout);
+        PanelInfoInstitucionLayout.setHorizontalGroup(
+            PanelInfoInstitucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInfoInstitucionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelInfoUsuario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelInfoInstitucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                     .addComponent(jSeparator15)
                     .addComponent(jSeparator16, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator21, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PanelInfoUsuario2Layout.createSequentialGroup()
+                    .addGroup(PanelInfoInstitucionLayout.createSequentialGroup()
                         .addComponent(jLabelNombreInstitucion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LabelNombreInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelInfoUsuario2Layout.createSequentialGroup()
+                    .addGroup(PanelInfoInstitucionLayout.createSequentialGroup()
                         .addComponent(jLabelURLInstitucion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LabelURLInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelInfoUsuario2Layout.createSequentialGroup()
+                    .addGroup(PanelInfoInstitucionLayout.createSequentialGroup()
                         .addComponent(jLabelDescripcionInstitucion)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        PanelInfoUsuario2Layout.setVerticalGroup(
-            PanelInfoUsuario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelInfoUsuario2Layout.createSequentialGroup()
+        PanelInfoInstitucionLayout.setVerticalGroup(
+            PanelInfoInstitucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelInfoInstitucionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
-                .addGroup(PanelInfoUsuario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(PanelInfoInstitucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombreInstitucion)
                     .addComponent(LabelNombreInstitucion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelInfoUsuario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(PanelInfoInstitucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelURLInstitucion)
                     .addComponent(LabelURLInstitucion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -452,9 +470,9 @@ public class Gym extends javax.swing.JFrame {
                         .addComponent(BtnModificarInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BtnAgregarInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane5))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(PanelInfoUsuario2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PanelInfoInstitucion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelInstitucionDeportivaLayout.setVerticalGroup(
@@ -463,7 +481,7 @@ public class Gym extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PanelInstitucionDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelInstitucionDeportivaLayout.createSequentialGroup()
-                        .addComponent(PanelInfoUsuario2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(PanelInfoInstitucion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(PanelInstitucionDeportivaLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -906,7 +924,7 @@ public class Gym extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -920,7 +938,10 @@ public class Gym extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnModificarUsuarioActionPerformed
 
     private void BtnModificarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarInstitucionActionPerformed
-        // TODO add your handling code here:
+        ModificarInstitucion modificarInstitucion = new ModificarInstitucion(JListInstituciones.getSelectedValue());
+        modificarInstitucion.setVisible(true);
+        modificarInstitucion.setLocationRelativeTo(null);
+        modificarInstitucion.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_BtnModificarInstitucionActionPerformed
     
     //Evento al intentar agregar un nuevo usuario
@@ -945,6 +966,23 @@ public class Gym extends javax.swing.JFrame {
         agregarInstitucionFrame.setLocationRelativeTo(null);
         agregarInstitucionFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_BtnAgregarInstitucionActionPerformed
+    
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        cargarListaInstitucionesDeportivas();
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void JListInstitucionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JListInstitucionesMouseClicked
+        //Nombre
+        LabelNombreInstitucion.setText(JListInstituciones.getSelectedValue().getNombre());
+        //URL
+        //TODO: Encontrar problema de asignacion
+        LabelURLInstitucion.setText(JListInstituciones.getSelectedValue().getUrl());
+        //Descripcion
+        TextDescripcionInstitucion.setText(JListInstituciones.getSelectedValue().getDesc());
+
+        //Habilitar Modificacion de institucion
+        BtnModificarInstitucion.setEnabled(true);
+    }//GEN-LAST:event_JListInstitucionesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -955,7 +993,7 @@ public class Gym extends javax.swing.JFrame {
         } catch( Exception ex ) {
             System.err.println( "Failed to initialize LaF" );
         }
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -977,13 +1015,17 @@ public class Gym extends javax.swing.JFrame {
         TextBiografia.setVisible(esProfesor);
         jSeparator7.setVisible(esProfesor);
     }
-
-    public void cargarListaInstituciones(){
-        JListInstituciones.setListData(manejadorInstitucion().getInstituciones());
+    
+    public void cargarListaInstitucionesDeportivas(){
+        DefaultListModel<DtInstitucionDeportiva> listModel = new DefaultListModel<DtInstitucionDeportiva>();
+        listModel.addAll(controladorInstitucion().getInstituciones());
+        JListInstituciones.setModel(listModel);
+        JListInstituciones.getSelectedValue();
     }
-
-    public ManejadorInstDeportiva manejadorInstitucion(){
-        return ManejadorInstDeportiva.getInstancia();
+    
+    public ICInstDeportiva controladorInstitucion(){
+        ICInstDeportiva controlador = new CInstDeportiva();
+        return controlador;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregarActividad;
@@ -992,7 +1034,7 @@ public class Gym extends javax.swing.JFrame {
     private javax.swing.JButton BtnAgregarUsuario;
     private javax.swing.JButton BtnModificarInstitucion;
     private javax.swing.JButton BtnModificarUsuario;
-    private javax.swing.JList<String> JListInstituciones;
+    private javax.swing.JList<DtInstitucionDeportiva> JListInstituciones;
     private javax.swing.JList<String> JListUsuarios;
     private javax.swing.JLabel LabelDescripcion;
     private javax.swing.JLabel LabelDescripcion1;
@@ -1016,9 +1058,9 @@ public class Gym extends javax.swing.JFrame {
     private javax.swing.JLabel LabelURLInstitucion;
     private javax.swing.JPanel PanelActividadDeportiva;
     private javax.swing.JPanel PanelClase;
+    private javax.swing.JPanel PanelInfoInstitucion;
     private javax.swing.JPanel PanelInfoUsuario;
     private javax.swing.JPanel PanelInfoUsuario1;
-    private javax.swing.JPanel PanelInfoUsuario2;
     private javax.swing.JPanel PanelInfoUsuario3;
     private javax.swing.JPanel PanelInstitucionDeportiva;
     private javax.swing.JPanel PanelRegistro;

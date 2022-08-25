@@ -4,19 +4,22 @@
  */
 package Presentacion;
 
+import Controlador.CInstDeportiva;
+import Controlador.Interfaces.ICInstDeportiva;
 import Datatypes.DtInstitucionDeportiva;
+import Excepciones.InstitucionExistenteException;
 import Manejadores.ManejadorInstDeportiva;
+
+import javax.swing.*;
 
 /**
  *
  * @author marti
  */
 public class AgregarInstitucion extends javax.swing.JFrame {
-
-    /**
-     * Creates new form AgregarInstitucion
-     */
+    ICInstDeportiva controlador;
     public AgregarInstitucion() {
+        controlador = new CInstDeportiva();
         initComponents();
     }
 
@@ -32,17 +35,17 @@ public class AgregarInstitucion extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jSeparator21 = new javax.swing.JSeparator();
-        TxtFieldNombreInstitucion = new javax.swing.JTextField();
+        txtFieldNombreInstitucion = new javax.swing.JTextField();
         jLabelNombreInstitucion = new javax.swing.JLabel();
-        TxtFieldURLInstitucion = new javax.swing.JTextField();
+        txtFieldURLInstitucion = new javax.swing.JTextField();
         jSeparator15 = new javax.swing.JSeparator();
         jLabelURLInstitucion = new javax.swing.JLabel();
         jSeparator16 = new javax.swing.JSeparator();
         jScrollPane6 = new javax.swing.JScrollPane();
-        TextDescripcionInstitucion = new javax.swing.JTextArea();
+        textDescripcionInstitucion = new javax.swing.JTextArea();
         jLabelDescripcionInstitucion = new javax.swing.JLabel();
-        BtnAgregarInstitucion = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAgregarInstitucion = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,23 +57,23 @@ public class AgregarInstitucion extends javax.swing.JFrame {
 
         jLabelURLInstitucion.setText("URL");
 
-        TextDescripcionInstitucion.setColumns(20);
-        TextDescripcionInstitucion.setRows(5);
-        jScrollPane6.setViewportView(TextDescripcionInstitucion);
+        textDescripcionInstitucion.setColumns(20);
+        textDescripcionInstitucion.setRows(5);
+        jScrollPane6.setViewportView(textDescripcionInstitucion);
 
         jLabelDescripcionInstitucion.setText("Descripcion");
 
-        BtnAgregarInstitucion.setText("Agregar");
-        BtnAgregarInstitucion.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarInstitucion.setText("Agregar");
+        btnAgregarInstitucion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAgregarInstitucionActionPerformed(evt);
+                btnAgregarInstitucionActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -88,20 +91,20 @@ public class AgregarInstitucion extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelURLInstitucion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TxtFieldURLInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFieldURLInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelDescripcionInstitucion)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelNombreInstitucion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
-                        .addComponent(TxtFieldNombreInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFieldNombreInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BtnAgregarInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregarInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -111,13 +114,13 @@ public class AgregarInstitucion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombreInstitucion)
-                    .addComponent(TxtFieldNombreInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFieldNombreInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelURLInstitucion)
-                    .addComponent(TxtFieldURLInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFieldURLInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,8 +135,8 @@ public class AgregarInstitucion extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BtnAgregarInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAgregarInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
 
@@ -151,24 +154,24 @@ public class AgregarInstitucion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnAgregarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarInstitucionActionPerformed
-        ManejadorInstDeportiva manejador = ManejadorInstDeportiva.getInstancia();
-        manejador.agregarInstitucionDeportiva(new DtInstitucionDeportiva(TxtFieldNombreInstitucion.getText(), TxtFieldURLInstitucion.getText(), TxtFieldURLInstitucion.getText()));
-    }//GEN-LAST:event_BtnAgregarInstitucionActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAgregarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarInstitucionActionPerformed
+        try{
+            controlador.altaInstitucion(new DtInstitucionDeportiva(txtFieldNombreInstitucion.getText(), txtFieldURLInstitucion.getText(), textDescripcionInstitucion.getText()));
+        }catch (InstitucionExistenteException e){
+            JOptionPane.showMessageDialog(this, "La institucion ya existe!", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+        }
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAgregarInstitucionActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -196,11 +199,8 @@ public class AgregarInstitucion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAgregarInstitucion;
-    private javax.swing.JTextArea TextDescripcionInstitucion;
-    private javax.swing.JTextField TxtFieldNombreInstitucion;
-    private javax.swing.JTextField TxtFieldURLInstitucion;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAgregarInstitucion;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelDescripcionInstitucion;
     private javax.swing.JLabel jLabelNombreInstitucion;
@@ -210,5 +210,8 @@ public class AgregarInstitucion extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator21;
+    private javax.swing.JTextArea textDescripcionInstitucion;
+    private javax.swing.JTextField txtFieldNombreInstitucion;
+    private javax.swing.JTextField txtFieldURLInstitucion;
     // End of variables declaration//GEN-END:variables
 }
