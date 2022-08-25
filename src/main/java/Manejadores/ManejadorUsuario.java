@@ -1,9 +1,19 @@
 package Manejadores;
 
+
+import Datatypes.DtProfesor;
+import Datatypes.DtSocio;
+import Datatypes.DtUsuario;
+import Logica.Profesor;
 import Logica.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ManejadorUsuario {
+
     private static ManejadorUsuario instancia = null;
+    //Lista de todos los usuarios en el sistema
+    private List<Usuario> usuarios = new ArrayList<>();
 
     private ManejadorUsuario() {
     }
@@ -15,8 +25,35 @@ public class ManejadorUsuario {
         return instancia;
     }
 
-    public Usuario buscarUsuario(String nickname){
-        return null;
+    public void agregarUsuario(DtUsuario usuario)
+    {
+        if(usuario instanceof DtProfesor)
+        {
+            
+  
+        }
+        
+        if(usuario instanceof DtSocio)
+        {
+        
+        }
+        
+    }
+
+    public Usuario buscarUsuario(String nickname) 
+    {
+        Usuario usuario = null;
+        
+        //Recorre la lista de usuarios del sistema en busqueda del mismo nickname
+        for (Usuario s : usuarios) 
+        {
+            if(s.getNickname() == nickname)
+            {
+                usuario = s;
+            }
+        }
+        
+        return usuario;
     }
 
     public void modificarUsuario(Usuario usuario){

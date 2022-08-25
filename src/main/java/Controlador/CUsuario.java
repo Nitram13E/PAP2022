@@ -10,7 +10,8 @@ import java.util.Date;
 public class CUsuario implements ICUsuario {
     @Override
     public void altaUsuario() {
-
+        
+       
     }
 
     @Override
