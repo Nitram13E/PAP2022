@@ -11,6 +11,7 @@ import Controlador.Interfaces.ICUsuario;
 import Datatypes.DtInstitucionDeportiva;
 import Datatypes.DtProfesor;
 import Datatypes.DtSocio;
+import Datatypes.DtUsuario;
 import Logica.InstitucionDeportiva;
 import Logica.Profesor;
 import Logica.Socio;
@@ -297,12 +298,11 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
     private void agregarListaInstituciones() {
         ManejadorInstDeportiva manejadorInstituto = ManejadorInstDeportiva.getInstancia();
-        List<InstitucionDeportiva> instituciones = manejadorInstituto.getInstituciones();
+        List<DtInstitucionDeportiva> instituciones = manejadorInstituto.getInstituciones();
 
-        for (InstitucionDeportiva institucion : instituciones) {
-            jComboBoxInstituciones.addItem(institucion.getNombre());
+        for (DtInstitucionDeportiva institucion : instituciones) {
+            jComboBoxInstituciones.addItem(institucion);
         }
-
     }
 
     //Dependiendo de si el comboBox el tipo de usuario es Profesor o Socio se cambia el form
@@ -322,30 +322,24 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         String tipoUsuario = JcomboTipoUsuario.getSelectedItem().toString();
         String nickname = TxtFieldNickname.getText();
- 
-        Usuario buscarUsuario = manejadorUsu.buscarUsuario(nickname);
-        
-//        //Si no hay un usuario con el mismo nickname
-        if (buscarUsuario == null) {
-            String nombre = TxtFieldNombre.getText();
-            String apellido = TxtFieldApellido.getText();
-            String email = TxtFieldEmail.getText();
-            String fechaNac = TxtFieldFechaNac.getText();
+        String nombre = TxtFieldNombre.getText();
+        String apellido = TxtFieldApellido.getText();
+        String email = TxtFieldEmail.getText();
+        String fechaNac = TxtFieldFechaNac.getText();
+        String descripcion = TxtFieldDescripcion.getText();
+        String sitioweb = TxtFieldSitioWeb.getText();
+        String biografia = TextBiografia.getText();
+        DtInstitucionDeportiva institucion = (DtInstitucionDeportiva)jComboBoxInstituciones.getSelectedItem();
 
-            if (tipoUsuario == "Profesor") {
-                String descripcion = TxtFieldDescripcion.getText();
-                String sitioweb = TxtFieldSitioWeb.getText();
-                String biografia = TextBiografia.getText();
-                String institucion = jComboBoxInstituciones.getSelectedItem().toString();
-                
-                //Buscar institucion dentro de lista general de institucion
-                DtInstitucionDeportiva institucionObj = null;
+        DtUsuario usuario;
 
-                //manejadorUsu.agregarUsuario(new DtProfesor(nickname, nombre, apellido, email, new Date(), institucionObj,descripcion, sitioweb, biografia));
-            } else if (tipoUsuario == "Socio") {
-                //manejadorUsu.agregarUsuario(new DtSocio(nickname, nombre, apellido, email, new Date()));
-            }
-        }
+//        if (tipoUsuario == "Profesor") {
+//            usuario = new DtProfesor(nickname, nombre, apellido, email, new Date(), institucion, descripcion, sitioweb, biografia);
+//        } else {
+//            //usuario = new DtSocio();
+//        }
+
+        //controlUsuario.altaUsuario(usuario);
 
     }//GEN-LAST:event_BtnAgregarUsuarioActionPerformed
 
@@ -401,7 +395,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField TxtFieldNickname;
     private javax.swing.JTextField TxtFieldNombre;
     private javax.swing.JTextField TxtFieldSitioWeb;
-    private javax.swing.JComboBox<String> jComboBoxInstituciones;
+    private javax.swing.JComboBox<DtInstitucionDeportiva> jComboBoxInstituciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelApellidoUsu;

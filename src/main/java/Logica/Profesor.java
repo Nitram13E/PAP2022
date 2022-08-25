@@ -1,4 +1,6 @@
 package Logica;
+import Datatypes.DtClase;
+import Datatypes.DtInstitucionDeportiva;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,16 +14,16 @@ public class Profesor extends Usuario {
     private String descripcion;
     private String biografia;
     private String sitioWeb;
-    private InstitucionDeportiva institucion;
-    private List <Clase> clases;
+    private DtInstitucionDeportiva institucion;
+    private List <DtClase> clases;
 
-    public Profesor(String nickname, String nombre, String apellido, String mail, Date fechaNac,String descripcion, String sitioWeb, String biografia, InstitucionDeportiva institucion) {
+    public Profesor(String nickname, String nombre, String apellido, String mail, Date fechaNac,String descripcion, String sitioWeb, String biografia, DtInstitucionDeportiva institucion) {
         super(nickname, nombre, apellido, mail, fechaNac);
         this.descripcion = descripcion;
         this.biografia = biografia;
         this.sitioWeb = sitioWeb;
         this.institucion = institucion;
-        this.clases = new ArrayList<Clase>();
+        this.clases = new ArrayList<DtClase>();
     }
 
     public String getDescripcion() {
@@ -48,19 +50,19 @@ public class Profesor extends Usuario {
         this.sitioWeb = sitioWeb;
     }
 
-    public InstitucionDeportiva getInstitucion() {
+    public DtInstitucionDeportiva getInstitucion() {
         return institucion;
     }
 
-    public void setInstitucion(InstitucionDeportiva institucion) {
+    public void setInstitucion(DtInstitucionDeportiva institucion) {
         this.institucion = institucion;
     }
 
-    public List<Clase> getClases() {
+    public List<DtClase> getClases() {
         return clases;
     }
 
-    public void setClases(List<Clase> clases) {
+    public void setClases(List<DtClase> clases) {
         this.clases = clases;
     }
     
