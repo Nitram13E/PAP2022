@@ -8,8 +8,10 @@ import java.util.List;
 
 public class ManejadorInstDeportiva {
     private static ManejadorInstDeportiva instancia = null;
-    private final List<InstitucionDeportiva> instituciones = new ArrayList<>();
-    private ManejadorInstDeportiva(){}
+    private final List<InstitucionDeportiva> instituciones;
+    private ManejadorInstDeportiva(){
+        instituciones = new ArrayList<>();
+    }
 
     public static ManejadorInstDeportiva getInstancia() {
         if (instancia == null) {
