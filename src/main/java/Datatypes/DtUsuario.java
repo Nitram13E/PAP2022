@@ -9,7 +9,7 @@ public class DtUsuario {
     private String mail;
     private Date fechaNac;
 
-    protected DtUsuario(String nickname, String nombre, String apellido, String mail, Date fechaNac)
+    public DtUsuario(String nickname, String nombre, String apellido, String mail, Date fechaNac)
     {
         this.nickname = nickname;
         this.nombre = nombre;
