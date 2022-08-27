@@ -5,7 +5,6 @@
 package Presentacion;
 
 import Controlador.CInstDeportiva;
-import Controlador.CUsuario;
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICInstDeportiva;
 import Controlador.Interfaces.ICUsuario;
@@ -13,14 +12,11 @@ import Datatypes.DtInstitucionDeportiva;
 import Datatypes.DtProfesor;
 import Datatypes.DtSocio;
 import Datatypes.DtUsuario;
-import Logica.InstitucionDeportiva;
-import Logica.Profesor;
-import Logica.Socio;
-import Logica.Usuario;
-import Manejadores.ManejadorInstDeportiva;
-import Manejadores.ManejadorUsuario;
+import Excepciones.EmailExistenteException;
+import Excepciones.UsuarioExistenteException;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -319,13 +315,14 @@ public class AgregarUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JcomboTipoUsuarioActionPerformed
     //TODO:Cambiar control usuario por el otro que se lo pase
-    
+
     //Al hacer click en Agregar, se agrega un usuario
     private void BtnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarUsuarioActionPerformed
         Fabrica fabrica = Fabrica.getInstancia();
         ICUsuario controlUsuario = fabrica.getICUsuario();
 
         String tipoUsuario = JcomboTipoUsuario.getSelectedItem().toString();
+        DtInstitucionDeportiva institucion = (DtInstitucionDeportiva) jComboBoxInstituciones.getSelectedItem();
         String nickname = TxtFieldNickname.getText();
         String nombre = TxtFieldNombre.getText();
         String apellido = TxtFieldApellido.getText();
@@ -334,21 +331,39 @@ public class AgregarUsuario extends javax.swing.JFrame {
         String descripcion = TxtFieldDescripcion.getText();
         String sitioweb = TxtFieldSitioWeb.getText();
         String biografia = TextBiografia.getText();
-        DtInstitucionDeportiva institucion = (DtInstitucionDeportiva)jComboBoxInstituciones.getSelectedItem();
 
         DtUsuario usuario = null;
 
         if (tipoUsuario == "Profesor") {
+
+            if (nickname.isBlank() || nombre.isBlank() || apellido.isBlank() || email.isBlank() || fechaNac.isBlank() || descripcion.isBlank() || institucion.getNombre().isBlank()) {
+                JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
             usuario = new DtProfesor(nickname, nombre, apellido, email, new Date(), institucion, descripcion, sitioweb, biografia);
-        } else if(tipoUsuario == "Socio") {
+        } else if (tipoUsuario == "Socio") {
+
+            if (nickname.isBlank() || nombre.isBlank() || apellido.isBlank() || email.isBlank() || fechaNac.isBlank()) {
+                JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
             usuario = new DtSocio(nickname, nombre, apellido, email, new Date());
         }
-        
-        //Llamando a alta usuario
-        controlUsuario.altaUsuario(usuario);
-        
-        //Limpiar campos y agregar label de agregado correctamente
-        limpiarCampos();
+
+        try {
+            //Llamando a alta usuario
+            controlUsuario.altaUsuario(usuario);
+            dispose();
+        } catch (UsuarioExistenteException e) {
+            JOptionPane.showMessageDialog(this, "Ya hay un usuario con el mismo nickname!", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch(EmailExistenteException e)
+        {
+            JOptionPane.showMessageDialog(this, "Ya hay un usuario con el mismo email!", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_BtnAgregarUsuarioActionPerformed
 
     //Al clickear el boton Cancelar
@@ -427,27 +442,8 @@ public class AgregarUsuario extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparatorApellido;
     private javax.swing.JSeparator jSeparatorInstitu;
     // End of variables declaration//GEN-END:variables
-    
+
     //FUNCIONES AUXILIARES
     //--------------------------------------------------------------------------
-    
-    public void limpiarCampos()
-    {
-        TxtFieldNickname.setText("");
-        TxtFieldNombre.setText("");
-        TxtFieldApellido.setText("");
-        TxtFieldEmail.setText("");
-        TxtFieldFechaNac.setText("");
-        TxtFieldDescripcion.setText("");
-        TxtFieldSitioWeb.setText("");
-        TextBiografia.setText("");
-        JLabelMensajeCorrecto.setVisible(true);
-    }
-    
-    
-    
-    
-    
     //--------------------------------------------------------------------------
-    
 }
