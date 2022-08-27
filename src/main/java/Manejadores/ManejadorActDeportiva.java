@@ -1,5 +1,6 @@
 package Manejadores;
 
+import Datatypes.DtActividadDeportiva;
 import Logica.ActividadDeportiva;
 
 import java.util.ArrayList;
@@ -19,6 +20,9 @@ public class ManejadorActDeportiva {
         return instancia;
     }
 
+    public void agegarActividad(ActividadDeportiva actividad) {
+        actividades.add(actividad);
+    }
     public List<ActividadDeportiva> getActividades(){
         return actividades;
     }

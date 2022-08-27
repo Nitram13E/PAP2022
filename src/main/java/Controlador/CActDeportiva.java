@@ -2,6 +2,7 @@ package Controlador;
 
 import Controlador.Interfaces.ICActDeportiva;
 import Datatypes.DtActividadDeportiva;
+import Logica.ActividadDeportiva;
 import Manejadores.ManejadorActDeportiva;
 
 import java.util.ArrayList;
@@ -15,8 +16,8 @@ public class CActDeportiva implements ICActDeportiva {
     }
 
     @Override
-    public void altaActividad() {
-
+    public void altaActividad(DtActividadDeportiva actividad) {
+        manejador.agegarActividad(new ActividadDeportiva(actividad.getNombre(), actividad.getDesc(), actividad.getDuracion(), actividad.getCosto(), actividad.getFechaReg()));
     }
 
     @Override

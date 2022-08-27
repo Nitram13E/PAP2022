@@ -24,28 +24,31 @@ public class DtActividadDeportiva {
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public String getDesc() {
-        return desc;
+        return this.desc;
     }
 
     public int getDuracion() {
-        return duracion;
+        return this.duracion;
     }
 
     public float getCosto() {
-        return costo;
+        return this.costo;
     }
 
     public Date getFechaReg() {
-        return fechaReg;
+        return this.fechaReg;
     }
 
     public List<DtClase> getClases() {
-        return clases;
+        return this.clases;
     }
 
-
+    @Override
+    public String toString(){
+        return this.nombre;
+    }
 }
