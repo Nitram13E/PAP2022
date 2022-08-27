@@ -4,12 +4,18 @@
  */
 package Presentacion;
 
+import Controlador.Interfaces.Fabrica;
+import Controlador.Interfaces.ICUsuario;
+import Datatypes.DtProfesor;
+import Datatypes.DtSocio;
 import Datatypes.DtUsuario;
+import Logica.Usuario;
 import Manejadores.ManejadorInstDeportiva;
 import Manejadores.ManejadorUsuario;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import java.util.List;
 import javax.swing.DefaultListModel;
+
 /**
  *
  * @author marti
@@ -41,7 +47,6 @@ public class Gym extends javax.swing.JFrame {
         PanelInfoUsuario = new javax.swing.JPanel();
         jLabelNickName = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabelNombre = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -53,17 +58,24 @@ public class Gym extends javax.swing.JFrame {
         jLabelSitioWeb = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jLabelBiografia = new javax.swing.JLabel();
-        jSeparator7 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
-        TextBiografia = new javax.swing.JTextArea();
-        LabelNickname = new javax.swing.JLabel();
-        LabelNombre = new javax.swing.JLabel();
-        LabelEmail = new javax.swing.JLabel();
-        LabelFechaNac = new javax.swing.JLabel();
-        LabelDescripcion = new javax.swing.JLabel();
-        LabelSitioWeb = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        TextDescripcion = new javax.swing.JTextArea();
+        jSeparator25 = new javax.swing.JSeparator();
+        jSeparator26 = new javax.swing.JSeparator();
+        jLabelInstitucion = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        TextBiografia3 = new javax.swing.JTextArea();
+        jLabel = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        JLabelEmail = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabelNombre3 = new javax.swing.JLabel();
+        jSeparator27 = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         PanelInstitucionDeportiva = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -159,11 +171,6 @@ public class Gym extends javax.swing.JFrame {
         JListUsuarios.getAccessibleContext().setAccessibleName("UsuariosList");
 
         BtnModificarUsuario.setText("Modificar");
-        BtnModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnModificarUsuarioActionPerformed(evt);
-            }
-        });
 
         BtnAgregarUsuario.setText("Agregar");
         BtnAgregarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -190,74 +197,90 @@ public class Gym extends javax.swing.JFrame {
 
         jLabelBiografia.setText("Biografia");
 
-        TextBiografia.setColumns(20);
-        TextBiografia.setRows(5);
-        jScrollPane2.setViewportView(TextBiografia);
+        TextDescripcion.setEditable(false);
+        TextDescripcion.setColumns(20);
+        TextDescripcion.setRows(5);
+        jScrollPane2.setViewportView(TextDescripcion);
 
-        LabelNickname.setText("-");
+        jLabelInstitucion.setText("Institucion");
 
-        LabelNombre.setText("-");
+        TextBiografia3.setEditable(false);
+        TextBiografia3.setColumns(20);
+        TextBiografia3.setRows(5);
+        jScrollPane9.setViewportView(TextBiografia3);
 
-        LabelEmail.setText("-");
+        jLabel.setText("-");
+        jLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        LabelFechaNac.setText("-");
+        jLabel13.setText("-");
+        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        LabelDescripcion.setText("-");
+        JLabelEmail.setText("-");
+        JLabelEmail.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        LabelSitioWeb.setText("-");
+        jLabel15.setText("-");
+        jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jLabel16.setText("-");
+        jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        jLabel17.setText("-");
+        jLabel17.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        jLabelNombre3.setText("Apellido");
+
+        jLabel14.setText("-");
+        jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout PanelInfoUsuarioLayout = new javax.swing.GroupLayout(PanelInfoUsuario);
         PanelInfoUsuario.setLayout(PanelInfoUsuarioLayout);
         PanelInfoUsuarioLayout.setHorizontalGroup(
             PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInfoUsuarioLayout.createSequentialGroup()
+            .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator1)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
-                        .addComponent(jLabelNickName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
-                        .addComponent(jLabelNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
-                        .addComponent(jLabelEmail)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
-                        .addComponent(jLabelFechaNac)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
-                        .addComponent(LabelFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                    .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane9)
+                        .addComponent(jSeparator25)
+                        .addComponent(jScrollPane2)
+                        .addComponent(jSeparator6)
+                        .addComponent(jSeparator5)
+                        .addComponent(jSeparator4)
+                        .addComponent(jSeparator3)
+                        .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                            .addComponent(jLabelSitioWeb)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabelDescripcion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                        .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                            .addComponent(jLabelFechaNac)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                            .addComponent(jLabelEmail)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                            .addComponent(jLabelNombre)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabelBiografia)
-                        .addGap(121, 121, 121)
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
-                        .addComponent(jLabelSitioWeb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelSitioWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                            .addComponent(jLabelNickName)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator1)
+                        .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                            .addComponent(jLabelInstitucion)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator26)
+                        .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                            .addComponent(jLabelNombre3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator27)))
                 .addContainerGap())
         );
         PanelInfoUsuarioLayout.setVerticalGroup(
@@ -268,95 +291,110 @@ public class Gym extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNickName)
-                    .addComponent(LabelNickname))
+                    .addComponent(jLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre)
-                    .addComponent(LabelNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(12, 12, 12)
+                .addComponent(jSeparator25, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNombre3)
+                    .addComponent(jLabel14))
+                .addGap(12, 12, 12)
+                .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelEmail)
-                    .addComponent(LabelEmail))
+                    .addComponent(JLabelEmail))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFechaNac)
-                    .addComponent(LabelFechaNac))
+                    .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDescripcion)
-                    .addComponent(LabelDescripcion))
+                    .addComponent(jLabelInstitucion)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator26, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelDescripcion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSitioWeb)
-                    .addComponent(LabelSitioWeb))
+                    .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
-                        .addComponent(jLabelBiografia)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(jLabelBiografia)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
-
-        LabelNickname.getAccessibleContext().setAccessibleName("LabelNickname");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Lista de usuarios");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelUsuarioLayout = new javax.swing.GroupLayout(PanelUsuario);
         PanelUsuario.setLayout(PanelUsuarioLayout);
         PanelUsuarioLayout.setHorizontalGroup(
             PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                        .addComponent(BtnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtnAgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                        .addGap(22, 22, 22)
+                        .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(PanelUsuarioLayout.createSequentialGroup()
+                                .addComponent(BtnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                                .addComponent(BtnAgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(PanelUsuarioLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(PanelInfoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(PanelInfoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(363, Short.MAX_VALUE))
         );
         PanelUsuarioLayout.setVerticalGroup(
             PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                        .addComponent(PanelInfoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BtnAgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(BtnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnAgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 40, Short.MAX_VALUE))
+                    .addComponent(PanelInfoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         jScrollPane1.getAccessibleContext().setAccessibleName("");
@@ -416,7 +454,7 @@ public class Gym extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PanelInfoUsuario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 864, Short.MAX_VALUE)
                     .addComponent(jSeparator15)
                     .addComponent(jSeparator16, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator21, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -578,7 +616,7 @@ public class Gym extends javax.swing.JFrame {
                         .addComponent(LabelNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelInfoUsuario3Layout.createSequentialGroup()
                         .addComponent(jLabelEmail2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 611, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 857, Short.MAX_VALUE)
                         .addComponent(LabelEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelInfoUsuario3Layout.createSequentialGroup()
                         .addComponent(jLabelFechaNac2)
@@ -656,7 +694,7 @@ public class Gym extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelActividadDeportivaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelActividadDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
                     .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BtnAgregarActividad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(153, 153, 153)
@@ -680,7 +718,7 @@ public class Gym extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(BtnAgregarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelInfoUsuario3, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -691,11 +729,11 @@ public class Gym extends javax.swing.JFrame {
         PanelRegistro.setLayout(PanelRegistroLayout);
         PanelRegistroLayout.setHorizontalGroup(
             PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 857, Short.MAX_VALUE)
+            .addGap(0, 1103, Short.MAX_VALUE)
         );
         PanelRegistroLayout.setVerticalGroup(
             PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 553, Short.MAX_VALUE)
+            .addGap(0, 707, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Registro", PanelRegistro);
@@ -875,9 +913,9 @@ public class Gym extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelClaseLayout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addGroup(PanelClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
                                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(PanelClaseLayout.createSequentialGroup()
                                 .addGap(46, 46, 46)
@@ -910,7 +948,7 @@ public class Gym extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(BtnAgregarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelInfoUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -931,25 +969,9 @@ public class Gym extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarUsuarioActionPerformed
-        ModificarUsuario modificarUsuarioFrame = new ModificarUsuario();
-        modificarUsuarioFrame.setVisible(true);
-        modificarUsuarioFrame.setLocationRelativeTo(null);
-        modificarUsuarioFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_BtnModificarUsuarioActionPerformed
-
     private void BtnModificarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarInstitucionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnModificarInstitucionActionPerformed
-    
-    //Evento al intentar agregar un nuevo usuario
-    private void BtnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarUsuarioActionPerformed
-        AgregarUsuario agregarUsuarioFrame = new AgregarUsuario(); 
-        //Mostrar panel de usuario y centrarlo
-        agregarUsuarioFrame.setVisible(true);
-        agregarUsuarioFrame.setLocationRelativeTo(null);
-        agregarUsuarioFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_BtnAgregarUsuarioActionPerformed
 
     private void BtnAgregarClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarClaseActionPerformed
         AgregarClase agregarClaseFrame = new AgregarClase();
@@ -969,8 +991,45 @@ public class Gym extends javax.swing.JFrame {
         agregarListaUsuarios();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //Evento al intentar agregar un nuevo usuario
+    private void BtnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarUsuarioActionPerformed
+        AgregarUsuario agregarUsuarioFrame = new AgregarUsuario();
+        //Mostrar panel de usuario y centrarlo
+        agregarUsuarioFrame.setVisible(true);
+        agregarUsuarioFrame.setLocationRelativeTo(null);
+        agregarUsuarioFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_BtnAgregarUsuarioActionPerformed
+
+    //Evento cuando se clickea un usuario
     private void JListUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JListUsuariosMouseClicked
-        System.out.println("clicke");
+        Fabrica fabrica = Fabrica.getInstancia();
+        ICUsuario controladorUsuario = fabrica.getICUsuario();
+
+        String usuarioSeleccionado = JListUsuarios.getSelectedValue();
+
+        if (usuarioSeleccionado == null) {
+            System.out.println("Usuario no existente");
+        }
+
+        DtUsuario infoUsuario = controladorUsuario.consultaUsuario(usuarioSeleccionado);
+        
+        jLabel.setText(infoUsuario.getNickname());
+        jLabel13.setText(infoUsuario.getNombre());
+        jLabel14.setText(infoUsuario.getApellido());
+        JLabelEmail.setText(infoUsuario.getMail());
+        jLabel15.setText(infoUsuario.getFechaNac().toString());
+
+        if (infoUsuario instanceof DtProfesor) {
+
+            infoTipoUsuario(true);
+
+            jLabel16.setText("cualka");
+            TextDescripcion.setText(((DtProfesor) infoUsuario).getDescripcion());
+            jLabel17.setText(((DtProfesor) infoUsuario).getSitioWeb());
+            TextBiografia3.setText(((DtProfesor) infoUsuario).getBiografia());
+        } else if (infoUsuario instanceof DtSocio) {
+            infoTipoUsuario(false);
+        }
     }//GEN-LAST:event_JListUsuariosMouseClicked
 
     /**
@@ -978,53 +1037,21 @@ public class Gym extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         try {
-        javax.swing.UIManager.setLookAndFeel( new FlatDarculaLaf());
-        } catch( Exception ex ) {
-            System.err.println( "Failed to initialize LaF" );
+            javax.swing.UIManager.setLookAndFeel(new FlatDarculaLaf());
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize LaF");
         }
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Gym  gymFrame = new Gym();
+                Gym gymFrame = new Gym();
                 gymFrame.setVisible(true);
                 gymFrame.setLocationRelativeTo(null);
             }
         });
     }
-    
-        //Llena la lista de usuarios con los usuarios del sistema
-    public void agregarListaUsuarios()
-    {
-        ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
-        
-        List<String> usuariosAMostrar = mJUsuario.getUsuarios();
-        DefaultListModel<String> model = new DefaultListModel<>();
-        
-        usuariosAMostrar.forEach(nickname -> model.addElement(nickname));
-        
-        JListUsuarios.setModel(model);
-    }
-    
-    public void infoTipoUsuario(boolean esProfesor){
-        jLabelDescripcion.setVisible(esProfesor);
-        LabelDescripcion.setVisible(esProfesor);
-        jSeparator5.setVisible(esProfesor);
-        jLabelSitioWeb.setVisible(esProfesor);
-        LabelSitioWeb.setVisible(esProfesor);
-        jSeparator6.setVisible(esProfesor);
-        jLabelBiografia.setVisible(esProfesor);
-        TextBiografia.setVisible(esProfesor);
-        jSeparator7.setVisible(esProfesor);
-    }
 
-    public void cargarListaInstituciones(){
-        //JListInstituciones.setListData(manejadorInstitucion().getInstituciones());
-    }
-
-    public ManejadorInstDeportiva manejadorInstitucion(){
-        return ManejadorInstDeportiva.getInstancia();
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregarActividad;
     private javax.swing.JButton BtnAgregarClase;
@@ -1032,25 +1059,20 @@ public class Gym extends javax.swing.JFrame {
     private javax.swing.JButton BtnAgregarUsuario;
     private javax.swing.JButton BtnModificarInstitucion;
     private javax.swing.JButton BtnModificarUsuario;
+    private javax.swing.JLabel JLabelEmail;
     private javax.swing.JList<String> JListInstituciones;
     private javax.swing.JList<String> JListUsuarios;
-    private javax.swing.JLabel LabelDescripcion;
     private javax.swing.JLabel LabelDescripcion1;
     private javax.swing.JLabel LabelDescripcion2;
-    private javax.swing.JLabel LabelEmail;
     private javax.swing.JLabel LabelEmail1;
     private javax.swing.JLabel LabelEmail2;
-    private javax.swing.JLabel LabelFechaNac;
     private javax.swing.JLabel LabelFechaNac1;
     private javax.swing.JLabel LabelFechaNac2;
-    private javax.swing.JLabel LabelNickname;
     private javax.swing.JLabel LabelNickname1;
     private javax.swing.JLabel LabelNickname2;
-    private javax.swing.JLabel LabelNombre;
     private javax.swing.JLabel LabelNombre1;
     private javax.swing.JLabel LabelNombre2;
     private javax.swing.JLabel LabelNombreInstitucion;
-    private javax.swing.JLabel LabelSitioWeb;
     private javax.swing.JLabel LabelSitioWeb1;
     private javax.swing.JLabel LabelSitioWeb2;
     private javax.swing.JLabel LabelURLInstitucion;
@@ -1063,17 +1085,24 @@ public class Gym extends javax.swing.JFrame {
     private javax.swing.JPanel PanelInstitucionDeportiva;
     private javax.swing.JPanel PanelRegistro;
     private javax.swing.JPanel PanelUsuario;
-    private javax.swing.JTextArea TextBiografia;
     private javax.swing.JTextArea TextBiografia1;
     private javax.swing.JTextArea TextBiografia2;
+    private javax.swing.JTextArea TextBiografia3;
+    private javax.swing.JTextArea TextDescripcion;
     private javax.swing.JTextArea TextDescripcionInstitucion;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1095,12 +1124,14 @@ public class Gym extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFechaNac;
     private javax.swing.JLabel jLabelFechaNac1;
     private javax.swing.JLabel jLabelFechaNac2;
+    private javax.swing.JLabel jLabelInstitucion;
     private javax.swing.JLabel jLabelNickName;
     private javax.swing.JLabel jLabelNickName1;
     private javax.swing.JLabel jLabelNickName2;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelNombre1;
     private javax.swing.JLabel jLabelNombre2;
+    private javax.swing.JLabel jLabelNombre3;
     private javax.swing.JLabel jLabelNombreInstitucion;
     private javax.swing.JLabel jLabelSitioWeb;
     private javax.swing.JLabel jLabelSitioWeb1;
@@ -1116,6 +1147,7 @@ public class Gym extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -1127,19 +1159,59 @@ public class Gym extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator21;
     private javax.swing.JSeparator jSeparator22;
     private javax.swing.JSeparator jSeparator23;
     private javax.swing.JSeparator jSeparator24;
+    private javax.swing.JSeparator jSeparator25;
+    private javax.swing.JSeparator jSeparator26;
+    private javax.swing.JSeparator jSeparator27;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
+
+//-----------------------------FUNCIONES AUXILIARES-------------------------
+    //Llena la lista de usuarios con los usuarios del sistema
+    public void agregarListaUsuarios() {
+        ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
+
+        List<String> usuariosAMostrar = mJUsuario.getUsuarios();
+        DefaultListModel<String> model = new DefaultListModel<>();
+
+        usuariosAMostrar.forEach(nickname -> model.addElement(nickname));
+
+        JListUsuarios.setModel(model);
+    }
+
+    public void infoTipoUsuario(boolean esProfesor) {
+        jLabelInstitucion.setVisible(esProfesor);
+        jSeparator26.setVisible(esProfesor);
+        jLabelDescripcion.setVisible(esProfesor);
+        TextDescripcion.setVisible(esProfesor);
+        jScrollPane2.setVisible(esProfesor);
+        jSeparator5.setVisible(esProfesor);
+        jLabelSitioWeb.setVisible(esProfesor);
+        jLabel16.setVisible(esProfesor);
+        jSeparator6.setVisible(esProfesor);
+        jLabelBiografia.setVisible(esProfesor);
+        TextBiografia3.setVisible(esProfesor);
+        jLabel17.setVisible(esProfesor);
+        jScrollPane9.setVisible(esProfesor);
+    }
+
+    public void cargarListaInstituciones() {
+        //JListInstituciones.setListData(manejadorInstitucion().getInstituciones());
+    }
+
+    public ManejadorInstDeportiva manejadorInstitucion() {
+        return ManejadorInstDeportiva.getInstancia();
+    }
+
+    //--------------------------------------------------------------------------
 }

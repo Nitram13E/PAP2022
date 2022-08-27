@@ -39,18 +39,38 @@ public class ManejadorUsuario {
 
     }//End agregarUsuario
 
-    public Usuario buscarUsuario(String nickname) {
-        Usuario usuario = null;
+    public DtUsuario buscarUsuario(String nickname) {
+        DtUsuario usuarioReturn = null;
 
         //Recorre la lista de usuarios del sistema en busqueda del mismo nickname
         for (Usuario s : usuarios) {
             if (s.getNickname() == nickname) {
-                usuario = s;
+                
+                if(s instanceof Profesor)
+                {
+                    usuarioReturn = new DtProfesor(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac(), ((Profesor) s).getInstitucion(), ((Profesor) s).getDescripcion(), ((Profesor) s).getSitioWeb(), ((Profesor) s).getBiografia());
+                }
+                else if(s instanceof Socio)
+                {
+                    usuarioReturn = new DtSocio(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac());
+                }
             }
         }
 
-        return usuario;
+        return usuarioReturn;
     }//End buscarUsuario
+    
+    public boolean existeUsuario(String nickname)
+    {
+        //Recorre la lista de usuarios del sistema en busqueda del mismo nickname
+        for (Usuario s : usuarios) {
+            if (s.getNickname() == nickname) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
 
     public List<String> getUsuarios() {
 

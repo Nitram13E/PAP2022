@@ -15,18 +15,22 @@ public class CUsuario implements ICUsuario {
         ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
 
         //Buscamos si el usuario ingresado ya existe
-        Usuario userBuscar = mJUsuario.buscarUsuario(usuario.getNickname());
-
-        if(userBuscar == null)
-        {
+        boolean userBuscar = mJUsuario.existeUsuario(usuario.getNickname());
+        
+        if (userBuscar == false) {
             mJUsuario.agregarUsuario(usuario);
         }
-        
+
     }
 
     @Override
-    public void consultaUsuario() {
+    public DtUsuario consultaUsuario(String usuarioEncontrar) {
 
+        ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
+
+        DtUsuario userBuscar = mJUsuario.buscarUsuario(usuarioEncontrar);
+
+        return userBuscar;
     }
 
     @Override
