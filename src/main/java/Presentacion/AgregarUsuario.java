@@ -336,7 +336,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         if (tipoUsuario == "Profesor") {
 
-            if (nickname.isBlank() || nombre.isBlank() || apellido.isBlank() || email.isBlank() || fechaNac.isBlank() || descripcion.isBlank() || institucion.getNombre().isBlank()) {
+            if (nickname.isBlank() || nombre.isBlank() || apellido.isBlank() || email.isBlank() || fechaNac.isBlank() || descripcion.isBlank() || institucion == null) {
                 JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
