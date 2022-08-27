@@ -109,6 +109,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Usuarios"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUsuariosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnActividadDeportiva">
       <Properties>
@@ -139,27 +142,27 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ADM de usuarios"/>
+        <Property name="text" type="java.lang.String" value="ABM de usuarios"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ADM de instituciones deportivas"/>
+        <Property name="text" type="java.lang.String" value="ABM de instituciones deportivas"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ADM de actividades deportivas"/>
+        <Property name="text" type="java.lang.String" value="ABM de actividades deportivas"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ADM de registrar socio"/>
+        <Property name="text" type="java.lang.String" value="ABM de registrar socio"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ADM de clases"/>
+        <Property name="text" type="java.lang.String" value="ABM de clases"/>
       </Properties>
     </Component>
   </SubComponents>

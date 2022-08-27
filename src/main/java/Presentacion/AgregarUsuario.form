@@ -46,7 +46,7 @@
                       <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabelNickName" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="93" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="TxtFieldNickname" min="-2" pref="300" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -60,13 +60,6 @@
                           <Component id="TxtFieldApellido" min="-2" pref="300" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jSeparatorApellido" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jSeparator7" alignment="1" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="BtnAgregarUsuario" min="-2" pref="83" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="BtnCancelar" min="-2" pref="92" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
                       <Component id="jSeparator6" alignment="0" max="32767" attributes="0"/>
                       <Component id="jSeparator5" alignment="0" max="32767" attributes="0"/>
@@ -79,7 +72,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabelFechaNac" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                          <EmptySpace pref="59" max="32767" attributes="0"/>
                           <Component id="TxtFieldFechaNac" min="-2" pref="300" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -98,14 +91,21 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jComboBoxInstituciones" min="-2" pref="300" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="BtnAgregarUsuario" min="-2" pref="83" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="BtnCancelar" min="-2" pref="92" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Component id="jLabelBiografia" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="JcomboTipoUsuario" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabelBiografia" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="JLabelMensajeCorrecto" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -184,7 +184,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
+                  <Component id="JLabelMensajeCorrecto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="BtnAgregarUsuario" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
@@ -267,8 +267,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JSeparator" name="jSeparator7">
-        </Component>
         <Component class="javax.swing.JButton" name="BtnCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
@@ -344,6 +342,14 @@
         <Component class="javax.swing.JTextField" name="TxtFieldApellido">
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparatorApellido">
+        </Component>
+        <Component class="javax.swing.JLabel" name="JLabelMensajeCorrecto">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="ff" red="33" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Usuario agregado correctamente!"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

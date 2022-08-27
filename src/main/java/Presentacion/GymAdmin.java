@@ -7,8 +7,11 @@ package Presentacion;
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICActDeportiva;
 import Controlador.Interfaces.ICInstDeportiva;
-import Logica.ActividadDeportiva;
+import Controlador.Interfaces.ICUsuario;
+import Manejadores.ManejadorUsuario;
 import com.formdev.flatlaf.FlatDarculaLaf;
+import java.util.List;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -18,11 +21,13 @@ public class GymAdmin extends javax.swing.JFrame {
 
     ICInstDeportiva controladorInstitucion;
     ICActDeportiva controladorActividad;
+    ICUsuario controladorUsuario;
 
     public GymAdmin() {
         Fabrica fabrica = Fabrica.getInstancia();
         this.controladorInstitucion = fabrica.getICInstDeportiva();
         this.controladorActividad = fabrica.getICActDeportiva();
+        this.controladorUsuario = fabrica.getICUsuario();
 
         initComponents();
     }
@@ -54,6 +59,11 @@ public class GymAdmin extends javax.swing.JFrame {
         jLabel1.setText("Gym Admin");
 
         btnUsuarios.setText("Usuarios");
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosActionPerformed(evt);
+            }
+        });
 
         btnActividadDeportiva.setText("Actividad Deportiva");
 
@@ -74,15 +84,15 @@ public class GymAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("ADM de usuarios");
+        jLabel2.setText("ABM de usuarios");
 
-        jLabel3.setText("ADM de instituciones deportivas");
+        jLabel3.setText("ABM de instituciones deportivas");
 
-        jLabel4.setText("ADM de actividades deportivas");
+        jLabel4.setText("ABM de actividades deportivas");
 
-        jLabel5.setText("ADM de registrar socio");
+        jLabel5.setText("ABM de registrar socio");
 
-        jLabel6.setText("ADM de clases");
+        jLabel6.setText("ABM de clases");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,29 +157,43 @@ public class GymAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //CASO DE USO INSTITUCION DEPORTIVA
+    
     private void btnInstitucionDeportivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstitucionDeportivaActionPerformed
         InstitucionDeportiva institucionDeportivaFrame = new InstitucionDeportiva(controladorInstitucion);
         institucionDeportivaFrame.setVisible(true);
         institucionDeportivaFrame.setLocationRelativeTo(null);
         institucionDeportivaFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnInstitucionDeportivaActionPerformed
-
+    
+    //CASO DE USO REGISTRAR SOCIO
+    
     private void btnRegistrarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSocioActionPerformed
         Registro actividadDeportivaFrame = new Registro(controladorInstitucion, controladorActividad);
         actividadDeportivaFrame.setVisible(true);
         actividadDeportivaFrame.setLocationRelativeTo(null);
         actividadDeportivaFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnRegistrarSocioActionPerformed
+    
+    
+    //CASO DE USO USUARIOS
+    
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        Usuario usuariosFrame = new Usuario(controladorUsuario);
+        usuariosFrame.setVisible(true);
+        usuariosFrame.setLocationRelativeTo(null);
+        usuariosFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_btnUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         try {
-        javax.swing.UIManager.setLookAndFeel( new FlatDarculaLaf());
-        } catch( Exception ex ) {
-            System.err.println( "Failed to initialize LaF" );
+            javax.swing.UIManager.setLookAndFeel(new FlatDarculaLaf());
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize LaF");
         }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

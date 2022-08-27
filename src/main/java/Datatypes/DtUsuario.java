@@ -37,4 +37,10 @@ public class DtUsuario {
     public Date getFechaNac() {
         return fechaNac;
     }
+    
+    @Override
+    public String toString()
+    {
+        return this.nickname;
+    }
 }
