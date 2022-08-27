@@ -481,6 +481,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAgregarInstitucionActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="PanelInfoUsuario2">
 
@@ -997,7 +1000,6 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                       <Component id="BtnAgregarClase" min="-2" pref="204" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1060,6 +1062,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAgregarClaseActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="PanelInfoUsuario1">
 

@@ -23,16 +23,13 @@ public class ManejadorClase {
 	public Clase buscarClase(String nombre) {
 		Clase aretornar=null;
 		for(Clase c: clases) {
-			if (c.getNombre() == nombre)
+			if (c.getNombre().equals(nombre))
 				aretornar=c;
 		}
 		return aretornar;
 	}
 
-    void agregarDictadoClases(Clase nuevoDictadoClase) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+    
    
 	
 }

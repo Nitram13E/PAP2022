@@ -1,6 +1,7 @@
 package Logica;
 
-import DataType.DtClase;
+import Datatypes.DtRegistro;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,7 +18,7 @@ public class Clase {
     private LocalTime horaInicio;
     private String url;
     private Date fechaReg;
-    private List<Registro> registros;
+    private List<DtRegistro> registros;
 
     public Clase(String nombre, Date fecha, LocalTime horaInicio, String url, Date fechaReg) {
         this.nombre = nombre;
@@ -25,13 +26,9 @@ public class Clase {
         this.horaInicio = horaInicio;
         this.url = url;
         this.fechaReg = fechaReg;
-        this.registros = new ArrayList<Registro>();
+        this.registros = new ArrayList<DtRegistro>();
     }
-    
-    
-    
-    
-    
+
     public String getNombre() {
         return nombre;
     }
@@ -72,11 +69,11 @@ public class Clase {
         this.fechaReg = fechaReg;
     }
 
-    public List<Registro> getRegistros() {
+    public List<DtRegistro> getRegistros() {
         return registros;
     }
 
-    public void setRegistros(List<Registro> registros) {
+    public void setRegistros(List<DtRegistro> registros) {
         this.registros = registros;
     }
 
