@@ -1,6 +1,8 @@
 package Controlador;
 
 import Controlador.Interfaces.ICClase;
+import Datatypes.DtClase;
+import Datatypes.DtRegistro;
 
 public class CClase implements ICClase {
     @Override
@@ -22,4 +24,9 @@ public class CClase implements ICClase {
     public void rankingDictado() {
 
     }
+
+    //@Override
+    //public DtClase buscarClase(DtClase clase){
+
+    //}
 }
