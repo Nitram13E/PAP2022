@@ -4,6 +4,7 @@
  */
 package Presentacion;
 
+import Controlador.CInstDeportiva;
 import Controlador.CUsuario;
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICInstDeportiva;
@@ -297,8 +298,8 @@ public class AgregarUsuario extends javax.swing.JFrame {
     }
 
     private void agregarListaInstituciones() {
-        ManejadorInstDeportiva manejadorInstituto = ManejadorInstDeportiva.getInstancia();
-        List<DtInstitucionDeportiva> instituciones = manejadorInstituto.getInstituciones();
+        ICInstDeportiva controlador = new CInstDeportiva();
+        List<DtInstitucionDeportiva> instituciones = controlador.getInstituciones();
 
         for (DtInstitucionDeportiva institucion : instituciones) {
             jComboBoxInstituciones.addItem(institucion);
