@@ -13,12 +13,7 @@ import com.formdev.flatlaf.FlatDarculaLaf;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
-/**
- *
- * @author marti
- */
 public class GymAdmin extends javax.swing.JFrame {
-
     ICInstDeportiva controladorInstitucion;
     ICActDeportiva controladorActividad;
     ICUsuario controladorUsuario;
@@ -66,6 +61,11 @@ public class GymAdmin extends javax.swing.JFrame {
         });
 
         btnActividadDeportiva.setText("Actividad Deportiva");
+        btnActividadDeportiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActividadDeportivaActionPerformed(evt);
+            }
+        });
 
         btnRegistrarSocio.setText("Registrar Socio");
         btnRegistrarSocio.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +168,6 @@ public class GymAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInstitucionDeportivaActionPerformed
     
     //CASO DE USO REGISTRAR SOCIO
-    
     private void btnRegistrarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSocioActionPerformed
         Registro actividadDeportivaFrame = new Registro(controladorInstitucion, controladorActividad);
         actividadDeportivaFrame.setVisible(true);
@@ -185,6 +184,13 @@ public class GymAdmin extends javax.swing.JFrame {
         usuariosFrame.setLocationRelativeTo(null);
         usuariosFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnUsuariosActionPerformed
+
+    private void btnActividadDeportivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividadDeportivaActionPerformed
+        ActividadDeportiva ActividadFrame = new ActividadDeportiva(controladorActividad);
+        ActividadFrame.setVisible(true);
+        ActividadFrame.setLocationRelativeTo(null);
+        ActividadFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_btnActividadDeportivaActionPerformed
 
     /**
      * @param args the command line arguments
