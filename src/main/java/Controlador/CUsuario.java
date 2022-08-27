@@ -2,6 +2,7 @@ package Controlador;
 
 import Controlador.Interfaces.ICUsuario;
 import Datatypes.DtUsuario;
+import Excepciones.UsuarioNoExisteException;
 import Logica.Usuario;
 import Manejadores.ManejadorUsuario;
 
@@ -20,10 +21,14 @@ public class CUsuario implements ICUsuario {
     }
 
     @Override
-    public void modificarDatos(DtUsuario dtUsuario) {
+    public void modificarDatos(DtUsuario dtUsuario) throws UsuarioNoExisteException {
         //Nickname y email son unicos, no se pueden modificar
         ManejadorUsuario mU = ManejadorUsuario.getInstancia();
         Usuario usuario = mU.buscarUsuario(dtUsuario.getNickname());
+
+        if(usuario == null) {
+            throw new UsuarioNoExisteException("No existe usuario con este nickname");
+        }
 
         usuario.setNombre(dtUsuario.getNombre());
         usuario.setApellido(dtUsuario.getApellido());

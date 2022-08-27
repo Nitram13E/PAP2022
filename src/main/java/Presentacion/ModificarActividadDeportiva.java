@@ -4,6 +4,14 @@
  */
 package Presentacion;
 
+import Controlador.Interfaces.Fabrica;
+import Controlador.Interfaces.ICActDeportiva;
+import Datatypes.DtActividadDeportiva;
+import Excepciones.ActividadNoExisteException;
+
+import javax.swing.*;
+import java.util.Date;
+
 /**
  *
  * @author lulig
@@ -39,8 +47,8 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
         jLabelCosto = new javax.swing.JLabel();
         jTextFieldCosto = new javax.swing.JTextField();
         jSeparator20 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonModificarAcitividad = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
         TxFieldNombreActividad = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,9 +66,14 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
 
         jLabelCosto.setText("Costo");
 
-        jButton2.setText("Guardar");
+        jButtonModificarAcitividad.setText("Guardar");
+        jButtonModificarAcitividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarAcitividadActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Cancelar");
+        jButtonCancelar.setText("Cancelar");
 
         TxFieldNombreActividad.setEnabled(false);
 
@@ -94,9 +107,9 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
                         .addComponent(jTextFieldDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonModificarAcitividad, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,8 +143,8 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
                 .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonModificarAcitividad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -148,6 +161,29 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonModificarAcitividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarAcitividadActionPerformed
+        Fabrica fabrica = Fabrica.getInstancia();
+        ICActDeportiva iActividad = fabrica.getICActDeportiva();
+
+        DtActividadDeportiva dtActividad = null;
+
+        try {
+            dtActividad = new DtActividadDeportiva(TxFieldNombreActividad.getText(),
+                    jTextFieldDescripcion.getText(),
+                    Integer.parseInt(jTextFieldDuracion.getText()),
+                    Float.parseFloat(jTextFieldCosto.getText()),
+                    new Date());
+
+            iActividad.modificarActividad(dtActividad);
+
+        } catch (NumberFormatException ex) {
+            //TODO Msj de excepcion por parse
+        } catch (ActividadNoExisteException noExisteException) {
+            JOptionPane.showMessageDialog(this, noExisteException.getMessage(), "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButtonModificarAcitividadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,8 +222,8 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TxFieldNombreActividad;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonModificarAcitividad;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabelCosto;
     private javax.swing.JLabel jLabelDescripcion;

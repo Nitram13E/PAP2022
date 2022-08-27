@@ -7,6 +7,9 @@ package Presentacion;
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICUsuario;
 import Datatypes.DtUsuario;
+import Excepciones.UsuarioNoExisteException;
+
+import javax.swing.*;
 import java.util.Date;
 
 /**
@@ -216,7 +219,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,8 +240,13 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 TxFieldEmail.getText(),
                 TxFieldApellido.getText(),
                 new Date());
-        
-        iUsuario.modificarDatos(dtUsuario);
+
+        try {
+            iUsuario.modificarDatos(dtUsuario);
+        } catch (UsuarioNoExisteException noExisteException) {
+            JOptionPane.showMessageDialog(this, noExisteException.getMessage(), "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
+
+        }
     }//GEN-LAST:event_BtnModificarUsuarioActionPerformed
 
     /**
