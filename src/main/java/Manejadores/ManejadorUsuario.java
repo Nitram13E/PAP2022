@@ -44,7 +44,7 @@ public class ManejadorUsuario {
 
         //Recorre la lista de usuarios del sistema en busqueda del mismo nickname
         for (Usuario s : usuarios) {
-            if (s.getNickname() == nickname) {
+            if (s.getNickname().equals(nickname)) {
                 
                 if(s instanceof Profesor)
                 {
@@ -64,7 +64,7 @@ public class ManejadorUsuario {
     {
         //Recorre la lista de usuarios del sistema en busqueda del mismo nickname
         for (Usuario s : usuarios) {
-            if (s.getNickname() == nickname) {
+            if (s.getNickname().equals(nickname)) {
                 return true;
             }
         }
@@ -72,15 +72,8 @@ public class ManejadorUsuario {
         return false;
     }
 
-    public List<String> getUsuarios() {
-
-        List<String> resultUsuarios = new ArrayList<>();
-
-        for (Usuario usuario : usuarios) {
-            resultUsuarios.add(usuario.getNickname());
-        }
-
-        return resultUsuarios;
+    public List<Usuario> getUsuarios() {
+        return this.usuarios;
     }
 
 }

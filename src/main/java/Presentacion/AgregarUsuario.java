@@ -4,6 +4,7 @@
  */
 package Presentacion;
 
+import Controlador.CInstDeportiva;
 import Controlador.CUsuario;
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICInstDeportiva;
@@ -301,8 +302,8 @@ public class AgregarUsuario extends javax.swing.JFrame {
     }
 
     private void agregarListaInstituciones() {
-        ManejadorInstDeportiva manejadorInstituto = ManejadorInstDeportiva.getInstancia();
-        List<DtInstitucionDeportiva> instituciones = manejadorInstituto.getInstituciones();
+        ICInstDeportiva controlador = new CInstDeportiva();
+        List<DtInstitucionDeportiva> instituciones = controlador.getInstituciones();
 
         for (DtInstitucionDeportiva institucion : instituciones) {
             jComboBoxInstituciones.addItem(institucion);
@@ -317,7 +318,8 @@ public class AgregarUsuario extends javax.swing.JFrame {
             infoTipoUsuario(false);
         }
     }//GEN-LAST:event_JcomboTipoUsuarioActionPerformed
-
+    //TODO:Cambiar control usuario por el otro que se lo pase
+    
     //Al hacer click en Agregar, se agrega un usuario
     private void BtnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarUsuarioActionPerformed
         Fabrica fabrica = Fabrica.getInstancia();
