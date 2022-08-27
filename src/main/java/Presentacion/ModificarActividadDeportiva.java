@@ -17,12 +17,19 @@ import java.util.Date;
  * @author lulig
  */
 public class ModificarActividadDeportiva extends javax.swing.JFrame {
+    DtActividadDeportiva dtActividad;
 
     /**
      * Creates new form ModificarActividadDeportiva
      */
-    public ModificarActividadDeportiva() {
+    public ModificarActividadDeportiva(DtActividadDeportiva dtActividad) {
+        this.dtActividad = dtActividad;
         initComponents();
+        
+        this.jTxFieldNombreActividad.setText(dtActividad.getNombre());
+        this.jTextFieldDescripcion.setText(dtActividad.getDesc());
+        this.jTextFieldDuracion.setText(dtActividad.getDuracion().toString());
+        this.jTextFieldCosto.setText(dtActividad.getCosto().toString());
     }
 
     /**
@@ -49,7 +56,7 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
         jSeparator20 = new javax.swing.JSeparator();
         jButtonModificarAcitividad = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-        TxFieldNombreActividad = new javax.swing.JTextField();
+        jTxFieldNombreActividad = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(32767, 32767));
@@ -74,8 +81,13 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
         });
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
-        TxFieldNombreActividad.setEnabled(false);
+        jTxFieldNombreActividad.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -96,7 +108,7 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelNombreActividad)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TxFieldNombreActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTxFieldNombreActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelDescripcion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
@@ -120,7 +132,7 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombreActividad)
-                    .addComponent(TxFieldNombreActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxFieldNombreActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -169,11 +181,11 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
         DtActividadDeportiva dtActividad = null;
 
         try {
-            dtActividad = new DtActividadDeportiva(TxFieldNombreActividad.getText(),
+            dtActividad = new DtActividadDeportiva(jTxFieldNombreActividad.getText(),
                     jTextFieldDescripcion.getText(),
                     Integer.parseInt(jTextFieldDuracion.getText()),
                     Float.parseFloat(jTextFieldCosto.getText()),
-                    new Date());
+                    dtActividad.getFechaReg());
 
             iActividad.modificarActividad(dtActividad);
 
@@ -183,17 +195,18 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, noExisteException.getMessage(), "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
         }
 
+        dispose();
     }//GEN-LAST:event_jButtonModificarAcitividadActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -202,26 +215,24 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarActividadDeportiva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarActividadDeportiva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarActividadDeportiva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarActividadDeportiva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModificarActividadDeportiva().setVisible(true);
-            }
-        });
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ModificarActividadDeportiva().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TxFieldNombreActividad;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonModificarAcitividad;
     private javax.swing.JLabel jLabel11;
@@ -237,5 +248,6 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCosto;
     private javax.swing.JTextField jTextFieldDescripcion;
     private javax.swing.JTextField jTextFieldDuracion;
+    private javax.swing.JTextField jTxFieldNombreActividad;
     // End of variables declaration//GEN-END:variables
 }

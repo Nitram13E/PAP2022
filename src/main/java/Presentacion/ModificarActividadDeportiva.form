@@ -57,7 +57,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabelNombreActividad" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="TxFieldNombreActividad" min="-2" pref="242" max="-2" attributes="0"/>
+                          <Component id="jTxFieldNombreActividad" min="-2" pref="242" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabelDescripcion" min="-2" max="-2" attributes="0"/>
@@ -88,7 +88,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelNombreActividad" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TxFieldNombreActividad" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTxFieldNombreActividad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jSeparator17" min="-2" pref="10" max="-2" attributes="0"/>
@@ -185,8 +185,11 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelarActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="TxFieldNombreActividad">
+        <Component class="javax.swing.JTextField" name="jTxFieldNombreActividad">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>

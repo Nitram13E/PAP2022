@@ -23,7 +23,7 @@ public class InstitucionDeportiva {
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
@@ -31,7 +31,7 @@ public class InstitucionDeportiva {
     }
 
     public String getDesc() {
-        return desc;
+        return this.desc;
     }
 
     public void setDesc(String desc) {
@@ -39,7 +39,7 @@ public class InstitucionDeportiva {
     }
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
     public void setUrl(String url) {
@@ -47,7 +47,7 @@ public class InstitucionDeportiva {
     }
 
     public List<DtActividadDeportiva> getActividades() {
-        return actividades;
+        return this.actividades;
     }
 
     public void setActividades(List<DtActividadDeportiva> actividades) {

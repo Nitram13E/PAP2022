@@ -17,12 +17,21 @@ import java.util.Date;
  * @author marti
  */
 public class ModificarUsuario extends javax.swing.JFrame {
+    DtUsuario dtUsuario;
 
     /**
      * Creates new form ModificarUsuario
      */
-    public ModificarUsuario() {
+    public ModificarUsuario(DtUsuario dtUsuario) {
+        this.dtUsuario = dtUsuario;
         initComponents();
+        
+        this.TxFieldNickname.setText(dtUsuario.getNickname());
+        this.TxFieldNombre.setText(dtUsuario.getNombre());
+        this.TxFieldApellido.setText(dtUsuario.getApellido());
+        this.TxFieldEmail.setText(dtUsuario.getMail());
+        
+        //TODO Falta setear fecha en combo box
     }
 
     /**
@@ -227,13 +236,14 @@ public class ModificarUsuario extends javax.swing.JFrame {
     
     //Click cancelar
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
+        dispose();
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void BtnModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarUsuarioActionPerformed
         Fabrica fabrica = Fabrica.getInstancia();
         ICUsuario iUsuario = fabrica.getICUsuario();
         
-        //Como manejar la fecha? Usar en vez Calendar o LocalDate?
+        //TODO:Como manejar la fecha? Usar en vez Calendar o LocalDate?
         //Date fecha = new Date(jComboBoxAnio.getSelectedItem(), jComboBoxMes.getSelectedItem(), jComboBoxDia.getSelectedItem());
         DtUsuario dtUsuario = new DtUsuario(TxFieldNickname.getText(), 
                 TxFieldNombre.getText(), 
@@ -245,8 +255,9 @@ public class ModificarUsuario extends javax.swing.JFrame {
             iUsuario.modificarDatos(dtUsuario);
         } catch (UsuarioNoExisteException noExisteException) {
             JOptionPane.showMessageDialog(this, noExisteException.getMessage(), "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
-
         }
+        
+        dispose();
     }//GEN-LAST:event_BtnModificarUsuarioActionPerformed
 
     /**
@@ -254,10 +265,6 @@ public class ModificarUsuario extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -266,22 +273,21 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModificarUsuario().setVisible(true);
-            }
-        });
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ModificarUsuario().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
