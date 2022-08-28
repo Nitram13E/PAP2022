@@ -28,7 +28,7 @@ public class GymAdmin extends javax.swing.JFrame {
         this.controladorInstitucion = fabrica.getICInstDeportiva();
         this.controladorActividad = fabrica.getICActDeportiva();
         this.controladorUsuario = fabrica.getICUsuario();
-
+        
         initComponents();
     }
 
@@ -66,6 +66,11 @@ public class GymAdmin extends javax.swing.JFrame {
         });
 
         btnActividadDeportiva.setText("Actividad Deportiva");
+        btnActividadDeportiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActividadDeportivaActionPerformed(evt);
+            }
+        });
 
         btnRegistrarSocio.setText("Registrar Socio");
         btnRegistrarSocio.addActionListener(new java.awt.event.ActionListener() {
@@ -185,6 +190,14 @@ public class GymAdmin extends javax.swing.JFrame {
         usuariosFrame.setLocationRelativeTo(null);
         usuariosFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnUsuariosActionPerformed
+
+    private void btnActividadDeportivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividadDeportivaActionPerformed
+        Actividad ActividadFrame = new Actividad(controladorInstitucion, controladorActividad);
+        ActividadFrame.setResizable(false);
+        ActividadFrame.setVisible(true);
+        ActividadFrame.setLocationRelativeTo(null);
+        ActividadFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_btnActividadDeportivaActionPerformed
 
     /**
      * @param args the command line arguments
