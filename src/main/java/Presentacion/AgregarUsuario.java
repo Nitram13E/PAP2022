@@ -29,8 +29,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
      */
     public AgregarUsuario() {
         initComponents();
-        JLabelMensajeCorrecto.setVisible(false);
-
         //Agrega lista de instituciones a comboBox
         agregarListaInstituciones();
     }
@@ -66,7 +64,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
         TxtFieldNickname = new javax.swing.JTextField();
         TxtFieldNombre = new javax.swing.JTextField();
         TxtFieldEmail = new javax.swing.JTextField();
-        TxtFieldFechaNac = new javax.swing.JTextField();
         TxtFieldDescripcion = new javax.swing.JTextField();
         TxtFieldSitioWeb = new javax.swing.JTextField();
         JcomboTipoUsuario = new javax.swing.JComboBox<>();
@@ -77,7 +74,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         jLabelApellidoUsu = new javax.swing.JLabel();
         TxtFieldApellido = new javax.swing.JTextField();
         jSeparatorApellido = new javax.swing.JSeparator();
-        JLabelMensajeCorrecto = new javax.swing.JLabel();
+        fechaNacUsuario = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,9 +127,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         jLabelApellidoUsu.setText("Apellido");
 
-        JLabelMensajeCorrecto.setForeground(new java.awt.Color(51, 255, 51));
-        JLabelMensajeCorrecto.setText("Usuario agregado correctamente!");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -166,10 +160,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(TxtFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelFechaNac)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                        .addComponent(TxtFieldFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelDescripcion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(TxtFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -180,22 +170,25 @@ public class AgregarUsuario extends javax.swing.JFrame {
                     .addComponent(jSeparatorInstitu, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelInstitucion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(jComboBoxInstituciones, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BtnAgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelBiografia)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(JcomboTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(JLabelMensajeCorrecto))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(JcomboTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BtnAgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelFechaNac)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(fechaNacUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -231,9 +224,9 @@ public class AgregarUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelFechaNac)
-                    .addComponent(TxtFieldFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaNacUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelFechaNac))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -258,9 +251,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
                 .addComponent(jLabelBiografia)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(JLabelMensajeCorrecto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnAgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -327,7 +318,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         String nombre = TxtFieldNombre.getText();
         String apellido = TxtFieldApellido.getText();
         String email = TxtFieldEmail.getText();
-        String fechaNac = TxtFieldFechaNac.getText();
+        Date fechaNac = fechaNacUsuario.getDate();
         String descripcion = TxtFieldDescripcion.getText();
         String sitioweb = TxtFieldSitioWeb.getText();
         String biografia = TextBiografia.getText();
@@ -336,7 +327,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         if (tipoUsuario == "Profesor") {
 
-            if (nickname.isBlank() || nombre.isBlank() || apellido.isBlank() || email.isBlank() || fechaNac.isBlank() || descripcion.isBlank() || institucion == null) {
+            if (nickname.isBlank() || nombre.isBlank() || apellido.isBlank() || email.isBlank() || fechaNac == null || descripcion.isBlank() || institucion == null) {
                 JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
@@ -344,12 +335,12 @@ public class AgregarUsuario extends javax.swing.JFrame {
             usuario = new DtProfesor(nickname, nombre, apellido, email, new Date(), institucion, descripcion, sitioweb, biografia);
         } else if (tipoUsuario == "Socio") {
 
-            if (nickname.isBlank() || nombre.isBlank() || apellido.isBlank() || email.isBlank() || fechaNac.isBlank()) {
+            if (nickname.isBlank() || nombre.isBlank() || apellido.isBlank() || email.isBlank() || fechaNac == null) {
                 JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
 
-            usuario = new DtSocio(nickname, nombre, apellido, email, new Date());
+            usuario = new DtSocio(nickname, nombre, apellido, email, fechaNac);
         }
 
         try {
@@ -409,16 +400,15 @@ public class AgregarUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregarUsuario;
     private javax.swing.JButton BtnCancelar;
-    private javax.swing.JLabel JLabelMensajeCorrecto;
     private javax.swing.JComboBox<String> JcomboTipoUsuario;
     private javax.swing.JTextArea TextBiografia;
     private javax.swing.JTextField TxtFieldApellido;
     private javax.swing.JTextField TxtFieldDescripcion;
     private javax.swing.JTextField TxtFieldEmail;
-    private javax.swing.JTextField TxtFieldFechaNac;
     private javax.swing.JTextField TxtFieldNickname;
     private javax.swing.JTextField TxtFieldNombre;
     private javax.swing.JTextField TxtFieldSitioWeb;
+    private com.toedter.calendar.JDateChooser fechaNacUsuario;
     private javax.swing.JComboBox<DtInstitucionDeportiva> jComboBoxInstituciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
