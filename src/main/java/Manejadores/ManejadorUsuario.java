@@ -1,5 +1,6 @@
 package Manejadores;
 
+
 import Datatypes.DtProfesor;
 import Datatypes.DtSocio;
 import Datatypes.DtUsuario;
@@ -73,6 +74,17 @@ public class ManejadorUsuario {
         }
         
         return false;
+    }
+
+    public void modificarUsuario(Usuario usuario){
+//        Conexion conexion = Conexion.getInstancia();
+//        EntityManager em = conexion.getEntityManager();
+//        em.getTransaction().begin();
+//
+//        em.update(usuario);
+//
+//        em.getTransaction().commit();
+
     }
 
     public List<Usuario> getUsuarios() {

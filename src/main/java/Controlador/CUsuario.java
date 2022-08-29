@@ -6,12 +6,15 @@ import Datatypes.DtSocio;
 import Datatypes.DtUsuario;
 import Excepciones.EmailExistenteException;
 import Excepciones.UsuarioExistenteException;
+import Excepciones.UsuarioNoExisteException;
 import Logica.Profesor;
 import Logica.Socio;
 import Logica.Usuario;
 import Manejadores.ManejadorUsuario;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class CUsuario implements ICUsuario {
 
@@ -33,13 +36,20 @@ public class CUsuario implements ICUsuario {
     }
 
     @Override
-    public void consultaUsuario() {
+    public void modificarDatos(DtUsuario dtUsuario) throws UsuarioNoExisteException {
+        //Nickname y email son unicos, no se pueden modificar
+        ManejadorUsuario mU = ManejadorUsuario.getInstancia();
+        Usuario usuario = mU.buscarUsuario(dtUsuario.getNickname());
 
-    }
+        if(usuario == null) {
+            throw new UsuarioNoExisteException("No existe usuario con este nickname");
+        }
 
-    @Override
-    public void modificarDatos() {
+        usuario.setNombre(dtUsuario.getNombre());
+        usuario.setApellido(dtUsuario.getApellido());
+        usuario.setFechaNac(dtUsuario.getFechaNac());
 
+        mU.modificarUsuario(usuario);
     }
     
     @Override

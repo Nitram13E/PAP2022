@@ -14,6 +14,7 @@ import javax.swing.*;
 public class ModificarInstitucion extends javax.swing.JFrame {
     ICInstDeportiva controlador;
     DtInstitucionDeportiva institucion;
+    
     public ModificarInstitucion(DtInstitucionDeportiva institucion) {
         controlador = new CInstDeportiva();
         this.institucion = institucion;

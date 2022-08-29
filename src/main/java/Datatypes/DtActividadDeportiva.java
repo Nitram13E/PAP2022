@@ -9,8 +9,8 @@ import java.util.List;
 public class DtActividadDeportiva {
     private String nombre;
     private String desc;
-    private int duracion;
-    private float costo;
+    private Integer duracion;
+    private Float costo;
     private Date fechaReg;
     private List<DtClase> clases;
 
@@ -31,11 +31,11 @@ public class DtActividadDeportiva {
         return this.desc;
     }
 
-    public int getDuracion() {
+    public Integer getDuracion() {
         return this.duracion;
     }
 
-    public float getCosto() {
+    public Float getCosto() {
         return this.costo;
     }
 
