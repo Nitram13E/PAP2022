@@ -1,6 +1,6 @@
 package Manejadores;
 
-import Datatypes.DtInstitucionDeportiva;
+import Datatypes.DtActividadDeportiva;
 import Logica.InstitucionDeportiva;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class ManejadorInstDeportiva {
     private ManejadorInstDeportiva(){
         instituciones = new ArrayList<>();
     }
-
+    
     public static ManejadorInstDeportiva getInstancia() {
         if (instancia == null) {
             instancia = new ManejadorInstDeportiva();
@@ -45,4 +45,12 @@ public class ManejadorInstDeportiva {
         }
         throw new RuntimeException();
     }
+        
+    public void agregarActividadDeportiva(InstitucionDeportiva institucion, DtActividadDeportiva actividad){
+        institucion.setActividades(actividad);
+        
+    }
+        
 }
+
+

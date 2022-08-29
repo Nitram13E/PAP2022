@@ -1,6 +1,7 @@
 package Controlador;
 
 import Controlador.Interfaces.ICInstDeportiva;
+import Datatypes.DtActividadDeportiva;
 import Datatypes.DtInstitucionDeportiva;
 import Excepciones.InstitucionExistenteException;
 import Logica.InstitucionDeportiva;
@@ -37,4 +38,19 @@ public class CInstDeportiva implements ICInstDeportiva {
 
         return instituciones;
     }
+    
+    @Override
+    public void agregarActividadDeportiva(String nombreInstitucion, DtActividadDeportiva actividad){
+        //buscar instituci´n
+        InstitucionDeportiva institucion = manejador.buscarInstitucion(nombreInstitucion);
+        
+        manejador.agregarActividadDeportiva(institucion, actividad);  
+    }
+    
+    public List<DtActividadDeportiva> getActividadesDeInstitucion(String nombreInstitucion){
+        InstitucionDeportiva institucion = manejador.buscarInstitucion(nombreInstitucion);
+        return institucion.getActividades();
+    }
+    
+    
 }
