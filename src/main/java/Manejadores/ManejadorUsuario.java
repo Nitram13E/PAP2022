@@ -63,6 +63,18 @@ public class ManejadorUsuario {
         
         return false;
     }
+    
+    public boolean existeMail(String mail)
+    {
+        //Recorre la lista de usuarios del sistema en busqueda del mismo nickname
+        for (Usuario s : usuarios) {
+            if (s.getMail().equals(mail)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
 
     public void modificarUsuario(Usuario usuario){
 //        Conexion conexion = Conexion.getInstancia();

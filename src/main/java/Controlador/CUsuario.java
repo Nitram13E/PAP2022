@@ -4,6 +4,8 @@ import Controlador.Interfaces.ICUsuario;
 import Datatypes.DtProfesor;
 import Datatypes.DtSocio;
 import Datatypes.DtUsuario;
+import Excepciones.EmailExistenteException;
+import Excepciones.UsuarioExistenteException;
 import Excepciones.UsuarioNoExisteException;
 import Logica.Profesor;
 import Logica.Socio;
@@ -17,28 +19,20 @@ import java.util.List;
 public class CUsuario implements ICUsuario {
 
     @Override
-    public void altaUsuario(DtUsuario usuario) {
+    public void altaUsuario(DtUsuario usuario) throws UsuarioExistenteException, EmailExistenteException {
 
         ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
 
         //Buscamos si el usuario ingresado ya existe
         boolean userBuscar = mJUsuario.existeUsuario(usuario.getNickname());
         
-        if (userBuscar == false) {
-            mJUsuario.agregarUsuario(usuario);
-        }
-
-    }
-
-    @Override
-    public DtUsuario consultaUsuario(String usuarioEncontrar) {
-
-        ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
-
-        DtUsuario userBuscar = null;
-//                mJUsuario.buscarUsuario(usuarioEncontrar);
-//
-        return userBuscar;
+        if(userBuscar) throw new UsuarioExistenteException("Ya hay un usuario con el mismo nickname!.");
+        
+        boolean emailBuscar = mJUsuario.existeMail(usuario.getMail());
+        
+        if(emailBuscar) throw new EmailExistenteException("Ya hay un usuario con el mismo mail!.");
+        
+        mJUsuario.agregarUsuario(usuario);
     }
 
     @Override
