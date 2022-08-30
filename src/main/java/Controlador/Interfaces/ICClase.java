@@ -1,6 +1,9 @@
 package Controlador.Interfaces;
 
-import DataType.DtClase;
+import Datatypes.DtClase;
+
+
+
 
 public interface ICClase {
     public void altaClase(DtClase clase);

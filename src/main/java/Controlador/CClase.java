@@ -1,9 +1,15 @@
 package Controlador;
 
 import Controlador.Interfaces.ICClase;
-import DataType.DtClase;
+import Datatypes.DtClase;
+
+
 import Logica.Clase;
 import Manejadores.ManejadorClase;
+
+
+import Datatypes.DtRegistro;
+
 
 public class CClase implements ICClase {
     
@@ -28,6 +34,7 @@ public class CClase implements ICClase {
     @Override
     public void rankingDictado() {
     }
+
 
     @Override
     public DtClase consultaDictado(String nombre) {

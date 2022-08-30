@@ -18,10 +18,10 @@ public class DtRegistro {
     private DtClase clase;
     private Date fechaReg;
 
-    public DtRegistro(Date fechaReg, DtClase clase, DtSocio socio) {
-        this.fechaReg = fechaReg;
+    public DtRegistro(DtClase clase, DtSocio socio, Date fechaReg) {
         this.clase = clase;
         this.socio = socio;
+        this.fechaReg = fechaReg;
     }
 
     public DtSocio getSocio() {
@@ -29,7 +29,7 @@ public class DtRegistro {
     }
 
     public Date getFechaReg() {
-        return fechaReg;
+        return this.fechaReg;
     }
 
     public DtClase getClase() {
