@@ -1,5 +1,8 @@
 package Controlador.Interfaces;
 
+import Datatypes.DtClase;
+import Datatypes.DtInstitucionDeportiva;
+import Datatypes.DtProfesor;
 import Datatypes.DtUsuario;
 import Excepciones.EmailExistenteException;
 import Excepciones.UsuarioExistenteException;
@@ -11,4 +14,6 @@ public interface ICUsuario {
     public void altaUsuario(DtUsuario usuario) throws UsuarioExistenteException,EmailExistenteException;
     public void modificarDatos(DtUsuario dtUsuario) throws UsuarioNoExisteException;
     public List<DtUsuario> retornarUsuarios();
+    public List<DtProfesor> retornarProfesoresInstitucion(DtInstitucionDeportiva institucion);
+    public void agregarClaseAProfesor(DtProfesor profesor, DtClase clase);
 }

@@ -47,6 +47,7 @@ public class CInstDeportiva implements ICInstDeportiva {
         manejador.agregarActividadDeportiva(institucion, actividad);  
     }
     
+    @Override
     public List<DtActividadDeportiva> getActividadesDeInstitucion(String nombreInstitucion){
         InstitucionDeportiva institucion = manejador.buscarInstitucion(nombreInstitucion);
         return institucion.getActividades();

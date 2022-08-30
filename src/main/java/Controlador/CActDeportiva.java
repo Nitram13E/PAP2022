@@ -3,6 +3,7 @@ package Controlador;
 import Controlador.Interfaces.ICActDeportiva;
 
 import Datatypes.DtActividadDeportiva;
+import Datatypes.DtClase;
 import Excepciones.ActividadNoExisteException;
 import Logica.ActividadDeportiva;
 import Manejadores.ManejadorActDeportiva;
@@ -55,5 +56,12 @@ public class CActDeportiva implements ICActDeportiva {
         manejador.getActividades().forEach(act -> actividades.add(new DtActividadDeportiva(act.getNombre(), act.getDesc(), act.getDuracion(), act.getCosto(), act.getFechaReg())));
 
         return actividades;
+    }
+    
+    @Override
+    public void agregarClaseAActividadDeportiva(DtClase clase, DtActividadDeportiva actividad)
+    {   
+        ActividadDeportiva actividaddepor = manejador.buscarActividad(actividad.getNombre());
+        actividaddepor.setClase(clase);
     }
 }

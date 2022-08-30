@@ -13,13 +13,8 @@ public class CClase implements ICClase {
 
     @Override
     public void altaClase(DtClase clase) {
-        Clase nuevoDictadoClase = null;
-
-        nuevoDictadoClase = new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg());
-
         ManejadorClase mc = ManejadorClase.getInstancia();
-        mc.agregarClase(nuevoDictadoClase);
-
+        mc.agregarClase(new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg()));
     }
 
     @Override

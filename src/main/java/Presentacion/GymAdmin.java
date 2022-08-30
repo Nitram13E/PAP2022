@@ -6,6 +6,7 @@ package Presentacion;
 
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICActDeportiva;
+import Controlador.Interfaces.ICClase;
 import Controlador.Interfaces.ICInstDeportiva;
 import Controlador.Interfaces.ICUsuario;
 import Manejadores.ManejadorUsuario;
@@ -22,13 +23,15 @@ public class GymAdmin extends javax.swing.JFrame {
     ICInstDeportiva controladorInstitucion;
     ICActDeportiva controladorActividad;
     ICUsuario controladorUsuario;
-
+    ICClase controladorClase;
+    
     public GymAdmin() {
         Fabrica fabrica = Fabrica.getInstancia();
         this.controladorInstitucion = fabrica.getICInstDeportiva();
         this.controladorActividad = fabrica.getICActDeportiva();
         this.controladorUsuario = fabrica.getICUsuario();
-        
+        this.controladorClase = fabrica.getICClase();
+
         initComponents();
     }
 
@@ -80,6 +83,11 @@ public class GymAdmin extends javax.swing.JFrame {
         });
 
         btnClases.setText("Clases");
+        btnClases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClasesActionPerformed(evt);
+            }
+        });
 
         btnInstitucionDeportiva.setText("Institución Deportiva");
         btnInstitucionDeportiva.setToolTipText("");
@@ -198,6 +206,14 @@ public class GymAdmin extends javax.swing.JFrame {
         ActividadFrame.setLocationRelativeTo(null);
         ActividadFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnActividadDeportivaActionPerformed
+
+    private void btnClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClasesActionPerformed
+        // TODO add your handling code here:
+        Clase claseFrame = new Clase(controladorClase,controladorInstitucion, controladorUsuario, controladorActividad);
+        claseFrame.setVisible(true);
+        claseFrame.setLocationRelativeTo(null);
+        claseFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_btnClasesActionPerformed
 
     /**
      * @param args the command line arguments

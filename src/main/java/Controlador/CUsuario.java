@@ -1,6 +1,8 @@
 package Controlador;
 
 import Controlador.Interfaces.ICUsuario;
+import Datatypes.DtClase;
+import Datatypes.DtInstitucionDeportiva;
 import Datatypes.DtProfesor;
 import Datatypes.DtSocio;
 import Datatypes.DtUsuario;
@@ -75,5 +77,39 @@ public class CUsuario implements ICUsuario {
         }
         
         return listaDts;
+    }
+    
+    @Override
+    public List<DtProfesor> retornarProfesoresInstitucion(DtInstitucionDeportiva institucion)
+    {
+       ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
+       List<Usuario> listaUsuarios = mJUsuario.getUsuarios();
+       List<DtProfesor> resultado = new ArrayList<>();
+       
+       for(Usuario s:listaUsuarios)
+       {
+           if(s instanceof Profesor)
+           {
+               if(((Profesor) s).getInstitucion().getNombre().equals(institucion.getNombre()))
+               {
+                   resultado.add(new DtProfesor(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac(), ((Profesor) s).getInstitucion(), ((Profesor) s).getDescripcion(), ((Profesor) s).getSitioWeb(), ((Profesor) s).getBiografia()));
+               }
+           }
+       }
+       
+       return resultado;
+    }
+    
+    @Override
+    public void agregarClaseAProfesor(DtProfesor profesor, DtClase clase)
+    {
+        ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
+        
+        Usuario usuario = mJUsuario.buscarUsuario(profesor.getNombre());
+        
+        if(usuario instanceof Profesor)
+        {
+            ((Profesor) usuario).setClases(clase);
+        }
     }
 }
