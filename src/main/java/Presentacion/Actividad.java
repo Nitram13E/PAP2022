@@ -1,4 +1,3 @@
-
 package Presentacion;
 
 import Controlador.Interfaces.ICActDeportiva;
@@ -9,27 +8,29 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 
-public class Actividad extends javax.swing.JFrame { 
+public class Actividad extends javax.swing.JFrame {
+
     ICActDeportiva controladorActividad;
     ICInstDeportiva controladorInstitucion;
 
-    public Actividad( ICInstDeportiva controladorInstitucion, ICActDeportiva controladorActividad) {
+    public Actividad(ICInstDeportiva controladorInstitucion, ICActDeportiva controladorActividad) {
         this.controladorActividad = controladorActividad;
         this.controladorInstitucion = controladorInstitucion;
-         initComponents();
-         cargarComboInstitucionesDeportivas();
+        initComponents();
+        cargarComboInstitucionesDeportivas();
     }
-     
-    public void cargarComboInstitucionesDeportivas(){
-        if(controladorInstitucion.getInstituciones().isEmpty()) 
+
+    public void cargarComboInstitucionesDeportivas() {
+        if (controladorInstitucion.getInstituciones().isEmpty()) {
             return;
-        
+        }
+
         DefaultComboBoxModel<DtInstitucionDeportiva> comboModel = new DefaultComboBoxModel<DtInstitucionDeportiva>();
         comboModel.addAll(controladorInstitucion.getInstituciones());
         comboInstitucion.setModel(comboModel);
         comboInstitucion.setEnabled(true);
     }
-        
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -37,7 +38,6 @@ public class Actividad extends javax.swing.JFrame {
         PanelActividadDeportiva = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         comboInstitucion = new javax.swing.JComboBox<>();
-        BtnAgregarActividad = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         listaActividades = new javax.swing.JList<>();
@@ -64,6 +64,8 @@ public class Actividad extends javax.swing.JFrame {
         LabelDescripcion2 = new javax.swing.JLabel();
         LabelSitioWeb2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        BtnAgregarActividad1 = new javax.swing.JButton();
+        BtnModificarActividad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -85,18 +87,16 @@ public class Actividad extends javax.swing.JFrame {
             }
         });
 
-        BtnAgregarActividad.setText("Agregar");
-        BtnAgregarActividad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAgregarActividadActionPerformed(evt);
-            }
-        });
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Lista de Actividades");
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        listaActividades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaActividadesMouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(listaActividades);
 
         jLabelNickName2.setText("Nombre");
@@ -218,6 +218,21 @@ public class Actividad extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Información de actividad");
 
+        BtnAgregarActividad1.setText("Agregar");
+        BtnAgregarActividad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregarActividad1ActionPerformed(evt);
+            }
+        });
+
+        BtnModificarActividad.setText("Modificar");
+        BtnModificarActividad.setEnabled(false);
+        BtnModificarActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarActividadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelActividadDeportivaLayout = new javax.swing.GroupLayout(PanelActividadDeportiva);
         PanelActividadDeportiva.setLayout(PanelActividadDeportivaLayout);
         PanelActividadDeportivaLayout.setHorizontalGroup(
@@ -232,15 +247,15 @@ public class Actividad extends javax.swing.JFrame {
                         .addComponent(PanelInfoUsuario3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(comboInstitucion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(PanelActividadDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelActividadDeportivaLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(PanelActividadDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BtnAgregarActividad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(BtnAgregarActividad1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtnModificarActividad))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
         PanelActividadDeportivaLayout.setVerticalGroup(
             PanelActividadDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,18 +265,21 @@ public class Actividad extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
                 .addGap(12, 12, 12)
-                .addGroup(PanelActividadDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(PanelActividadDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelActividadDeportivaLayout.createSequentialGroup()
                         .addComponent(comboInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11)
                         .addGap(12, 12, 12)
-                        .addComponent(PanelInfoUsuario3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelActividadDeportivaLayout.createSequentialGroup()
+                        .addComponent(PanelInfoUsuario3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 16, Short.MAX_VALUE))
+                    .addGroup(PanelActividadDeportivaLayout.createSequentialGroup()
                         .addComponent(jScrollPane7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnAgregarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 6, Short.MAX_VALUE))
+                        .addGroup(PanelActividadDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnModificarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnAgregarActividad1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -271,7 +289,7 @@ public class Actividad extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(PanelActividadDeportiva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,34 +302,50 @@ public class Actividad extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnAgregarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActividadActionPerformed
-        AgregarActividadDeportiva AgregarActividadFrame = new AgregarActividadDeportiva(controladorInstitucion, controladorActividad);
-        AgregarActividadFrame.setResizable(false);
-        AgregarActividadFrame.setVisible(true);
-        AgregarActividadFrame.setLocationRelativeTo(null);
-        AgregarActividadFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_BtnAgregarActividadActionPerformed
+    //Modificar Actividad
+    private void BtnModificarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActividadActionPerformed
+
+        ModificarActividadDeportiva modificarActividadFrame = new ModificarActividadDeportiva(listaActividades.getSelectedValue());
+        modificarActividadFrame.setVisible(true);
+        modificarActividadFrame.setLocationRelativeTo(null);
+        modificarActividadFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_BtnModificarActividadActionPerformed
 
     private void comboInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboInstitucionActionPerformed
         //Cargar lista de actividades deportivas (según institución)
         cargarActividades();
     }//GEN-LAST:event_comboInstitucionActionPerformed
 
-    public void cargarActividades(){
-       DtInstitucionDeportiva DtInstitucion = (DtInstitucionDeportiva)comboInstitucion.getSelectedItem();
-       if(DtInstitucion  == null) return;
-       List<DtActividadDeportiva> actividades =  controladorInstitucion.getActividadesDeInstitucion(DtInstitucion.getNombre());
+    public void cargarActividades() {
+        DtInstitucionDeportiva DtInstitucion = (DtInstitucionDeportiva) comboInstitucion.getSelectedItem();
+        if (DtInstitucion == null) {
+            return;
+        }
+        List<DtActividadDeportiva> actividades = controladorInstitucion.getActividadesDeInstitucion(DtInstitucion.getNombre());
         DefaultListModel<DtActividadDeportiva> listModel = new DefaultListModel<DtActividadDeportiva>();
         listModel.addAll(actividades);
         listaActividades.setModel(listModel);
     }
-    
+
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         cargarActividades();
     }//GEN-LAST:event_formWindowGainedFocus
 
-    
-    
+    //Muestra las caracteristicas de actividad
+    private void listaActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaActividadesMouseClicked
+        if(listaActividades.getSelectedValue() == null) return;
+        
+        BtnModificarActividad.setEnabled(true);
+    }//GEN-LAST:event_listaActividadesMouseClicked
+
+    private void BtnAgregarActividad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActividad1ActionPerformed
+        AgregarActividadDeportiva AgregarActividadFrame = new AgregarActividadDeportiva(controladorInstitucion, controladorActividad);
+        AgregarActividadFrame.setResizable(false);
+        AgregarActividadFrame.setVisible(true);
+        AgregarActividadFrame.setLocationRelativeTo(null);
+        AgregarActividadFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_BtnAgregarActividad1ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -337,12 +371,12 @@ public class Actividad extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAgregarActividad;
+    private javax.swing.JButton BtnAgregarActividad1;
+    private javax.swing.JButton BtnModificarActividad;
     private javax.swing.JLabel LabelDescripcion2;
     private javax.swing.JLabel LabelEmail2;
     private javax.swing.JLabel LabelFechaNac2;

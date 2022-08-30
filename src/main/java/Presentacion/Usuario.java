@@ -90,6 +90,7 @@ public class Usuario extends javax.swing.JFrame {
         jScrollPane1.setViewportView(JListUsuarios);
 
         BtnModificarUsuario.setText("Modificar");
+        BtnModificarUsuario.setEnabled(false);
         BtnModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnModificarUsuarioActionPerformed(evt);
@@ -335,9 +336,9 @@ public class Usuario extends javax.swing.JFrame {
 
         DtUsuario usuarioSeleccionado = JListUsuarios.getSelectedValue();
 
-        if (usuarioSeleccionado == null) {
-            System.out.println("Usuario no existente");
-        }
+        if (usuarioSeleccionado == null) return;
+        
+        BtnModificarUsuario.setEnabled(true);
 
         jLabel.setText(usuarioSeleccionado.getNickname());
         jLabel13.setText(usuarioSeleccionado.getNombre());
