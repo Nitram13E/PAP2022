@@ -13,6 +13,7 @@ import javax.swing.DefaultListModel;
              institución que la ofrece y los datos básicos de la misma: nombre
              (único), descripción, duración, costo, fecha de alta. 
               Finalmente, el sistema da de alta la actividad deportiva. */
+
 public class AgregarActividadDeportiva extends javax.swing.JFrame {
 
     ICInstDeportiva controladorInstitucion;
@@ -30,11 +31,11 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
         if (controladorInstitucion.getInstituciones().isEmpty()) {
             return;
         }
-
         DefaultComboBoxModel<DtInstitucionDeportiva> comboModel = new DefaultComboBoxModel<DtInstitucionDeportiva>();
         comboModel.addAll(controladorInstitucion.getInstituciones());
         comboInstitucion.setModel(comboModel);
         comboInstitucion.setEnabled(true);
+        botonAgregar.setEnabled(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -56,7 +57,7 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
         intfield_duracion = new javax.swing.JTextField();
         floatfield_costo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonAgregar = new javax.swing.JButton();
         jSeparator21 = new javax.swing.JSeparator();
         JLabelInstitucion = new javax.swing.JLabel();
         comboInstitucion = new javax.swing.JComboBox<>();
@@ -78,12 +79,13 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                aprietaBotonCancelar(evt);
             }
         });
 
-        jButton2.setText("Agregar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonAgregar.setText("Agregar");
+        botonAgregar.setEnabled(false);
+        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Agregar(evt);
             }
@@ -126,7 +128,7 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
                             .addComponent(comboInstitucion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInfoUsuario3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -169,7 +171,7 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -188,23 +190,30 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_Agregar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Agregar
-        DtInstitucionDeportiva DtInstitucion = (DtInstitucionDeportiva) comboInstitucion.getSelectedItem();
-        String nombre = textfield_nombre.getText();
-        String descripcion = textfield_descripcion.getText();
-        int duracion = Integer.parseInt(intfield_duracion.getText());
-        float costo = Float.parseFloat(floatfield_costo.getText());
+        if( !textfield_nombre.getText().isEmpty() && !textfield_descripcion.getText().isEmpty() && !intfield_duracion.getText().isEmpty() && !floatfield_costo.getText().isEmpty() ){
+            
+            DtInstitucionDeportiva DtInstitucion = (DtInstitucionDeportiva) comboInstitucion.getSelectedItem();
+            String nombre = textfield_nombre.getText();
+            String descripcion = textfield_descripcion.getText();
+            int duracion = Integer.parseInt(intfield_duracion.getText());
+            float costo = Float.parseFloat(floatfield_costo.getText());
 
-        DtActividadDeportiva nuevoDtActividad = new DtActividadDeportiva(nombre, descripcion, duracion, costo, new Date());
+            DtActividadDeportiva nuevoDtActividad = new DtActividadDeportiva(nombre, descripcion, duracion, costo, new Date());
 
-        controladorActividad.altaActividad(nuevoDtActividad);
-        controladorInstitucion.agregarActividadDeportiva(DtInstitucion.getNombre(), nuevoDtActividad);
+            controladorActividad.altaActividad(nuevoDtActividad);
+            controladorInstitucion.agregarActividadDeportiva(DtInstitucion.getNombre(), nuevoDtActividad);
 
-        dispose();
+            dispose();
+        }else{
+            return;
+        }
+        
+        
     }//GEN-LAST:event_btn_Agregar
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void aprietaBotonCancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aprietaBotonCancelar
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_aprietaBotonCancelar
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -236,11 +245,11 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabelInstitucion;
     private javax.swing.JPanel PanelInfoUsuario3;
+    private javax.swing.JButton botonAgregar;
     private javax.swing.JComboBox<DtInstitucionDeportiva> comboInstitucion;
     private javax.swing.JTextField floatfield_costo;
     private javax.swing.JTextField intfield_duracion;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabelEmail2;
     private javax.swing.JLabel jLabelFechaNac2;

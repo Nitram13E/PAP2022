@@ -29,6 +29,8 @@ public class Actividad extends javax.swing.JFrame {
         comboModel.addAll(controladorInstitucion.getInstituciones());
         comboInstitucion.setModel(comboModel);
         comboInstitucion.setEnabled(true);
+        botonAgregar.setEnabled(true);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -43,28 +45,22 @@ public class Actividad extends javax.swing.JFrame {
         listaActividades = new javax.swing.JList<>();
         PanelInfoUsuario3 = new javax.swing.JPanel();
         jLabelNickName2 = new javax.swing.JLabel();
-        jSeparator17 = new javax.swing.JSeparator();
         jSeparator18 = new javax.swing.JSeparator();
-        jLabelNombre2 = new javax.swing.JLabel();
         jSeparator19 = new javax.swing.JSeparator();
         jLabelEmail2 = new javax.swing.JLabel();
         jSeparator20 = new javax.swing.JSeparator();
         jLabelFechaNac2 = new javax.swing.JLabel();
         jLabelDescripcion2 = new javax.swing.JLabel();
         jSeparator22 = new javax.swing.JSeparator();
-        jLabelSitioWeb2 = new javax.swing.JLabel();
-        jLabelBiografia2 = new javax.swing.JLabel();
         jSeparator24 = new javax.swing.JSeparator();
         jScrollPane8 = new javax.swing.JScrollPane();
         TextBiografia2 = new javax.swing.JTextArea();
-        LabelNickname2 = new javax.swing.JLabel();
-        LabelNombre2 = new javax.swing.JLabel();
-        LabelEmail2 = new javax.swing.JLabel();
-        LabelFechaNac2 = new javax.swing.JLabel();
-        LabelDescripcion2 = new javax.swing.JLabel();
-        LabelSitioWeb2 = new javax.swing.JLabel();
+        nombreActividad = new javax.swing.JLabel();
+        duracionActividad = new javax.swing.JLabel();
+        costoActividad = new javax.swing.JLabel();
+        descActividad = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        BtnAgregarActividad1 = new javax.swing.JButton();
+        botonAgregar = new javax.swing.JButton();
         BtnModificarActividad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,33 +97,23 @@ public class Actividad extends javax.swing.JFrame {
 
         jLabelNickName2.setText("Nombre");
 
-        jLabelNombre2.setText("Fecha");
+        jLabelEmail2.setText("Duración");
 
-        jLabelEmail2.setText("Hora de inicio");
-
-        jLabelFechaNac2.setText("URL");
+        jLabelFechaNac2.setText("Costo");
 
         jLabelDescripcion2.setText("Descripcion");
-
-        jLabelSitioWeb2.setText("Sitio Web");
-
-        jLabelBiografia2.setText("Biografia");
 
         TextBiografia2.setColumns(20);
         TextBiografia2.setRows(5);
         jScrollPane8.setViewportView(TextBiografia2);
 
-        LabelNickname2.setText("-");
+        nombreActividad.setText("-");
 
-        LabelNombre2.setText("-");
+        duracionActividad.setText("-");
 
-        LabelEmail2.setText("-");
+        costoActividad.setText("-");
 
-        LabelFechaNac2.setText("-");
-
-        LabelDescripcion2.setText("-");
-
-        LabelSitioWeb2.setText("-");
+        descActividad.setText("-");
 
         javax.swing.GroupLayout PanelInfoUsuario3Layout = new javax.swing.GroupLayout(PanelInfoUsuario3);
         PanelInfoUsuario3.setLayout(PanelInfoUsuario3Layout);
@@ -136,37 +122,27 @@ public class Actividad extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInfoUsuario3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelInfoUsuario3Layout.createSequentialGroup()
-                        .addComponent(jLabelBiografia2)
-                        .addGap(265, 265, 265))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator18, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator19, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator20, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator22, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator24, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelInfoUsuario3Layout.createSequentialGroup()
                         .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator17)
-                            .addComponent(jSeparator18, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator19, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator20, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator22, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator24, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelDescripcion2)
+                            .addComponent(jLabelFechaNac2)
+                            .addComponent(jLabelEmail2)
+                            .addComponent(jLabelNickName2))
+                        .addGap(30, 30, 30)
+                        .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelInfoUsuario3Layout.createSequentialGroup()
-                                .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelSitioWeb2)
-                                    .addComponent(jLabelDescripcion2)
-                                    .addComponent(jLabelFechaNac2)
-                                    .addComponent(jLabelEmail2)
-                                    .addComponent(jLabelNombre2)
-                                    .addComponent(jLabelNickName2))
-                                .addGap(30, 30, 30)
-                                .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanelInfoUsuario3Layout.createSequentialGroup()
-                                        .addComponent(LabelDescripcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(LabelFechaNac2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(LabelEmail2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(LabelNombre2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(LabelNickname2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(LabelSitioWeb2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap())))
+                                .addComponent(descActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 18, Short.MAX_VALUE))
+                            .addComponent(costoActividad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(duracionActividad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nombreActividad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         PanelInfoUsuario3Layout.setVerticalGroup(
             PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,40 +150,28 @@ public class Actividad extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNickName2)
-                    .addComponent(LabelNickname2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNombre2)
-                    .addComponent(LabelNombre2))
+                    .addComponent(nombreActividad))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelEmail2)
-                    .addComponent(LabelEmail2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(duracionActividad, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFechaNac2)
-                    .addComponent(LabelFechaNac2))
+                    .addComponent(costoActividad))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDescripcion2)
-                    .addComponent(LabelDescripcion2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(descActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator22, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelInfoUsuario3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSitioWeb2)
-                    .addComponent(LabelSitioWeb2))
-                .addGap(28, 28, 28)
-                .addComponent(jLabelBiografia2)
-                .addGap(18, 18, 18)
+                .addGap(84, 84, 84)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator24, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,10 +182,11 @@ public class Actividad extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Información de actividad");
 
-        BtnAgregarActividad1.setText("Agregar");
-        BtnAgregarActividad1.addActionListener(new java.awt.event.ActionListener() {
+        botonAgregar.setText("Agregar");
+        botonAgregar.setEnabled(false);
+        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAgregarActividad1ActionPerformed(evt);
+                botonAgregar(evt);
             }
         });
 
@@ -251,7 +216,7 @@ public class Actividad extends javax.swing.JFrame {
                 .addGroup(PanelActividadDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel10)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelActividadDeportivaLayout.createSequentialGroup()
-                        .addComponent(BtnAgregarActividad1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnModificarActividad))
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
@@ -278,7 +243,7 @@ public class Actividad extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(PanelActividadDeportivaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtnModificarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnAgregarActividad1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(16, 16, 16))))
         );
 
@@ -333,18 +298,27 @@ public class Actividad extends javax.swing.JFrame {
 
     //Muestra las caracteristicas de actividad
     private void listaActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaActividadesMouseClicked
-        if(listaActividades.getSelectedValue() == null) return;
-        
+        DtActividadDeportiva ActividadSeleccionada = listaActividades.getSelectedValue();
+
+        if(listaActividades.getSelectedValue() == null) {
+            return;
+        }
+        nombreActividad.setText(ActividadSeleccionada.getNombre());
+        duracionActividad.setText(ActividadSeleccionada.getDuracion().toString());
+        costoActividad.setText(ActividadSeleccionada.getCosto().toString());
+        descActividad.setText(ActividadSeleccionada.getDesc());
+                
         BtnModificarActividad.setEnabled(true);
+        
     }//GEN-LAST:event_listaActividadesMouseClicked
 
-    private void BtnAgregarActividad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActividad1ActionPerformed
+    private void botonAgregar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregar
         AgregarActividadDeportiva AgregarActividadFrame = new AgregarActividadDeportiva(controladorInstitucion, controladorActividad);
         AgregarActividadFrame.setResizable(false);
         AgregarActividadFrame.setVisible(true);
         AgregarActividadFrame.setLocationRelativeTo(null);
         AgregarActividadFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_BtnAgregarActividad1ActionPerformed
+    }//GEN-LAST:event_botonAgregar
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -375,36 +349,30 @@ public class Actividad extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAgregarActividad1;
     private javax.swing.JButton BtnModificarActividad;
-    private javax.swing.JLabel LabelDescripcion2;
-    private javax.swing.JLabel LabelEmail2;
-    private javax.swing.JLabel LabelFechaNac2;
-    private javax.swing.JLabel LabelNickname2;
-    private javax.swing.JLabel LabelNombre2;
-    private javax.swing.JLabel LabelSitioWeb2;
     private javax.swing.JPanel PanelActividadDeportiva;
     private javax.swing.JPanel PanelInfoUsuario3;
     private javax.swing.JTextArea TextBiografia2;
+    private javax.swing.JButton botonAgregar;
     private javax.swing.JComboBox<DtInstitucionDeportiva> comboInstitucion;
+    private javax.swing.JLabel costoActividad;
+    private javax.swing.JLabel descActividad;
+    private javax.swing.JLabel duracionActividad;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelBiografia2;
     private javax.swing.JLabel jLabelDescripcion2;
     private javax.swing.JLabel jLabelEmail2;
     private javax.swing.JLabel jLabelFechaNac2;
     private javax.swing.JLabel jLabelNickName2;
-    private javax.swing.JLabel jLabelNombre2;
-    private javax.swing.JLabel jLabelSitioWeb2;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator22;
     private javax.swing.JSeparator jSeparator24;
     private javax.swing.JList<DtActividadDeportiva> listaActividades;
+    private javax.swing.JLabel nombreActividad;
     // End of variables declaration//GEN-END:variables
 }
