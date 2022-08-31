@@ -4,10 +4,7 @@
  */
 package Presentacion;
 
-import Controlador.Interfaces.Fabrica;
-import Controlador.Interfaces.ICActDeportiva;
-import Controlador.Interfaces.ICInstDeportiva;
-import Controlador.Interfaces.ICUsuario;
+import Controlador.Interfaces.*;
 import Manejadores.ManejadorUsuario;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import java.util.List;
@@ -23,12 +20,13 @@ public class GymAdmin extends javax.swing.JFrame {
     ICActDeportiva controladorActividad;
     ICUsuario controladorUsuario;
 
+    ICClase controladorClase;
     public GymAdmin() {
         Fabrica fabrica = Fabrica.getInstancia();
         this.controladorInstitucion = fabrica.getICInstDeportiva();
         this.controladorActividad = fabrica.getICActDeportiva();
         this.controladorUsuario = fabrica.getICUsuario();
-
+        this.controladorClase = fabrica.getICClase();
         initComponents();
     }
 
@@ -170,7 +168,7 @@ public class GymAdmin extends javax.swing.JFrame {
     //CASO DE USO REGISTRAR SOCIO
     
     private void btnRegistrarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSocioActionPerformed
-        Registro actividadDeportivaFrame = new Registro(controladorInstitucion, controladorActividad);
+        Registro actividadDeportivaFrame = new Registro(controladorInstitucion, controladorActividad, controladorClase, controladorUsuario);
         actividadDeportivaFrame.setVisible(true);
         actividadDeportivaFrame.setLocationRelativeTo(null);
         actividadDeportivaFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

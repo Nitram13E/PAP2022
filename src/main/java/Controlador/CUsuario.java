@@ -2,11 +2,13 @@ package Controlador;
 
 import Controlador.Interfaces.ICUsuario;
 import Datatypes.DtProfesor;
+import Datatypes.DtRegistro;
 import Datatypes.DtSocio;
 import Datatypes.DtUsuario;
 import Logica.Profesor;
 import Logica.Socio;
 import Logica.Usuario;
+import Manejadores.ManejadorClase;
 import Manejadores.ManejadorUsuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,5 +67,14 @@ public class CUsuario implements ICUsuario {
         }
         
         return listaDts;
+    }
+
+    @Override
+    public void registroClase(DtUsuario socio, DtRegistro registro){
+        ManejadorUsuario manejador = ManejadorUsuario.getInstancia();
+
+        for(Usuario usuario : manejador.getUsuarios()){
+            if(usuario instanceof Socio && usuario.getNickname().equals(socio.getNickname())) ((Socio) usuario).agregarRegistro(registro);
+        }
     }
 }

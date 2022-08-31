@@ -5,7 +5,9 @@
 package Presentacion;
 
 import Controlador.Interfaces.ICActDeportiva;
+import Controlador.Interfaces.ICClase;
 import Controlador.Interfaces.ICInstDeportiva;
+import Controlador.Interfaces.ICUsuario;
 import Datatypes.*;
 
 import javax.swing.DefaultComboBoxModel;
@@ -19,9 +21,14 @@ public class Registro extends javax.swing.JFrame {
 
     ICInstDeportiva controladorInstitucion;
     ICActDeportiva controladorActividad;
-    public Registro(ICInstDeportiva controladorInstitucion, ICActDeportiva controladorActividad) {
+    ICClase controladorClase;
+    ICUsuario controladorUsuario;
+
+    public Registro(ICInstDeportiva controladorInstitucion, ICActDeportiva controladorActividad, ICClase controladorClase, ICUsuario controladorUsuario) {
         this.controladorInstitucion = controladorInstitucion;
         this.controladorActividad = controladorActividad;
+        this.controladorClase = controladorClase;
+        this.controladorUsuario = controladorUsuario;
 
         initComponents();
     }
@@ -424,8 +431,8 @@ public class Registro extends javax.swing.JFrame {
 
         DtRegistro registro = new DtRegistro(clase, socio, new Date());
 
-        //controladorClase.buscarClase(clase).agregarRegistro(registro);
-        //controladorUsuario.buscarUsuario(socio).agregarRegistro(registro);
+        controladorClase.registroSocio(clase, registro);
+        controladorUsuario.registroClase(socio, registro);
     }//GEN-LAST:event_btnRegistrarSocioActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -448,6 +455,8 @@ public class Registro extends javax.swing.JFrame {
         controladorActividad.altaActividad(new DtActividadDeportiva("Actividad 3", "Esta es la actividad 3", 3, 3000, new Date()));
         controladorActividad.altaActividad(new DtActividadDeportiva("Actividad 4", "Esta es la actividad 4", 4, 4000, new Date()));
         controladorActividad.altaActividad(new DtActividadDeportiva("Actividad 5", "Esta es la actividad 5", 5, 5000, new Date()));
+
+        controladorClase.altaClase();
 
         if(controladorActividad.getActividades().isEmpty()) return;
 
