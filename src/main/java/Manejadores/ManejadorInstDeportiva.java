@@ -1,6 +1,6 @@
 package Manejadores;
 
-import Datatypes.DtInstitucionDeportiva;
+import Datatypes.DtActividadDeportiva;
 import Logica.InstitucionDeportiva;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class ManejadorInstDeportiva {
     private ManejadorInstDeportiva(){
         instituciones = new ArrayList<>();
     }
-
+    
     public static ManejadorInstDeportiva getInstancia() {
         if (instancia == null) {
             instancia = new ManejadorInstDeportiva();
@@ -21,13 +21,10 @@ public class ManejadorInstDeportiva {
     }
 
     public void agregarInstitucionDeportiva(InstitucionDeportiva institucion){
-        //instituciones.add(new InstitucionDeportiva(institucion.getNombre(), institucion.getDesc(), institucion.getUrl()));
         instituciones.add(institucion);
     }
 
     public List<InstitucionDeportiva> getInstituciones() {
-        //List<DtInstitucionDeportiva> dtInstituciones = new ArrayList<>();
-        //instituciones.forEach(institucion -> dtInstituciones.add(new DtInstitucionDeportiva(institucion.getNombre(), institucion.getDesc(), institucion.getUrl())));
         return instituciones;
     }
 
@@ -45,4 +42,13 @@ public class ManejadorInstDeportiva {
         }
         throw new RuntimeException();
     }
+
+    /*
+    public List<DtActividadDeportiva> getActividadesDeportivas(InstitucionDeportiva institucion){
+        for (InstitucionDeportiva institucion : instituciones){
+            if(institucion.getNombre().equals(nombre)) return institucion;
+        }
+    }*/
 }
+
+

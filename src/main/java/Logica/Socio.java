@@ -22,8 +22,13 @@ public class Socio extends Usuario {
         return registros;
     }
 
+    /* TODO: Eliminar
     public void setRegistros(List<DtRegistro> registros) {
         this.registros = registros;
     }
-    
+    */
+
+    public void agregarRegistro(DtRegistro registro){
+        this.registros.add(registro);
+    }
 }

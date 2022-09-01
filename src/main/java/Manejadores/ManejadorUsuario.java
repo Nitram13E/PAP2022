@@ -1,5 +1,6 @@
 package Manejadores;
 
+
 import Datatypes.DtProfesor;
 import Datatypes.DtSocio;
 import Datatypes.DtUsuario;
@@ -39,25 +40,16 @@ public class ManejadorUsuario {
 
     }//End agregarUsuario
 
-    public DtUsuario buscarUsuario(String nickname) {
-        DtUsuario usuarioReturn = null;
+    public Usuario buscarUsuario(String nickname) {
 
         //Recorre la lista de usuarios del sistema en busqueda del mismo nickname
         for (Usuario s : usuarios) {
             if (s.getNickname().equals(nickname)) {
-                
-                if(s instanceof Profesor)
-                {
-                    usuarioReturn = new DtProfesor(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac(), ((Profesor) s).getInstitucion(), ((Profesor) s).getDescripcion(), ((Profesor) s).getSitioWeb(), ((Profesor) s).getBiografia());
-                }
-                else if(s instanceof Socio)
-                {
-                    usuarioReturn = new DtSocio(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac());
-                }
+                return s;
             }
         }
 
-        return usuarioReturn;
+        return null;
     }//End buscarUsuario
     
     public boolean existeUsuario(String nickname)
@@ -70,6 +62,29 @@ public class ManejadorUsuario {
         }
         
         return false;
+    }
+    
+    public boolean existeMail(String mail)
+    {
+        //Recorre la lista de usuarios del sistema en busqueda del mismo nickname
+        for (Usuario s : usuarios) {
+            if (s.getMail().equals(mail)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
+    public void modificarUsuario(Usuario usuario){
+//        Conexion conexion = Conexion.getInstancia();
+//        EntityManager em = conexion.getEntityManager();
+//        em.getTransaction().begin();
+//
+//        em.update(usuario);
+//
+//        em.getTransaction().commit();
+
     }
 
     public List<Usuario> getUsuarios() {

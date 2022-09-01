@@ -1,6 +1,7 @@
 package Manejadores;
 
-import Datatypes.DtActividadDeportiva;
+
+
 import Logica.ActividadDeportiva;
 
 import java.util.ArrayList;
@@ -20,11 +21,29 @@ public class ManejadorActDeportiva {
         return instancia;
     }
 
+    public ActividadDeportiva buscarActividad(String nombre) {
+        for (ActividadDeportiva actividad : actividades){
+            if(actividad.getNombre().equals(nombre)) return actividad;
+        }
+
+        return null;
+    }
+
     public void agegarActividad(ActividadDeportiva actividad) {
         actividades.add(actividad);
     }
+
     public List<ActividadDeportiva> getActividades(){
         return actividades;
     }
 
+    public void modificarActividad(ActividadDeportiva actividadDeportiva){
+//        Conexion conexion = Conexion.getInstancia();
+//        EntityManager em = conexion.getEntityManager();
+//        em.getTransaction().begin();
+//
+//        em.update(actividadDeportiva);
+//
+//        em.getTransaction().commit();
+    }
 }
