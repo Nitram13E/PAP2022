@@ -12,7 +12,6 @@ import Controlador.Interfaces.ICUsuario;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
 public class GymAdmin extends javax.swing.JFrame {
-
     ICInstDeportiva controladorInstitucion;
     ICActDeportiva controladorActividad;
     ICUsuario controladorUsuario;
@@ -172,7 +171,6 @@ public class GymAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInstitucionDeportivaActionPerformed
     
     //CASO DE USO REGISTRAR SOCIO
-    
     private void btnRegistrarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSocioActionPerformed
         Registro actividadDeportivaFrame = new Registro(controladorInstitucion, controladorActividad, controladorClase, controladorUsuario);
         actividadDeportivaFrame.setVisible(true);
@@ -191,13 +189,14 @@ public class GymAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnActividadDeportivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividadDeportivaActionPerformed
+
         Actividad ActividadFrame = new Actividad(controladorInstitucion, controladorActividad);
         ActividadFrame.setResizable(false);
         ActividadFrame.setVisible(true);
         ActividadFrame.setLocationRelativeTo(null);
         ActividadFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnActividadDeportivaActionPerformed
-
+    
     private void btnClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClasesActionPerformed
         // TODO add your handling code here:
         Clase claseFrame = new Clase(controladorClase, controladorInstitucion, controladorUsuario, controladorActividad);
