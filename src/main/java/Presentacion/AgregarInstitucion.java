@@ -8,7 +8,6 @@ import Controlador.CInstDeportiva;
 import Controlador.Interfaces.ICInstDeportiva;
 import Datatypes.DtInstitucionDeportiva;
 import Excepciones.InstitucionExistenteException;
-import Manejadores.ManejadorInstDeportiva;
 
 import javax.swing.*;
 

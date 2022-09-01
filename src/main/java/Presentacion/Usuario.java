@@ -90,6 +90,12 @@ public class Usuario extends javax.swing.JFrame {
         jScrollPane1.setViewportView(JListUsuarios);
 
         BtnModificarUsuario.setText("Modificar");
+        BtnModificarUsuario.setEnabled(false);
+        BtnModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarUsuarioActionPerformed(evt);
+            }
+        });
 
         BtnAgregarUsuario.setText("Agregar");
         BtnAgregarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +164,7 @@ public class Usuario extends javax.swing.JFrame {
             .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                     .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane9)
                         .addComponent(jSeparator25)
@@ -330,9 +336,9 @@ public class Usuario extends javax.swing.JFrame {
 
         DtUsuario usuarioSeleccionado = JListUsuarios.getSelectedValue();
 
-        if (usuarioSeleccionado == null) {
-            System.out.println("Usuario no existente");
-        }
+        if (usuarioSeleccionado == null) return;
+        
+        BtnModificarUsuario.setEnabled(true);
 
         jLabel.setText(usuarioSeleccionado.getNickname());
         jLabel13.setText(usuarioSeleccionado.getNombre());
@@ -364,6 +370,13 @@ public class Usuario extends javax.swing.JFrame {
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         agregarListaUsuarios();
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void BtnModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarUsuarioActionPerformed
+        ModificarUsuario modificarUsuarioFrame = new ModificarUsuario(JListUsuarios.getSelectedValue());
+        modificarUsuarioFrame.setVisible(true);
+        modificarUsuarioFrame.setLocationRelativeTo(null);
+        modificarUsuarioFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_BtnModificarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

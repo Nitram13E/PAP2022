@@ -37,4 +37,9 @@ public class DtClase {
     public LocalTime getHoraInicio() {
         return horaInicio;
     }
+    
+    @Override
+    public String toString(){
+        return nombre;
+    }
 }

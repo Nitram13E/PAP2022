@@ -50,8 +50,8 @@ public class InstitucionDeportiva {
         return this.actividades;
     }
 
-    public void setActividades(List<DtActividadDeportiva> actividades) {
-        this.actividades = actividades;
+    public void agregarActividad(DtActividadDeportiva actividad) {
+        this.actividades.add(actividad);
     }
-
 }
+

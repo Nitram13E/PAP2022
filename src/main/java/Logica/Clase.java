@@ -1,6 +1,7 @@
 package Logica;
 
 import Datatypes.DtRegistro;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,12 +72,6 @@ public class Clase {
     public List<DtRegistro> getRegistros() {
         return registros;
     }
-
-    /* TODO: Eliminar
-    public void setRegistros(List<DtRegistro> registros) {
-        this.registros = registros;
-    }
-    */
 
     public void agregarRegistro(DtRegistro registro){
         this.registros.add(registro);

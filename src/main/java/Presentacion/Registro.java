@@ -449,15 +449,6 @@ public class Registro extends javax.swing.JFrame {
     }
 
     public void cargarComboActividadesDeportivas(){
-        //TODO:Eliminar cuando se implemente CU ActividadDeportiva
-        controladorActividad.altaActividad(new DtActividadDeportiva("Actividad 1", "Esta es la actividad 1", 1, 1000, new Date()));
-        controladorActividad.altaActividad(new DtActividadDeportiva("Actividad 2", "Esta es la actividad 2", 2, 2000, new Date()));
-        controladorActividad.altaActividad(new DtActividadDeportiva("Actividad 3", "Esta es la actividad 3", 3, 3000, new Date()));
-        controladorActividad.altaActividad(new DtActividadDeportiva("Actividad 4", "Esta es la actividad 4", 4, 4000, new Date()));
-        controladorActividad.altaActividad(new DtActividadDeportiva("Actividad 5", "Esta es la actividad 5", 5, 5000, new Date()));
-
-        controladorClase.altaClase();
-
         if(controladorActividad.getActividades().isEmpty()) return;
 
         DefaultComboBoxModel<DtActividadDeportiva> comboModel = new DefaultComboBoxModel<DtActividadDeportiva>();

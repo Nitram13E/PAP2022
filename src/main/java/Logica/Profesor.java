@@ -62,8 +62,8 @@ public class Profesor extends Usuario {
         return clases;
     }
 
-    public void setClases(List<DtClase> clases) {
-        this.clases = clases;
+    public void setClases(DtClase clase) {
+        this.clases.add(clase);
     }
     
     

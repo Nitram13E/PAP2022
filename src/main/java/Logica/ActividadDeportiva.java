@@ -1,5 +1,6 @@
 package Logica;
 
+import Datatypes.DtClase;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +16,7 @@ public class ActividadDeportiva {
     private int duracion;
     private float costo;
     private Date fechaReg;
-    private List<Clase> clases;
+    private List<DtClase> clases;
 
     public ActividadDeportiva(String nombre, String desc, int duracion, float costo, Date fechaReg) {
         this.nombre = nombre;
@@ -23,7 +24,7 @@ public class ActividadDeportiva {
         this.duracion = duracion;
         this.costo = costo;
         this.fechaReg = fechaReg;
-        this.clases = new ArrayList<Clase>();
+        this.clases = new ArrayList<DtClase>();
     }
 
     public String getNombre() {
@@ -66,12 +67,12 @@ public class ActividadDeportiva {
         this.fechaReg = fechaReg;
     }
 
-    public List<Clase> getClases() {
+    public List<DtClase> getClases() {
         return clases;
     }
 
-    public void setClases(List<Clase> clases) {
-        this.clases = clases;
+    public void setClase(DtClase clase) {
+        this.clases.add(clase);
     }
 
 }
