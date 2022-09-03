@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 
-@MappedSuperclass
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Entity
 public abstract class Usuario {
     @Id
     private String nickname;
