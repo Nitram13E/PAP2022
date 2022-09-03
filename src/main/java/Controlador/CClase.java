@@ -2,7 +2,7 @@ package Controlador;
 
 import Controlador.Interfaces.ICClase;
 import Datatypes.DtClase;
-import Datatypes.DtRegistro;
+import Logica.Registro;
 import Logica.Clase;
 import Manejadores.ManejadorClase;
 
@@ -36,7 +36,7 @@ public class CClase implements ICClase {
     }
 
     @Override
-    public void registroSocio(DtClase dtClase, DtRegistro registro){
+    public void registroSocio(DtClase dtClase, Registro registro){
         for(Clase clase : manejador.obtenerClases()){
             if(clase.getNombre().equals(dtClase.getNombre())) clase.agregarRegistro(registro);
         }

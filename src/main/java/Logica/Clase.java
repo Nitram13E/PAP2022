@@ -1,24 +1,31 @@
 package Logica;
 
-import Datatypes.DtRegistro;
+import jakarta.persistence.*;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Shifter
- */
+@Entity
 public class Clase {
-
+    @Id
     private String nombre;
+
+    @Temporal(TemporalType.DATE)
     private Date fecha;
+
+    @Temporal(TemporalType.TIME)
     private LocalTime horaInicio;
     private String url;
+
+    @Temporal(TemporalType.DATE)
     private Date fechaReg;
-    private List<DtRegistro> registros;
+
+    @OneToMany
+    private List<Registro> registros;
+
+    public Clase(){}
 
     public Clase(String nombre, Date fecha, LocalTime horaInicio, String url, Date fechaReg) {
         this.nombre = nombre;
@@ -26,7 +33,7 @@ public class Clase {
         this.horaInicio = horaInicio;
         this.url = url;
         this.fechaReg = fechaReg;
-        this.registros = new ArrayList<DtRegistro>();
+        this.registros = new ArrayList<Registro>();
     }
 
     public String getNombre() {
@@ -69,11 +76,11 @@ public class Clase {
         this.fechaReg = fechaReg;
     }
 
-    public List<DtRegistro> getRegistros() {
+    public List<Registro> getRegistros() {
         return registros;
     }
 
-    public void agregarRegistro(DtRegistro registro){
+    public void agregarRegistro(Registro registro){
         this.registros.add(registro);
     }
 }

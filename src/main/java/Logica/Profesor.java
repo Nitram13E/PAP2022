@@ -1,29 +1,37 @@
 package Logica;
 import Datatypes.DtClase;
 import Datatypes.DtInstitucionDeportiva;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Shifter
- */
+@Entity
 public class Profesor extends Usuario {
-
     private String descripcion;
     private String biografia;
     private String sitioWeb;
-    private DtInstitucionDeportiva institucion;
-    private List <DtClase> clases;
 
-    public Profesor(String nickname, String nombre, String apellido, String mail, Date fechaNac,String descripcion, String sitioWeb, String biografia, DtInstitucionDeportiva institucion) {
+    @ManyToOne
+    private InstitucionDeportiva institucion;
+
+    @OneToMany(cascade = {jakarta.persistence.CascadeType.ALL})
+    private List<Clase> clases = new ArrayList<>();
+
+    public Profesor() {
+
+    }
+
+    public Profesor(String nickname, String nombre, String apellido, String mail, Date fechaNac,String descripcion, String sitioWeb, String biografia, InstitucionDeportiva institucion) {
         super(nickname, nombre, apellido, mail, fechaNac);
         this.descripcion = descripcion;
         this.biografia = biografia;
         this.sitioWeb = sitioWeb;
         this.institucion = institucion;
-        this.clases = new ArrayList<DtClase>();
+        this.clases = new ArrayList<Clase>();
     }
 
     public String getDescripcion() {
@@ -50,19 +58,19 @@ public class Profesor extends Usuario {
         this.sitioWeb = sitioWeb;
     }
 
-    public DtInstitucionDeportiva getInstitucion() {
+    public InstitucionDeportiva getInstitucion() {
         return institucion;
     }
 
-    public void setInstitucion(DtInstitucionDeportiva institucion) {
+    public void setInstitucion(InstitucionDeportiva institucion) {
         this.institucion = institucion;
     }
 
-    public List<DtClase> getClases() {
+    public List<Clase> getClases() {
         return clases;
     }
 
-    public void setClases(DtClase clase) {
+    public void setClases(Clase clase) {
         this.clases.add(clase);
     }
     

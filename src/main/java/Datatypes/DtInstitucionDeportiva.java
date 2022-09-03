@@ -2,13 +2,13 @@ package Datatypes;
 
 public class DtInstitucionDeportiva {
     private String nombre;
-    private String desc;
+    private String descripcion;
     private String url;
 
 
-    public DtInstitucionDeportiva(String nombre, String desc, String url) {
+    public DtInstitucionDeportiva(String nombre, String descripcion, String url) {
         this.nombre = nombre;
-        this.desc = desc;
+        this.descripcion = descripcion;
         this.url = url;
     }
 
@@ -21,7 +21,7 @@ public class DtInstitucionDeportiva {
     }
 
     public String getDesc() {
-        return this.desc;
+        return this.descripcion;
     }
 
     @Override

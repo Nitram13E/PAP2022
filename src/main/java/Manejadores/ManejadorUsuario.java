@@ -7,6 +7,11 @@ import Datatypes.DtUsuario;
 import Logica.Profesor;
 import Logica.Socio;
 import Logica.Usuario;
+import Persistencia.Conexion;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +20,12 @@ public class ManejadorUsuario {
     private static ManejadorUsuario instancia = null;
     //Lista de todos los usuarios en el sistema
     private final List<Usuario> usuarios = new ArrayList<>();
+    private Conexion conexion;
+    private EntityManager entityManager;
 
     private ManejadorUsuario() {
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
     }
 
     public static ManejadorUsuario getInstancia() {
@@ -26,17 +35,16 @@ public class ManejadorUsuario {
         return instancia;
     }
 
-    public void agregarUsuario(DtUsuario usuario) {
-        Usuario usuarioAgregar = null;
+    public void agregarUsuario(Usuario usuario) {
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
 
-        if (usuario instanceof DtProfesor) {
-            usuarioAgregar = new Profesor(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac(), ((DtProfesor) usuario).getDescripcion(), ((DtProfesor) usuario).getSitioWeb(), ((DtProfesor) usuario).getBiografia(), ((DtProfesor) usuario).getInstitucion());
+        entityManager.getTransaction().begin();
 
-        } else if (usuario instanceof DtSocio) {
-            usuarioAgregar = new Socio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac());
-        }
+        entityManager.persist(usuario);
 
-        usuarios.add(usuarioAgregar);
+        entityManager.getTransaction().commit();
+        //usuarios.add(usuarioAgregar);
 
     }//End agregarUsuario
 
@@ -77,13 +85,13 @@ public class ManejadorUsuario {
     }
 
     public void modificarUsuario(Usuario usuario){
-//        Conexion conexion = Conexion.getInstancia();
-//        EntityManager em = conexion.getEntityManager();
-//        em.getTransaction().begin();
-//
-//        em.update(usuario);
-//
-//        em.getTransaction().commit();
+        Conexion conexion = Conexion.getInstancia();
+        EntityManager em = conexion.getEntityManager();
+        em.getTransaction().begin();
+
+        em.persist(usuario);
+
+        em.getTransaction().commit();
 
     }
 

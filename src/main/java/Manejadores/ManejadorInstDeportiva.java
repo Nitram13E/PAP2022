@@ -1,7 +1,11 @@
 package Manejadores;
 
-import Datatypes.DtActividadDeportiva;
+import Datatypes.DtInstitucionDeportiva;
+import Excepciones.InstitucionExistenteException;
 import Logica.InstitucionDeportiva;
+import Persistencia.Conexion;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +13,8 @@ import java.util.List;
 public class ManejadorInstDeportiva {
     private static ManejadorInstDeportiva instancia = null;
     private final List<InstitucionDeportiva> instituciones;
+    private Conexion conexion;
+    private EntityManager entityManager;
     private ManejadorInstDeportiva(){
         instituciones = new ArrayList<>();
     }
@@ -21,26 +27,40 @@ public class ManejadorInstDeportiva {
     }
 
     public void agregarInstitucionDeportiva(InstitucionDeportiva institucion){
-        instituciones.add(institucion);
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        entityManager.persist(institucion);
+
+        entityManager.getTransaction().commit();
     }
 
     public List<InstitucionDeportiva> getInstituciones() {
-        return instituciones;
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
+
+        Query query = entityManager.createQuery("select c from InstitucionDeportiva c");
+
+
+        return (List<InstitucionDeportiva>) query.getResultList();
     }
 
     public Boolean existeInstitucion(String nombre){
-        for (InstitucionDeportiva institucion : instituciones){
-            if(institucion.getNombre().equals(nombre)) return true;
-        }
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
 
-        return false;
+        return entityManager.find(InstitucionDeportiva.class, nombre) != null;
     }
 
     public InstitucionDeportiva buscarInstitucion(String nombre) {
-        for (InstitucionDeportiva institucion : instituciones){
-            if(institucion.getNombre().equals(nombre)) return institucion;
-        }
-        throw new RuntimeException();
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
+
+        return entityManager.find(InstitucionDeportiva.class, nombre);
+
+        //throw new RuntimeException();
     }
 
     /*
@@ -49,6 +69,17 @@ public class ManejadorInstDeportiva {
             if(institucion.getNombre().equals(nombre)) return institucion;
         }
     }*/
+
+    public void modificarInstitucion(InstitucionDeportiva institucion) {
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        entityManager.persist(institucion);
+
+        entityManager.getTransaction().commit();
+    }
 }
 
 

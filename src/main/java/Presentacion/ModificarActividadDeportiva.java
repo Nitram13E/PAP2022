@@ -6,23 +6,22 @@ package Presentacion;
 
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICActDeportiva;
-import Datatypes.DtActividadDeportiva;
+import Datatypes.ActividadDeportiva;
 import Excepciones.ActividadNoExisteException;
 
 import javax.swing.*;
-import java.util.Date;
 
 /**
  *
  * @author lulig
  */
 public class ModificarActividadDeportiva extends javax.swing.JFrame {
-    DtActividadDeportiva dtActividad;
+    ActividadDeportiva dtActividad;
 
     /**
      * Creates new form ModificarActividadDeportiva
      */
-    public ModificarActividadDeportiva(DtActividadDeportiva dtActividad) {
+    public ModificarActividadDeportiva(ActividadDeportiva dtActividad) {
         this.dtActividad = dtActividad;
         initComponents();
         
@@ -178,10 +177,10 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
         Fabrica fabrica = Fabrica.getInstancia();
         ICActDeportiva iActividad = fabrica.getICActDeportiva();
 
-        DtActividadDeportiva dtActividad = null;
+        ActividadDeportiva dtActividad = null;
 
         try {
-            dtActividad = new DtActividadDeportiva(jTxFieldNombreActividad.getText(),
+            dtActividad = new ActividadDeportiva(jTxFieldNombreActividad.getText(),
                     jTextFieldDescripcion.getText(),
                     Integer.parseInt(jTextFieldDuracion.getText()),
                     Float.parseFloat(jTextFieldCosto.getText()),

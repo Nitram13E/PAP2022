@@ -12,15 +12,15 @@ import java.util.List;
 public class ActividadDeportiva {
 
     private String nombre;
-    private String desc;
+    private String descripcion;
     private int duracion;
     private float costo;
     private Date fechaReg;
     private List<DtClase> clases;
 
-    public ActividadDeportiva(String nombre, String desc, int duracion, float costo, Date fechaReg) {
+    public ActividadDeportiva(String nombre, String descripcion, int duracion, float costo, Date fechaReg) {
         this.nombre = nombre;
-        this.desc = desc;
+        this.descripcion = descripcion;
         this.duracion = duracion;
         this.costo = costo;
         this.fechaReg = fechaReg;
@@ -36,11 +36,11 @@ public class ActividadDeportiva {
     }
 
     public String getDesc() {
-        return desc;
+        return descripcion;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDesc(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public int getDuracion() {

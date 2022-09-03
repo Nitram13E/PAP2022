@@ -1,19 +1,23 @@
 package Logica;
+import jakarta.persistence.*;
+
 import java.util.Date;
 
 
-/**
- *
- * @author Shifter
- */
+@MappedSuperclass
 public abstract class Usuario {
+    @Id
     private String nickname;
     private String nombre;
     private String apellido;
     private String mail;
+
+    @Temporal(TemporalType.DATE)
     private Date fechaNac;
-    
-    
+
+    public Usuario() {
+    }
+
     protected Usuario(String nickname, String nombre, String apellido, String mail, Date fechaNac)
     {
         this.nickname = nickname;

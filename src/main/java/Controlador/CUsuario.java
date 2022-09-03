@@ -4,15 +4,14 @@ import Controlador.Interfaces.ICUsuario;
 import Datatypes.DtClase;
 import Datatypes.DtInstitucionDeportiva;
 import Datatypes.DtProfesor;
-import Datatypes.DtRegistro;
+import Logica.*;
 import Datatypes.DtSocio;
 import Datatypes.DtUsuario;
 import Excepciones.EmailExistenteException;
 import Excepciones.UsuarioExistenteException;
 import Excepciones.UsuarioNoExisteException;
-import Logica.Profesor;
-import Logica.Socio;
-import Logica.Usuario;
+import Manejadores.ManejadorClase;
+import Manejadores.ManejadorInstDeportiva;
 import Manejadores.ManejadorUsuario;
 
 import java.util.ArrayList;
@@ -23,8 +22,8 @@ public class CUsuario implements ICUsuario {
 
     @Override
     public void altaUsuario(DtUsuario usuario) throws UsuarioExistenteException, EmailExistenteException {
-
         ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
+        ManejadorInstDeportiva manejadorInstDeportiva = ManejadorInstDeportiva.getInstancia();
 
         //Buscamos si el usuario ingresado ya existe
         boolean userBuscar = mJUsuario.existeUsuario(usuario.getNickname());
@@ -34,8 +33,15 @@ public class CUsuario implements ICUsuario {
         boolean emailBuscar = mJUsuario.existeMail(usuario.getMail());
         
         if(emailBuscar) throw new EmailExistenteException("Ya hay un usuario con el mismo mail!.");
-        
-        mJUsuario.agregarUsuario(usuario);
+
+        if (usuario instanceof DtProfesor) {
+            //usuarioAgregar = new Profesor(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac(), ((DtProfesor) usuario).getDescripcion(), ((DtProfesor) usuario).getSitioWeb(), ((DtProfesor) usuario).getBiografia(), ((DtProfesor) usuario).getInstitucion());
+            InstitucionDeportiva  institucionDeportiva = manejadorInstDeportiva.buscarInstitucion(((DtProfesor) usuario).getInstitucion().getNombre());
+            mJUsuario.agregarUsuario(new Profesor(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac(), ((DtProfesor) usuario).getDescripcion(), ((DtProfesor) usuario).getSitioWeb(), ((DtProfesor) usuario).getBiografia(), institucionDeportiva));
+        } else if (usuario instanceof DtSocio) {
+            // usuarioAgregar = new Socio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac());
+            mJUsuario.agregarUsuario(new Socio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac()));
+        }
     }
 
     @Override
@@ -65,10 +71,12 @@ public class CUsuario implements ICUsuario {
         
         for(Usuario s : listaUsuarios)
         {
-            
             if(s instanceof Profesor)
             {
-                listaDts.add(new DtProfesor(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac(), ((Profesor) s).getInstitucion(), ((Profesor) s).getDescripcion(), ((Profesor) s).getSitioWeb(), ((Profesor) s).getBiografia()));
+                InstitucionDeportiva institucion = ((Profesor) s).getInstitucion();
+                DtInstitucionDeportiva dtInstitucion = new DtInstitucionDeportiva(institucion.getNombre(), institucion.getDesc(), institucion.getUrl());
+
+                listaDts.add(new DtProfesor(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac(), dtInstitucion, ((Profesor) s).getDescripcion(), ((Profesor) s).getSitioWeb(), ((Profesor) s).getBiografia()));
             }
             else if (s instanceof Socio)
             {
@@ -80,7 +88,7 @@ public class CUsuario implements ICUsuario {
         return listaDts;
     }
     @Override
-    public void registroClase(DtUsuario socio, DtRegistro registro) {
+    public void registroClase(DtUsuario socio, Registro registro) {
         ManejadorUsuario manejador = ManejadorUsuario.getInstancia();
 
         for (Usuario usuario : manejador.getUsuarios()) {
@@ -102,7 +110,7 @@ public class CUsuario implements ICUsuario {
            {
                if(((Profesor) s).getInstitucion().getNombre().equals(institucion.getNombre()))
                {
-                   resultado.add(new DtProfesor(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac(), ((Profesor) s).getInstitucion(), ((Profesor) s).getDescripcion(), ((Profesor) s).getSitioWeb(), ((Profesor) s).getBiografia()));
+                   resultado.add(new DtProfesor(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac(), institucion, ((Profesor) s).getDescripcion(), ((Profesor) s).getSitioWeb(), ((Profesor) s).getBiografia()));
                }
            }
        }
@@ -114,12 +122,13 @@ public class CUsuario implements ICUsuario {
     public void agregarClaseAProfesor(DtProfesor profesor, DtClase clase)
     {
         ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
-        
+        ManejadorClase manejadorClase = ManejadorClase.getInstancia();
+
         Usuario usuario = mJUsuario.buscarUsuario(profesor.getNombre());
         
         if(usuario instanceof Profesor)
         {
-            ((Profesor) usuario).setClases(clase);
+            ((Profesor) usuario).setClases(manejadorClase.buscarClase(clase.getNombre()));
         }
     }
 }
