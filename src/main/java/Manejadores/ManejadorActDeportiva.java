@@ -47,7 +47,7 @@ public class ManejadorActDeportiva {
         conexion = Conexion.getInstancia();
         entityManager = conexion.getEntityManager();
 
-        Query query = entityManager.createQuery("select c from ActividadDeportiva c");
+        Query query = entityManager.createQuery("select c from DtActividadDeportiva c");
 
         return (List<ActividadDeportiva>) query.getResultList();
     }

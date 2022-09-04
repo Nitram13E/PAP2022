@@ -11,6 +11,7 @@ public abstract class Usuario {
     private String nickname;
     private String nombre;
     private String apellido;
+    @Column(unique = true)
     private String mail;
 
     @Temporal(TemporalType.DATE)

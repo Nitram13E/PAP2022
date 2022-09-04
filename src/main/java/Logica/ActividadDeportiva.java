@@ -1,30 +1,35 @@
 package Logica;
 
 import Datatypes.DtClase;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Shifter
- */
+@Entity
 public class ActividadDeportiva {
-
+    @Id
     private String nombre;
     private String descripcion;
     private int duracion;
     private float costo;
     private Date fechaReg;
-    private List<DtClase> clases;
 
+    @OneToMany
+    private List<Clase> clases;
+
+    public ActividadDeportiva() {}
     public ActividadDeportiva(String nombre, String descripcion, int duracion, float costo, Date fechaReg) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.duracion = duracion;
         this.costo = costo;
         this.fechaReg = fechaReg;
-        this.clases = new ArrayList<DtClase>();
+        this.clases = new ArrayList<Clase>();
     }
 
     public String getNombre() {
@@ -67,11 +72,11 @@ public class ActividadDeportiva {
         this.fechaReg = fechaReg;
     }
 
-    public List<DtClase> getClases() {
+    public List<Clase> getClases() {
         return clases;
     }
 
-    public void setClase(DtClase clase) {
+    public void setClase(Clase clase) {
         this.clases.add(clase);
     }
 

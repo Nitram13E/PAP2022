@@ -7,7 +7,7 @@ package Presentacion;
 import Controlador.Interfaces.ICActDeportiva;
 import Controlador.Interfaces.ICClase;
 import Controlador.Interfaces.ICUsuario;
-import Datatypes.ActividadDeportiva;
+import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
 import Datatypes.DtInstitucionDeportiva;
 import Datatypes.DtProfesor;
@@ -25,12 +25,12 @@ import javax.swing.DefaultComboBoxModel;
 public class AgregarClase extends javax.swing.JFrame {
 
     ICUsuario controladorUsuario;
-    ActividadDeportiva actividad;
+    DtActividadDeportiva actividad;
     DtInstitucionDeportiva institucion;
     ICClase controladorClase;
     ICActDeportiva controladorActividad;
    
-    public AgregarClase(ActividadDeportiva actividad, DtInstitucionDeportiva institucion, ICUsuario controladorUsuario, ICClase controladorClase, ICActDeportiva controladorActividad) {
+    public AgregarClase(DtActividadDeportiva actividad, DtInstitucionDeportiva institucion, ICUsuario controladorUsuario, ICClase controladorClase, ICActDeportiva controladorActividad) {
         this.controladorUsuario = controladorUsuario;
         this.actividad = actividad;
         this.institucion = institucion;
