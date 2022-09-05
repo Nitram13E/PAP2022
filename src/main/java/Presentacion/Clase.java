@@ -8,7 +8,7 @@ import Controlador.Interfaces.ICActDeportiva;
 import Controlador.Interfaces.ICClase;
 import Controlador.Interfaces.ICInstDeportiva;
 import Controlador.Interfaces.ICUsuario;
-import Datatypes.ActividadDeportiva;
+import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
 import Datatypes.DtInstitucionDeportiva;
 import java.util.ArrayList;
@@ -321,7 +321,7 @@ public class Clase extends javax.swing.JFrame {
 
     private void BtnAgregarClase2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarClase2ActionPerformed
         
-        ActividadDeportiva actividad = (ActividadDeportiva)comboActividadDeportiva.getSelectedItem();
+        DtActividadDeportiva actividad = (DtActividadDeportiva)comboActividadDeportiva.getSelectedItem();
         DtInstitucionDeportiva institucion = (DtInstitucionDeportiva)comboInstitucion.getSelectedItem();
         
         if(actividad == null || institucion == null) return;
@@ -343,9 +343,9 @@ public class Clase extends javax.swing.JFrame {
     private void comboInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboInstitucionActionPerformed
         DtInstitucionDeportiva dtInstitucion = (DtInstitucionDeportiva) comboInstitucion.getSelectedItem();
 
-        List<ActividadDeportiva> actividades = controladorInstitucion.getActividadesDeInstitucion(dtInstitucion.getNombre());
+        List<DtActividadDeportiva> actividades = controladorInstitucion.getActividadesDeInstitucion(dtInstitucion.getNombre());
 
-        DefaultComboBoxModel<ActividadDeportiva> comboModel = new DefaultComboBoxModel<ActividadDeportiva>();
+        DefaultComboBoxModel<DtActividadDeportiva> comboModel = new DefaultComboBoxModel<DtActividadDeportiva>();
         comboModel.addAll(actividades);
         comboActividadDeportiva.setModel(comboModel);
         comboActividadDeportiva.setEnabled(true);
@@ -353,7 +353,7 @@ public class Clase extends javax.swing.JFrame {
 
     private void comboActividadDeportivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActividadDeportivaActionPerformed
         DefaultListModel<DtClase> listModel = new DefaultListModel<DtClase>();
-        listModel.addAll(controladorActividad.getClases((ActividadDeportiva) comboActividadDeportiva.getSelectedItem()));
+        listModel.addAll(controladorActividad.getClases((DtActividadDeportiva) comboActividadDeportiva.getSelectedItem()));
         listaClases.setModel(listModel);
     }//GEN-LAST:event_comboActividadDeportivaActionPerformed
     public void cargarComboInstitucion() {
@@ -366,7 +366,7 @@ public class Clase extends javax.swing.JFrame {
     }
 
     private void cargarComboActividades() {
-        List<ActividadDeportiva> actividades = new ArrayList<>();
+        List<DtActividadDeportiva> actividades = new ArrayList<>();
         DefaultComboBoxModel<DtInstitucionDeportiva> comboModel = new DefaultComboBoxModel<DtInstitucionDeportiva>();
 
         comboModel.addAll(controladorInstitucion.getInstituciones());
@@ -378,7 +378,7 @@ public class Clase extends javax.swing.JFrame {
         if(comboActividadDeportiva.getSelectedItem() == null) return;
         
         DefaultListModel<DtClase> listModel = new DefaultListModel<DtClase>();
-        listModel.addAll(controladorActividad.getClases((ActividadDeportiva) comboActividadDeportiva.getSelectedItem()));
+        listModel.addAll(controladorActividad.getClases((DtActividadDeportiva) comboActividadDeportiva.getSelectedItem()));
         listaClases.setModel(listModel);
     }
     
@@ -397,7 +397,7 @@ public class Clase extends javax.swing.JFrame {
     private javax.swing.JPanel PanelClase2;
     private javax.swing.JPanel PanelInfoUsuario5;
     private javax.swing.JTextArea TextBiografia4;
-    private javax.swing.JComboBox<ActividadDeportiva> comboActividadDeportiva;
+    private javax.swing.JComboBox<DtActividadDeportiva> comboActividadDeportiva;
     private javax.swing.JComboBox<DtInstitucionDeportiva> comboInstitucion;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

@@ -9,10 +9,9 @@ import Controlador.Interfaces.ICClase;
 import Controlador.Interfaces.ICInstDeportiva;
 import Controlador.Interfaces.ICUsuario;
 import Datatypes.*;
-import Datatypes.ActividadDeportiva;
+import Datatypes.DtActividadDeportiva;
 
 import javax.swing.DefaultComboBoxModel;
-import java.util.Date;
 
 /**
  *
@@ -452,7 +451,7 @@ public class Registro extends javax.swing.JFrame {
     public void cargarComboActividadesDeportivas(){
         if(controladorActividad.getActividades().isEmpty()) return;
 
-        DefaultComboBoxModel<ActividadDeportiva> comboModel = new DefaultComboBoxModel<ActividadDeportiva>();
+        DefaultComboBoxModel<DtActividadDeportiva> comboModel = new DefaultComboBoxModel<DtActividadDeportiva>();
         comboModel.addAll(controladorActividad.getActividades());
         comboActividad.setModel(comboModel);
         comboActividad.setEnabled(true);
@@ -469,7 +468,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JPanel PanelInfoSocio;
     private javax.swing.JPanel PanelRegistro;
     private javax.swing.JButton btnRegistrarSocio;
-    private javax.swing.JComboBox<ActividadDeportiva> comboActividad;
+    private javax.swing.JComboBox<DtActividadDeportiva> comboActividad;
     private javax.swing.JComboBox<DtInstitucionDeportiva> comboInstitucion;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

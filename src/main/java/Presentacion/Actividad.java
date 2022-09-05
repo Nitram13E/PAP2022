@@ -2,7 +2,7 @@ package Presentacion;
 
 import Controlador.Interfaces.ICActDeportiva;
 import Controlador.Interfaces.ICInstDeportiva;
-import Datatypes.ActividadDeportiva;
+import Datatypes.DtActividadDeportiva;
 import Datatypes.DtInstitucionDeportiva;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -321,8 +321,8 @@ public class Actividad extends javax.swing.JFrame {
         if (DtInstitucion == null) {
             return;
         }
-        List<ActividadDeportiva> actividades = controladorInstitucion.getActividadesDeInstitucion(DtInstitucion.getNombre());
-        DefaultListModel<ActividadDeportiva> listModel = new DefaultListModel<ActividadDeportiva>();
+        List<DtActividadDeportiva> actividades = controladorInstitucion.getActividadesDeInstitucion(DtInstitucion.getNombre());
+        DefaultListModel<DtActividadDeportiva> listModel = new DefaultListModel<DtActividadDeportiva>();
         listModel.addAll(actividades);
         listaActividades.setModel(listModel);
     }
@@ -405,6 +405,6 @@ public class Actividad extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator22;
     private javax.swing.JSeparator jSeparator24;
-    private javax.swing.JList<ActividadDeportiva> listaActividades;
+    private javax.swing.JList<DtActividadDeportiva> listaActividades;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,12 +12,10 @@ import java.util.List;
 
 public class ManejadorInstDeportiva {
     private static ManejadorInstDeportiva instancia = null;
-    private final List<InstitucionDeportiva> instituciones;
     private Conexion conexion;
     private EntityManager entityManager;
-    private ManejadorInstDeportiva(){
-        instituciones = new ArrayList<>();
-    }
+
+    private ManejadorInstDeportiva(){}
     
     public static ManejadorInstDeportiva getInstancia() {
         if (instancia == null) {

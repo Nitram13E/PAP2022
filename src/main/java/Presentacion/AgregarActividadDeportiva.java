@@ -2,7 +2,7 @@ package Presentacion;
 
 import Controlador.Interfaces.ICActDeportiva;
 import Controlador.Interfaces.ICInstDeportiva;
-import Datatypes.ActividadDeportiva;
+import Datatypes.DtActividadDeportiva;
 import Datatypes.DtInstitucionDeportiva;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
@@ -193,7 +193,7 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
         int duracion = Integer.parseInt(intfield_duracion.getText());
         float costo = Float.parseFloat(floatfield_costo.getText());
 
-        ActividadDeportiva nuevoDtActividad = new ActividadDeportiva(nombre, descripcion, duracion, costo, new Date());
+        DtActividadDeportiva nuevoDtActividad = new DtActividadDeportiva(nombre, descripcion, duracion, costo, new Date());
 
         controladorActividad.altaActividad(nuevoDtActividad);
         controladorInstitucion.agregarActividadDeportiva(DtInstitucion.getNombre(), nuevoDtActividad);

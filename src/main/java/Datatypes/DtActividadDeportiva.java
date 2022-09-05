@@ -9,21 +9,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-public class ActividadDeportiva {
-    @Id
+
+public class DtActividadDeportiva {
+
     private String nombre;
     private String descripcion;
     private Integer duracion;
     private Float costo;
     private Date fechaReg;
-
-    @OneToMany
     private List<Clase> clases;
 
-    public ActividadDeportiva() {}
+    public DtActividadDeportiva() {}
 
-    public ActividadDeportiva(String nombre, String descripcion, int duracion, float costo, Date fechaReg) {
+    public DtActividadDeportiva(String nombre, String descripcion, int duracion, float costo, Date fechaReg) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.duracion = duracion;
