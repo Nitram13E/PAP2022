@@ -3,7 +3,6 @@ package Controlador.Interfaces;
 import Datatypes.DtActividadDeportiva;
 import Datatypes.DtInstitucionDeportiva;
 import Excepciones.InstitucionExistenteException;
-import Logica.InstitucionDeportiva;
 
 import java.util.List;
 

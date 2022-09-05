@@ -1,26 +1,33 @@
 package Datatypes;
 
 import Logica.Clase;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 public class DtActividadDeportiva {
+
     private String nombre;
-    private String desc;
+    private String descripcion;
     private Integer duracion;
     private Float costo;
     private Date fechaReg;
-    private List<DtClase> clases;
+    private List<Clase> clases;
 
-    public DtActividadDeportiva(String nombre, String desc, int duracion, float costo, Date fechaReg) {
+    public DtActividadDeportiva() {}
+
+    public DtActividadDeportiva(String nombre, String descripcion, int duracion, float costo, Date fechaReg) {
         this.nombre = nombre;
-        this.desc = desc;
+        this.descripcion = descripcion;
         this.duracion = duracion;
         this.costo = costo;
         this.fechaReg = fechaReg;
-        this.clases = new ArrayList<DtClase>();
+        this.clases = new ArrayList<Clase>();
     }
 
     public String getNombre() {
@@ -28,7 +35,7 @@ public class DtActividadDeportiva {
     }
 
     public String getDesc() {
-        return this.desc;
+        return this.descripcion;
     }
 
     public Integer getDuracion() {
@@ -43,7 +50,7 @@ public class DtActividadDeportiva {
         return this.fechaReg;
     }
 
-    public List<DtClase> getClases() {
+    public List<Clase> getClases() {
         return this.clases;
     }
 

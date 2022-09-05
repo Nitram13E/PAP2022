@@ -1,25 +1,28 @@
 package Logica;
 
-import Datatypes.DtActividadDeportiva;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Shifter
- */
+@Entity
 public class InstitucionDeportiva {
-
+    @Id
     private String nombre;
-    private String desc;
+    private String descripcion;
     private String url;
-    private List<DtActividadDeportiva> actividades;
+    @OneToMany
+    private List<ActividadDeportiva> actividades;
 
-    public InstitucionDeportiva(String nombre, String desc, String url) {
+    public InstitucionDeportiva() {}
+
+    public InstitucionDeportiva(String nombre, String descripcion, String url) {
         this.nombre = nombre;
-        this.desc = desc;
+        this.descripcion = descripcion;
         this.url = url;
-        this.actividades = new ArrayList<DtActividadDeportiva>();
+        this.actividades = new ArrayList<ActividadDeportiva>();
     }
 
     public String getNombre() {
@@ -31,11 +34,11 @@ public class InstitucionDeportiva {
     }
 
     public String getDesc() {
-        return this.desc;
+        return this.descripcion;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDesc(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getUrl() {
@@ -46,14 +49,12 @@ public class InstitucionDeportiva {
         this.url = url;
     }
 
-    public List<DtActividadDeportiva> getActividades() {
+    public List<ActividadDeportiva> getActividades() {
         return this.actividades;
     }
 
-    public void setActividades(DtActividadDeportiva actividad) {
+    public void agregarActividad(ActividadDeportiva actividad) {
         this.actividades.add(actividad);
     }
-    
-
 }
 

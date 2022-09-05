@@ -1,5 +1,7 @@
 package Controlador.Interfaces;
 
+
+import Logica.Registro;
 import Datatypes.DtClase;
 import Datatypes.DtInstitucionDeportiva;
 import Datatypes.DtProfesor;
@@ -14,6 +16,10 @@ public interface ICUsuario {
     public void altaUsuario(DtUsuario usuario) throws UsuarioExistenteException,EmailExistenteException;
     public void modificarDatos(DtUsuario dtUsuario) throws UsuarioNoExisteException;
     public List<DtUsuario> retornarUsuarios();
+
+
+    public void registroClase(DtUsuario socio, Registro registro);
     public List<DtProfesor> retornarProfesoresInstitucion(DtInstitucionDeportiva institucion);
     public void agregarClaseAProfesor(DtProfesor profesor, DtClase clase);
+
 }

@@ -1,19 +1,25 @@
 package Logica;
+import jakarta.persistence.*;
+
 import java.util.Date;
 
 
-/**
- *
- * @author Shifter
- */
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Entity
 public abstract class Usuario {
+    @Id
     private String nickname;
     private String nombre;
     private String apellido;
+    @Column(unique = true)
     private String mail;
+
+    @Temporal(TemporalType.DATE)
     private Date fechaNac;
-    
-    
+
+    public Usuario() {
+    }
+
     protected Usuario(String nickname, String nombre, String apellido, String mail, Date fechaNac)
     {
         this.nickname = nickname;

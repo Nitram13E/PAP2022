@@ -1,23 +1,20 @@
 package Manejadores;
 
 
-import Datatypes.DtProfesor;
-import Datatypes.DtSocio;
-import Datatypes.DtUsuario;
-import Logica.Profesor;
-import Logica.Socio;
+import Logica.Clase;
 import Logica.Usuario;
-import java.util.ArrayList;
+import Persistencia.Conexion;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
+
 import java.util.List;
 
 public class ManejadorUsuario {
-
     private static ManejadorUsuario instancia = null;
-    //Lista de todos los usuarios en el sistema
-    private final List<Usuario> usuarios = new ArrayList<>();
+    private Conexion conexion;
+    private EntityManager entityManager;
 
-    private ManejadorUsuario() {
-    }
+    private ManejadorUsuario() {}
 
     public static ManejadorUsuario getInstancia() {
         if (instancia == null) {
@@ -26,69 +23,59 @@ public class ManejadorUsuario {
         return instancia;
     }
 
-    public void agregarUsuario(DtUsuario usuario) {
-        Usuario usuarioAgregar = null;
+    public void agregarUsuario(Usuario usuario) {
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
 
-        if (usuario instanceof DtProfesor) {
-            usuarioAgregar = new Profesor(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac(), ((DtProfesor) usuario).getDescripcion(), ((DtProfesor) usuario).getSitioWeb(), ((DtProfesor) usuario).getBiografia(), ((DtProfesor) usuario).getInstitucion());
+        entityManager.getTransaction().begin();
 
-        } else if (usuario instanceof DtSocio) {
-            usuarioAgregar = new Socio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac());
-        }
+        entityManager.persist(usuario);
 
-        usuarios.add(usuarioAgregar);
-
+        entityManager.getTransaction().commit();
     }//End agregarUsuario
 
     public Usuario buscarUsuario(String nickname) {
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
 
-        //Recorre la lista de usuarios del sistema en busqueda del mismo nickname
-        for (Usuario s : usuarios) {
-            if (s.getNickname().equals(nickname)) {
-                return s;
-            }
-        }
-
-        return null;
+        return entityManager.find(Usuario.class, nickname);
     }//End buscarUsuario
     
     public boolean existeUsuario(String nickname)
     {
-        //Recorre la lista de usuarios del sistema en busqueda del mismo nickname
-        for (Usuario s : usuarios) {
-            if (s.getNickname().equals(nickname)) {
-                return true;
-            }
-        }
-        
-        return false;
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
+
+        return entityManager.find(Usuario.class, nickname) != null;
     }
     
     public boolean existeMail(String mail)
     {
-        //Recorre la lista de usuarios del sistema en busqueda del mismo nickname
-        for (Usuario s : usuarios) {
-            if (s.getMail().equals(mail)) {
-                return true;
-            }
-        }
-        
-        return false;
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
+
+        Query query = entityManager.createQuery("select c from Usuario c where c.mail = :mail").setParameter("mail", mail);
+
+        return !query.getResultList().isEmpty();
     }
 
     public void modificarUsuario(Usuario usuario){
-//        Conexion conexion = Conexion.getInstancia();
-//        EntityManager em = conexion.getEntityManager();
-//        em.getTransaction().begin();
-//
-//        em.update(usuario);
-//
-//        em.getTransaction().commit();
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
+        entityManager.getTransaction().begin();
 
+        entityManager.persist(usuario);
+
+        entityManager.getTransaction().commit();
     }
 
     public List<Usuario> getUsuarios() {
-        return this.usuarios;
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
+
+        Query query = entityManager.createQuery("select c from Usuario c");
+
+        return (List<Usuario>) query.getResultList();
     }
 
 }

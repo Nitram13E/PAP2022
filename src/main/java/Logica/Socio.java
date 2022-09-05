@@ -1,29 +1,30 @@
 package Logica;
 
-import Datatypes.DtRegistro;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Shifter
- */
+@Entity
 public class Socio extends Usuario {
-    
-    private List<DtRegistro> registros;
-    
-    public Socio(String nickname, String nombre, String apellido, String mail, Date fechaNac) {
-        super(nickname, nombre, apellido, mail, fechaNac);
-        this.registros = new ArrayList<DtRegistro>();
+    @OneToMany
+    private List<Registro> registros;
+
+    public Socio() {
     }
 
-    public List<DtRegistro> getRegistros() {
+    public Socio(String nickname, String nombre, String apellido, String mail, Date fechaNac) {
+        super(nickname, nombre, apellido, mail, fechaNac);
+        this.registros = new ArrayList<Registro>();
+    }
+
+    public List<Registro> getRegistros() {
         return registros;
     }
 
-    public void setRegistros(List<DtRegistro> registros) {
-        this.registros = registros;
+    public void agregarRegistro(Registro registro){
+        this.registros.add(registro);
     }
-    
 }

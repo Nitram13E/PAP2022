@@ -6,7 +6,6 @@ import Datatypes.DtActividadDeportiva;
 import Datatypes.DtInstitucionDeportiva;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 
 /*          El caso de uso comienza cuando el administrador desea dar de alta una
              actividad deportiva. En primer lugar, el administrador indica la

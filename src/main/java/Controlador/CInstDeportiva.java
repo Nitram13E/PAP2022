@@ -4,7 +4,9 @@ import Controlador.Interfaces.ICInstDeportiva;
 import Datatypes.DtActividadDeportiva;
 import Datatypes.DtInstitucionDeportiva;
 import Excepciones.InstitucionExistenteException;
+import Logica.ActividadDeportiva;
 import Logica.InstitucionDeportiva;
+import Manejadores.ManejadorActDeportiva;
 import Manejadores.ManejadorInstDeportiva;
 
 import java.util.ArrayList;
@@ -29,6 +31,8 @@ public class CInstDeportiva implements ICInstDeportiva {
         InstitucionDeportiva institucionDeportiva = manejador.buscarInstitucion(institucion.getNombre());
         institucionDeportiva.setUrl(institucion.getUrl());
         institucionDeportiva.setDesc(institucion.getDesc());
+
+        manejador.modificarInstitucion(institucionDeportiva);
     }
 
     @Override
@@ -40,18 +44,22 @@ public class CInstDeportiva implements ICInstDeportiva {
     }
     
     @Override
-    public void agregarActividadDeportiva(String nombreInstitucion, DtActividadDeportiva actividad){
-        //buscar instituci´n
+    public void agregarActividadDeportiva(String nombreInstitucion, DtActividadDeportiva dtActividad){
+        ManejadorActDeportiva manejadorActDeportiva = ManejadorActDeportiva.getInstancia();
+
         InstitucionDeportiva institucion = manejador.buscarInstitucion(nombreInstitucion);
-        
-        manejador.agregarActividadDeportiva(institucion, actividad);  
+        ActividadDeportiva actividad = manejadorActDeportiva.buscarActividad(dtActividad.getNombre());
+
+        institucion.agregarActividad(actividad);
     }
     
     @Override
     public List<DtActividadDeportiva> getActividadesDeInstitucion(String nombreInstitucion){
         InstitucionDeportiva institucion = manejador.buscarInstitucion(nombreInstitucion);
-        return institucion.getActividades();
+        List<DtActividadDeportiva> actividades = new ArrayList<>();
+
+        institucion.getActividades().forEach(actividad -> actividades.add(new DtActividadDeportiva(actividad.getNombre(), actividad.getDesc(), actividad.getDuracion(), actividad.getCosto(), actividad.getFechaReg())));
+
+        return actividades;
     }
-    
-    
 }

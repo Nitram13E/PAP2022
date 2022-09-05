@@ -10,7 +10,6 @@ import Datatypes.DtActividadDeportiva;
 import Excepciones.ActividadNoExisteException;
 
 import javax.swing.*;
-import java.util.Date;
 
 /**
  *

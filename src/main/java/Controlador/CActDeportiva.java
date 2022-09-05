@@ -6,7 +6,9 @@ import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
 import Excepciones.ActividadNoExisteException;
 import Logica.ActividadDeportiva;
+import Logica.Clase;
 import Manejadores.ManejadorActDeportiva;
+import Manejadores.ManejadorClase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +22,14 @@ public class CActDeportiva implements ICActDeportiva {
 
     @Override
     public void altaActividad(DtActividadDeportiva actividad) {
-        manejador.agegarActividad(new ActividadDeportiva(actividad.getNombre(), actividad.getDesc(), actividad.getDuracion(), actividad.getCosto(), actividad.getFechaReg()));
+        manejador.agegarActividad(new Logica.ActividadDeportiva(actividad.getNombre(), actividad.getDesc(), actividad.getDuracion(), actividad.getCosto(), actividad.getFechaReg()));
     }
 
     @Override
     public void modificarActividad(DtActividadDeportiva actividadDeportiva) throws ActividadNoExisteException {
         //Nombre, es unico, y fecha no se pueden modificar
         ManejadorActDeportiva mAct = ManejadorActDeportiva.getInstancia();
-        ActividadDeportiva actividad = mAct.buscarActividad(actividadDeportiva.getNombre());
+        Logica.ActividadDeportiva actividad = mAct.buscarActividad(actividadDeportiva.getNombre());
 
         if(actividad == null) {
             throw new ActividadNoExisteException("No existe actividad deportiva con ese nombre");
@@ -52,16 +54,31 @@ public class CActDeportiva implements ICActDeportiva {
 
     @Override
     public List<DtActividadDeportiva> getActividades(){
-        List<DtActividadDeportiva> actividades = new ArrayList<DtActividadDeportiva>();
+        List<DtActividadDeportiva> actividades = new ArrayList<>();
         manejador.getActividades().forEach(act -> actividades.add(new DtActividadDeportiva(act.getNombre(), act.getDesc(), act.getDuracion(), act.getCosto(), act.getFechaReg())));
 
         return actividades;
     }
     
     @Override
-    public void agregarClaseAActividadDeportiva(DtClase clase, DtActividadDeportiva actividad)
-    {   
-        ActividadDeportiva actividaddepor = manejador.buscarActividad(actividad.getNombre());
-        actividaddepor.setClase(clase);
+    public void agregarClaseAActividadDeportiva(DtClase dtClase, DtActividadDeportiva dtActividad)
+    {
+        ManejadorClase manejadorClase = ManejadorClase.getInstancia();
+
+        ActividadDeportiva actividad = manejador.buscarActividad(dtActividad.getNombre());
+        Clase clase = manejadorClase.buscarClase(dtClase.getNombre());
+
+        actividad.setClase(clase);
+    }
+    
+    @Override
+    public List<DtClase> getClases(DtActividadDeportiva dtActividad){
+        Logica.ActividadDeportiva actividad = manejador.buscarActividad(dtActividad.getNombre());
+
+        List<DtClase> clases = new ArrayList<>();
+
+        actividad.getClases().forEach(clase -> clases.add(new DtClase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg())));
+
+        return clases;
     }
 }

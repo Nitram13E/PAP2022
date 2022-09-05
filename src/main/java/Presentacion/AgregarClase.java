@@ -11,7 +11,7 @@ import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
 import Datatypes.DtInstitucionDeportiva;
 import Datatypes.DtProfesor;
-import Datatypes.DtUsuario;
+
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -30,7 +30,7 @@ public class AgregarClase extends javax.swing.JFrame {
     ICClase controladorClase;
     ICActDeportiva controladorActividad;
    
-    public AgregarClase(DtActividadDeportiva actividad, DtInstitucionDeportiva institucion,ICUsuario controladorUsuario, ICClase controladorClase, ICActDeportiva controladorActividad) {
+    public AgregarClase(DtActividadDeportiva actividad, DtInstitucionDeportiva institucion, ICUsuario controladorUsuario, ICClase controladorClase, ICActDeportiva controladorActividad) {
         this.controladorUsuario = controladorUsuario;
         this.actividad = actividad;
         this.institucion = institucion;
@@ -253,6 +253,8 @@ public class AgregarClase extends javax.swing.JFrame {
         
         //Agregar clase a Actividad Deportiva
         controladorActividad.agregarClaseAActividadDeportiva(claseAgregar, this.actividad);
+        
+        dispose();
     }//GEN-LAST:event_BtnAgregarClaseActionPerformed
 
     /**

@@ -1,7 +1,12 @@
 package Datatypes;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.time.LocalTime;
 import java.util.Date;
+
 
 public class DtClase {
     private String nombre;
@@ -9,6 +14,9 @@ public class DtClase {
     private LocalTime horaInicio;
     private String url;
     private Date fechaReg;
+
+    public DtClase() {
+    }
 
     public DtClase(String nombre, Date fecha, LocalTime horaInicio, String url, Date fechaReg) {
         this.nombre = nombre;
@@ -36,5 +44,10 @@ public class DtClase {
 
     public LocalTime getHoraInicio() {
         return horaInicio;
+    }
+    
+    @Override
+    public String toString(){
+        return nombre;
     }
 }

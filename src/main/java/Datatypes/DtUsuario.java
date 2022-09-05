@@ -9,6 +9,8 @@ public class DtUsuario {
     private String mail;
     private Date fechaNac;
 
+    public DtUsuario(){}
+
     public DtUsuario(String nickname, String nombre, String apellido, String mail, Date fechaNac)
     {
         this.nickname = nickname;
