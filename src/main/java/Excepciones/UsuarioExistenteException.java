@@ -6,10 +6,6 @@ package Excepciones;
 
 import java.io.Serial;
 
-/**
- *
- * @author Shifter
- */
 public class UsuarioExistenteException extends Exception {
 
     @Serial

@@ -4,14 +4,12 @@ import Controlador.Interfaces.ICActDeportiva;
 import Controlador.Interfaces.ICInstDeportiva;
 import Datatypes.DtActividadDeportiva;
 import Datatypes.DtInstitucionDeportiva;
+import Excepciones.ActividadExistenteException;
+import Excepciones.DuracionNegativaException;
+import Excepciones.PrecioNegativoException;
+
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
-
-/*          El caso de uso comienza cuando el administrador desea dar de alta una
-             actividad deportiva. En primer lugar, el administrador indica la
-             institución que la ofrece y los datos básicos de la misma: nombre
-             (único), descripción, duración, costo, fecha de alta. 
-              Finalmente, el sistema da de alta la actividad deportiva. */
 
 public class AgregarActividadDeportiva extends javax.swing.JFrame {
 
@@ -86,7 +84,11 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
         botonAgregar.setEnabled(false);
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Agregar(evt);
+                try {
+                    btn_Agregar(evt);
+                } catch (ActividadExistenteException | PrecioNegativoException | DuracionNegativaException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -188,7 +190,7 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_Agregar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Agregar
+    private void btn_Agregar(java.awt.event.ActionEvent evt) throws ActividadExistenteException, PrecioNegativoException, DuracionNegativaException {//GEN-FIRST:event_btn_Agregar
         if( !textfield_nombre.getText().isEmpty() && !textfield_descripcion.getText().isEmpty() && !intfield_duracion.getText().isEmpty() && !floatfield_costo.getText().isEmpty() ){
             
             DtInstitucionDeportiva DtInstitucion = (DtInstitucionDeportiva) comboInstitucion.getSelectedItem();

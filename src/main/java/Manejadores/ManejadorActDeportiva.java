@@ -4,6 +4,7 @@ package Manejadores;
 
 import Logica.ActividadDeportiva;
 import Logica.InstitucionDeportiva;
+import Logica.Usuario;
 import Persistencia.Conexion;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
@@ -30,6 +31,14 @@ public class ManejadorActDeportiva {
         entityManager = conexion.getEntityManager();
 
         return entityManager.find(ActividadDeportiva.class, nombre);
+    }
+
+    public boolean existeActividad(String nombre)
+    {
+        conexion = Conexion.getInstancia();
+        entityManager = conexion.getEntityManager();
+
+        return entityManager.find(ActividadDeportiva.class, nombre) != null;
     }
 
     public void agegarActividad(ActividadDeportiva actividad) {

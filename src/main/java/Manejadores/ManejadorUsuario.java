@@ -11,8 +11,8 @@ import java.util.List;
 
 public class ManejadorUsuario {
     private static ManejadorUsuario instancia = null;
-    private Conexion conexion;
-    private EntityManager entityManager;
+    private static Conexion conexion;
+    private static EntityManager entityManager;
 
     private ManejadorUsuario() {}
 

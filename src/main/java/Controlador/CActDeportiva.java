@@ -4,7 +4,10 @@ import Controlador.Interfaces.ICActDeportiva;
 
 import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
+import Excepciones.ActividadExistenteException;
 import Excepciones.ActividadNoExisteException;
+import Excepciones.DuracionNegativaException;
+import Excepciones.PrecioNegativoException;
 import Logica.ActividadDeportiva;
 import Logica.Clase;
 import Manejadores.ManejadorActDeportiva;
@@ -21,7 +24,17 @@ public class CActDeportiva implements ICActDeportiva {
     }
 
     @Override
-    public void altaActividad(DtActividadDeportiva actividad) {
+    public void altaActividad(DtActividadDeportiva actividad) throws ActividadExistenteException, PrecioNegativoException, DuracionNegativaException {
+
+        boolean existeActividad = manejador.existeActividad(actividad.getNombre());
+
+        if(existeActividad) {
+            throw new ActividadExistenteException("Ya existe una actividad con este nombre");
+        }if(actividad.getDuracion()<0){
+            throw new DuracionNegativaException("Se asignado un tiempo de duración negativo.");
+        }if(actividad.getCosto()<0){
+            throw new PrecioNegativoException("No se acepta precios menores a 0.");
+        }
         manejador.agegarActividad(new Logica.ActividadDeportiva(actividad.getNombre(), actividad.getDesc(), actividad.getDuracion(), actividad.getCosto(), actividad.getFechaReg()));
     }
 
