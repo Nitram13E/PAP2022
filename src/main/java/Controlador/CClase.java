@@ -2,9 +2,15 @@ package Controlador;
 
 import Controlador.Interfaces.ICClase;
 import Datatypes.DtClase;
+import Datatypes.DtSocio;
 import Logica.Registro;
 import Logica.Clase;
+import Logica.Socio;
 import Manejadores.ManejadorClase;
+import Manejadores.ManejadorUsuario;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CClase implements ICClase {
     ManejadorClase manejador;

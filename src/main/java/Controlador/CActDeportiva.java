@@ -9,6 +9,8 @@ import Logica.ActividadDeportiva;
 import Logica.Clase;
 import Manejadores.ManejadorActDeportiva;
 import Manejadores.ManejadorClase;
+import Persistencia.Conexion;
+import jakarta.persistence.EntityManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +71,16 @@ public class CActDeportiva implements ICActDeportiva {
         Clase clase = manejadorClase.buscarClase(dtClase.getNombre());
 
         actividad.setClase(clase);
+
+        //TODO: borrar chanchada
+        Conexion conexion = Conexion.getInstancia();
+        EntityManager entityManager = conexion.getEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        entityManager.persist(actividad);
+
+        entityManager.getTransaction().commit();
     }
     
     @Override

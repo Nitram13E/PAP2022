@@ -18,7 +18,6 @@ public class ActividadDeportiva {
     private int duracion;
     private float costo;
     private Date fechaReg;
-
     @OneToMany
     private List<Clase> clases;
 
@@ -79,5 +78,4 @@ public class ActividadDeportiva {
     public void setClase(Clase clase) {
         this.clases.add(clase);
     }
-
 }

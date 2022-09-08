@@ -1,7 +1,10 @@
 package Controlador.Interfaces;
 
 import Datatypes.DtClase;
+import Datatypes.DtSocio;
 import Logica.Registro;
+
+import java.util.List;
 
 public interface ICClase {
     public void altaClase(DtClase clase);

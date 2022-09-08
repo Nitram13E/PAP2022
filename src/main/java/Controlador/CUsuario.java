@@ -87,6 +87,20 @@ public class CUsuario implements ICUsuario {
         
         return listaDts;
     }
+
+    public List<DtSocio> getSocios(){
+        ManejadorUsuario manejadorUsuario = ManejadorUsuario.getInstancia();
+
+        List<DtSocio> socios = new ArrayList<>();
+
+        for(Usuario usuario : manejadorUsuario.getUsuarios())
+        {
+            if(usuario instanceof Socio) socios.add(new DtSocio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac()));
+        }
+
+        return socios;
+    }
+
     @Override
     public void registroClase(DtUsuario socio, Registro registro) {
         ManejadorUsuario manejador = ManejadorUsuario.getInstancia();
