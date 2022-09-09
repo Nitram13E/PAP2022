@@ -35,11 +35,9 @@ public class CUsuario implements ICUsuario {
         if(emailBuscar) throw new EmailExistenteException("Ya hay un usuario con el mismo mail!.");
 
         if (usuario instanceof DtProfesor) {
-            //usuarioAgregar = new Profesor(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac(), ((DtProfesor) usuario).getDescripcion(), ((DtProfesor) usuario).getSitioWeb(), ((DtProfesor) usuario).getBiografia(), ((DtProfesor) usuario).getInstitucion());
             InstitucionDeportiva  institucionDeportiva = manejadorInstDeportiva.buscarInstitucion(((DtProfesor) usuario).getInstitucion().getNombre());
             mJUsuario.agregarUsuario(new Profesor(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac(), ((DtProfesor) usuario).getDescripcion(), ((DtProfesor) usuario).getSitioWeb(), ((DtProfesor) usuario).getBiografia(), institucionDeportiva));
         } else if (usuario instanceof DtSocio) {
-            // usuarioAgregar = new Socio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac());
             mJUsuario.agregarUsuario(new Socio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac()));
         }
     }

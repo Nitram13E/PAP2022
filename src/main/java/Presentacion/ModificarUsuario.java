@@ -204,14 +204,14 @@ public class ModificarUsuario extends javax.swing.JFrame {
         Fabrica fabrica = Fabrica.getInstancia();
         ICUsuario iUsuario = fabrica.getICUsuario();
 
-        DtUsuario dtUsuario = new DtUsuario(TxFieldNickname.getText(),
-                TxFieldNombre.getText(), 
-                TxFieldEmail.getText(),
+        DtUsuario usuario = new DtUsuario(TxFieldNickname.getText(),
+                TxFieldNombre.getText(),
                 TxFieldApellido.getText(),
+                TxFieldEmail.getText(),
                 fechaNacUsuario.getDate());
 
         try {
-            iUsuario.modificarDatos(dtUsuario);
+            iUsuario.modificarDatos(usuario);
         } catch (UsuarioNoExisteException noExisteException) {
             JOptionPane.showMessageDialog(this, noExisteException.getMessage(), "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
         }
