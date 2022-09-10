@@ -31,8 +31,6 @@ public class ModificarUsuario extends javax.swing.JFrame {
         this.TxFieldApellido.setText(dtUsuario.getApellido());
         this.TxFieldEmail.setText(dtUsuario.getMail());
         this.fechaNacUsuario.setDate(dtUsuario.getFechaNac());
-        
-        //TODO Falta setear fecha en combo box
     }
 
     /**
@@ -205,17 +203,15 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private void BtnModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarUsuarioActionPerformed
         Fabrica fabrica = Fabrica.getInstancia();
         ICUsuario iUsuario = fabrica.getICUsuario();
-        
-        //TODO:Como manejar la fecha? Usar en vez Calendar o LocalDate?
-        //Date fecha = new Date(jComboBoxAnio.getSelectedItem(), jComboBoxMes.getSelectedItem(), jComboBoxDia.getSelectedItem());
-        DtUsuario dtUsuario = new DtUsuario(TxFieldNickname.getText(), 
-                TxFieldNombre.getText(), 
-                TxFieldEmail.getText(),
+
+        DtUsuario usuario = new DtUsuario(TxFieldNickname.getText(),
+                TxFieldNombre.getText(),
                 TxFieldApellido.getText(),
+                TxFieldEmail.getText(),
                 fechaNacUsuario.getDate());
 
         try {
-            iUsuario.modificarDatos(dtUsuario);
+            iUsuario.modificarDatos(usuario);
         } catch (UsuarioNoExisteException noExisteException) {
             JOptionPane.showMessageDialog(this, noExisteException.getMessage(), "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
         }

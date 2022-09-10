@@ -177,19 +177,19 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
         Fabrica fabrica = Fabrica.getInstancia();
         ICActDeportiva iActividad = fabrica.getICActDeportiva();
 
-        DtActividadDeportiva dtActividad = null;
+        DtActividadDeportiva actividad = null;
 
         try {
-            dtActividad = new DtActividadDeportiva(jTxFieldNombreActividad.getText(),
+            actividad = new DtActividadDeportiva(jTxFieldNombreActividad.getText(),
                     jTextFieldDescripcion.getText(),
                     Integer.parseInt(jTextFieldDuracion.getText()),
                     Float.parseFloat(jTextFieldCosto.getText()),
-                    dtActividad.getFechaReg());
+                    this.dtActividad.getFechaReg());
 
-            iActividad.modificarActividad(dtActividad);
+            iActividad.modificarActividad(actividad);
 
         } catch (NumberFormatException ex) {
-            //TODO Msj de excepcion por parse
+            JOptionPane.showMessageDialog(this, "Error interno, intente nuevamente.", "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
         } catch (ActividadNoExisteException noExisteException) {
             JOptionPane.showMessageDialog(this, noExisteException.getMessage(), "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
         }
