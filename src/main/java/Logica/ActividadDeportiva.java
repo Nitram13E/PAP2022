@@ -75,7 +75,7 @@ public class ActividadDeportiva {
         return clases;
     }
 
-    public void setClase(Clase clase) {
+    public void agregarClase(Clase clase) {
         this.clases.add(clase);
     }
 }

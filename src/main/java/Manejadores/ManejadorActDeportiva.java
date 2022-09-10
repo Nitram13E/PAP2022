@@ -3,12 +3,11 @@ package Manejadores;
 
 
 import Logica.ActividadDeportiva;
-import Logica.InstitucionDeportiva;
+import Logica.Clase;
 import Persistencia.Conexion;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ManejadorActDeportiva {
@@ -44,6 +43,14 @@ public class ManejadorActDeportiva {
     }
 
     public void modificarActividad(ActividadDeportiva actividadDeportiva){
+        entityManager.getTransaction().begin();
+        entityManager.persist(actividadDeportiva);
+        entityManager.getTransaction().commit();
+    }
+
+    public void agregarClase(Clase clase, ActividadDeportiva actividadDeportiva){
+        actividadDeportiva.agregarClase(clase);
+
         entityManager.getTransaction().begin();
         entityManager.persist(actividadDeportiva);
         entityManager.getTransaction().commit();
