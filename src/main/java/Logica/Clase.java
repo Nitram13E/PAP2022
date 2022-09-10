@@ -23,7 +23,7 @@ public class Clase {
     private Date fechaReg;
 
     @OneToMany
-    private List<Registro> registros;
+    private List<Registro> registros = new ArrayList<>();
 
     public Clase(){}
 

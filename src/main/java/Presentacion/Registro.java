@@ -12,6 +12,7 @@ import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
 import Datatypes.DtInstitucionDeportiva;
 import Datatypes.DtSocio;
+import Excepciones.RegistroExistenteException;
 
 import javax.swing.*;
 
@@ -45,15 +46,31 @@ public class Registro extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         comboInstitucion = new javax.swing.JComboBox<>();
         comboActividad = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        listaClase = new javax.swing.JList<>();
-        jLabel16 = new javax.swing.JLabel();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        listaSocio = new javax.swing.JList<>();
         btnRegistrarSocio = new javax.swing.JButton();
         jSeparator48 = new javax.swing.JSeparator();
         jSeparator49 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        listaSocio = new javax.swing.JList<>();
+        PanelInfoSocio = new javax.swing.JPanel();
+        jLabelNickName6 = new javax.swing.JLabel();
+        jSeparator44 = new javax.swing.JSeparator();
+        jSeparator45 = new javax.swing.JSeparator();
+        jLabelNombre6 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jSeparator46 = new javax.swing.JSeparator();
+        jLabelEmail6 = new javax.swing.JLabel();
+        jSeparator47 = new javax.swing.JSeparator();
+        jLabelFechaNac6 = new javax.swing.JLabel();
+        labelNicknameSocio = new javax.swing.JLabel();
+        labelNombreSocio = new javax.swing.JLabel();
+        labelEmailSocio = new javax.swing.JLabel();
+        labelFechaNacSocio = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        listaClase = new javax.swing.JList<>();
+        jLabel15 = new javax.swing.JLabel();
         PanelInfoClase = new javax.swing.JPanel();
         jLabelNickName3 = new javax.swing.JLabel();
         jSeparator25 = new javax.swing.JSeparator();
@@ -71,20 +88,6 @@ public class Registro extends javax.swing.JFrame {
         labelHoraInicioClase = new javax.swing.JLabel();
         labelURLClase = new javax.swing.JLabel();
         labelFechaRegistroClase = new javax.swing.JLabel();
-        PanelInfoSocio = new javax.swing.JPanel();
-        jLabelNickName6 = new javax.swing.JLabel();
-        jSeparator44 = new javax.swing.JSeparator();
-        jSeparator45 = new javax.swing.JSeparator();
-        jLabelNombre6 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jSeparator46 = new javax.swing.JSeparator();
-        jLabelEmail6 = new javax.swing.JLabel();
-        jSeparator47 = new javax.swing.JSeparator();
-        jLabelFechaNac6 = new javax.swing.JLabel();
-        labelNicknameSocio = new javax.swing.JLabel();
-        labelNombreSocio = new javax.swing.JLabel();
-        labelEmailSocio = new javax.swing.JLabel();
-        labelFechaNacSocio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -123,17 +126,15 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel15.setText("Seleccionar clase");
-
-        listaClase.setEnabled(false);
-        listaClase.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listaClaseMouseClicked(evt);
+        btnRegistrarSocio.setText("Registar");
+        btnRegistrarSocio.setEnabled(false);
+        btnRegistrarSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarSocioActionPerformed(evt);
             }
         });
-        jScrollPane10.setViewportView(listaClase);
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(562, 289));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -147,13 +148,128 @@ public class Registro extends javax.swing.JFrame {
         });
         jScrollPane9.setViewportView(listaSocio);
 
-        btnRegistrarSocio.setText("Registar");
-        btnRegistrarSocio.setEnabled(false);
-        btnRegistrarSocio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarSocioActionPerformed(evt);
+        PanelInfoSocio.setEnabled(false);
+        PanelInfoSocio.setFocusable(false);
+        PanelInfoSocio.setPreferredSize(new java.awt.Dimension(268, 267));
+
+        jLabelNickName6.setText("Nickname");
+
+        jLabelNombre6.setText("Nombre");
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("Información del socio");
+
+        jLabelEmail6.setText("Email");
+
+        jLabelFechaNac6.setText("Fecha de nacimiento");
+
+        labelNicknameSocio.setText("-");
+
+        labelNombreSocio.setText("-");
+
+        labelEmailSocio.setText("-");
+
+        labelFechaNacSocio.setText("-");
+
+        javax.swing.GroupLayout PanelInfoSocioLayout = new javax.swing.GroupLayout(PanelInfoSocio);
+        PanelInfoSocio.setLayout(PanelInfoSocioLayout);
+        PanelInfoSocioLayout.setHorizontalGroup(
+            PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInfoSocioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator44)
+                    .addComponent(jSeparator45, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator46, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator47, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelInfoSocioLayout.createSequentialGroup()
+                        .addComponent(jLabelNickName6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelNicknameSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelInfoSocioLayout.createSequentialGroup()
+                        .addComponent(jLabelNombre6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelNombreSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelInfoSocioLayout.createSequentialGroup()
+                        .addComponent(jLabelEmail6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelEmailSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelInfoSocioLayout.createSequentialGroup()
+                        .addComponent(jLabelFechaNac6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelFechaNacSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        PanelInfoSocioLayout.setVerticalGroup(
+            PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelInfoSocioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19)
+                .addGap(18, 18, 18)
+                .addGroup(PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNickName6)
+                    .addComponent(labelNicknameSocio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator44, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNombre6)
+                    .addComponent(labelNombreSocio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator45, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEmail6)
+                    .addComponent(labelEmailSocio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator46, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelFechaNac6)
+                    .addComponent(labelFechaNacSocio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator47, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(PanelInfoSocio, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelInfoSocio, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane9)))
+                .addContainerGap())
+        );
+
+        listaClase.setEnabled(false);
+        listaClase.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaClaseMouseClicked(evt);
             }
         });
+        jScrollPane10.setViewportView(listaClase);
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel15.setText("Seleccionar clase");
 
         PanelInfoClase.setEnabled(false);
         PanelInfoClase.setFocusable(false);
@@ -255,89 +371,30 @@ public class Registro extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        PanelInfoSocio.setEnabled(false);
-        PanelInfoSocio.setFocusable(false);
-
-        jLabelNickName6.setText("Nickname");
-
-        jLabelNombre6.setText("Nombre");
-
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("Información del socio");
-
-        jLabelEmail6.setText("Email");
-
-        jLabelFechaNac6.setText("Fecha de nacimiento");
-
-        labelNicknameSocio.setText("-");
-
-        labelNombreSocio.setText("-");
-
-        labelEmailSocio.setText("-");
-
-        labelFechaNacSocio.setText("-");
-
-        javax.swing.GroupLayout PanelInfoSocioLayout = new javax.swing.GroupLayout(PanelInfoSocio);
-        PanelInfoSocio.setLayout(PanelInfoSocioLayout);
-        PanelInfoSocioLayout.setHorizontalGroup(
-            PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelInfoSocioLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator44)
-                    .addComponent(jSeparator45, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator46, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator47, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PanelInfoSocioLayout.createSequentialGroup()
-                        .addComponent(jLabelNickName6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelNicknameSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelInfoSocioLayout.createSequentialGroup()
-                        .addComponent(jLabelNombre6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelNombreSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelInfoSocioLayout.createSequentialGroup()
-                        .addComponent(jLabelEmail6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelEmailSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelInfoSocioLayout.createSequentialGroup()
-                        .addComponent(jLabelFechaNac6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelFechaNacSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(PanelInfoClase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        PanelInfoSocioLayout.setVerticalGroup(
-            PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelInfoSocioLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel19)
-                .addGap(18, 18, 18)
-                .addGroup(PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNickName6)
-                    .addComponent(labelNicknameSocio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator44, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNombre6)
-                    .addComponent(labelNombreSocio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator45, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelEmail6)
-                    .addComponent(labelEmailSocio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator46, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelInfoSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelFechaNac6)
-                    .addComponent(labelFechaNacSocio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator47, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PanelInfoClase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout PanelRegistroLayout = new javax.swing.GroupLayout(PanelRegistro);
@@ -347,25 +404,8 @@ public class Registro extends javax.swing.JFrame {
             .addGroup(PanelRegistroLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegistrarSocio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PanelRegistroLayout.createSequentialGroup()
-                        .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator49)
-                            .addComponent(PanelInfoClase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelRegistroLayout.createSequentialGroup()
-                        .addGap(0, 1, Short.MAX_VALUE)
-                        .addComponent(jSeparator48, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelRegistroLayout.createSequentialGroup()
-                        .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelInfoSocio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(PanelRegistroLayout.createSequentialGroup()
                         .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(PanelRegistroLayout.createSequentialGroup()
                                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
@@ -377,7 +417,13 @@ public class Registro extends javax.swing.JFrame {
                             .addGroup(PanelRegistroLayout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(comboActividad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(comboActividad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jSeparator49)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(PanelRegistroLayout.createSequentialGroup()
+                        .addComponent(jSeparator48, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 2, Short.MAX_VALUE))
+                    .addComponent(btnRegistrarSocio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PanelRegistroLayout.setVerticalGroup(
@@ -393,27 +439,17 @@ public class Registro extends javax.swing.JFrame {
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comboActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator49, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelRegistroLayout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(PanelInfoClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator48, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator48, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelRegistroLayout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(PanelInfoSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnRegistrarSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -440,14 +476,45 @@ public class Registro extends javax.swing.JFrame {
         cargarComboInstitucionesDeportivas();
     }//GEN-LAST:event_formWindowGainedFocus
 
+    private void listaClaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaClaseMouseClicked
+        labelNombreClase.setText(listaClase.getSelectedValue().getNombre());
+        labelFechaClase.setText(listaClase.getSelectedValue().getFecha().toString());
+        labelHoraInicioClase.setText(listaClase.getSelectedValue().getHoraInicio().toString());
+        labelURLClase.setText(listaClase.getSelectedValue().getUrl());
+        labelFechaRegistroClase.setText(listaClase.getSelectedValue().getFechaReg().toString());
+
+        PanelInfoClase.setVisible(true);
+
+        cargarListaSocios();
+    }//GEN-LAST:event_listaClaseMouseClicked
+
+    private void listaSocioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaSocioMouseClicked
+        labelNicknameSocio.setText(listaSocio.getSelectedValue().getNickname());
+        labelNombreSocio.setText(listaSocio.getSelectedValue().getNombre());
+        labelEmailSocio.setText(listaSocio.getSelectedValue().getMail());
+        labelFechaNacSocio.setText(listaSocio.getSelectedValue().getFechaNac().toString());
+
+        PanelInfoSocio.setVisible(true);
+
+        btnRegistrarSocio.setEnabled(true);
+        //TODO: Agregar verificacion de registro existente y confirmacion de registro mostrando la clase y el socio a registrar.
+    }//GEN-LAST:event_listaSocioMouseClicked
+
     private void btnRegistrarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSocioActionPerformed
         DtClase clase = listaClase.getSelectedValue();
         DtSocio socio = listaSocio.getSelectedValue();
 
         Logica.Registro registro = new Logica.Registro(clase.getNombre(), socio.getNombre());
 
-        controladorClase.registroSocio(clase, registro);
-        controladorUsuario.registroClase(socio, registro);
+        try {
+            controladorClase.registroSocio(clase, registro);
+            controladorUsuario.registroClase(socio, registro);
+
+            JOptionPane.showMessageDialog(this, "Socio " + socio.getNickname() + " registrado a clase " + clase.getNombre() + "!", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch (RegistroExistenteException e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al registrar.", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnRegistrarSocioActionPerformed
 
     private void comboActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActividadActionPerformed
@@ -457,31 +524,6 @@ public class Registro extends javax.swing.JFrame {
     private void comboInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboInstitucionActionPerformed
         cargarComboActividadesDeportivas();
     }//GEN-LAST:event_comboInstitucionActionPerformed
-
-    private void listaClaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaClaseMouseClicked
-        labelNombreClase.setText(listaClase.getSelectedValue().getNombre());
-        labelFechaClase.setText(listaClase.getSelectedValue().getFecha().toString());
-        labelHoraInicioClase.setText(listaClase.getSelectedValue().getHoraInicio().toString());
-        labelURLClase.setText(listaClase.getSelectedValue().getUrl());
-        labelFechaRegistroClase.setText(listaClase.getSelectedValue().getFechaReg().toString());
-        
-        PanelInfoClase.setVisible(true);
-        
-        cargarListaSocios();
-    }//GEN-LAST:event_listaClaseMouseClicked
-
-    private void listaSocioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaSocioMouseClicked
-        labelNicknameSocio.setText(listaSocio.getSelectedValue().getNickname());
-        labelNombreSocio.setText(listaSocio.getSelectedValue().getNombre());
-        labelEmailSocio.setText(listaSocio.getSelectedValue().getMail());
-        labelFechaNacSocio.setText(listaSocio.getSelectedValue().getFechaNac().toString());
-        
-        PanelInfoSocio.setVisible(true);
-
-        btnRegistrarSocio.setEnabled(true);
-
-        //TODO: Agregar verificacion de registro existente y confirmacion de registro mostrando la clase y el socio a registrar.
-    }//GEN-LAST:event_listaSocioMouseClicked
 
     public void cargarComboInstitucionesDeportivas(){
         if(controladorInstitucion.getInstituciones().isEmpty()) return;
@@ -494,9 +536,10 @@ public class Registro extends javax.swing.JFrame {
 
     public void cargarComboActividadesDeportivas(){
         if(controladorActividad.getActividades().isEmpty()) return;
+        DtInstitucionDeportiva institucionDeportiva = (DtInstitucionDeportiva) comboInstitucion.getSelectedItem();
 
         DefaultComboBoxModel<DtActividadDeportiva> comboModel = new DefaultComboBoxModel<DtActividadDeportiva>();
-        comboModel.addAll(controladorActividad.getActividades());
+        comboModel.addAll(controladorInstitucion.getActividadesDeInstitucion(institucionDeportiva.getNombre()));
         comboActividad.setModel(comboModel);
         comboActividad.setEnabled(true);
 
@@ -551,6 +594,8 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNickName6;
     private javax.swing.JLabel jLabelNombre3;
     private javax.swing.JLabel jLabelNombre6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator25;

@@ -2,6 +2,8 @@ package Manejadores;
 
 
 import Logica.Clase;
+import Logica.Registro;
+import Logica.Socio;
 import Logica.Usuario;
 import Persistencia.Conexion;
 import jakarta.persistence.EntityManager;
@@ -59,4 +61,13 @@ public class ManejadorUsuario {
         return (List<Usuario>) query.getResultList();
     }
 
+    public void agregarRegistroSocio(Socio socio, Registro registro) {
+        socio.agregarRegistro(registro);
+
+        entityManager.getTransaction().begin();
+        //TODO: Buscar mejor forma de hacerlo!
+        //if(entityManager.find(Registro.class, registro) == null) entityManager.persist(registro);
+        entityManager.persist(socio);
+        entityManager.getTransaction().commit();
+    }
 }

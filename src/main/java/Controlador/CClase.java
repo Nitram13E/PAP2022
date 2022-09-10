@@ -3,6 +3,7 @@ package Controlador;
 import Controlador.Interfaces.ICClase;
 import Datatypes.DtClase;
 import Datatypes.DtSocio;
+import Excepciones.RegistroExistenteException;
 import Logica.Registro;
 import Logica.Clase;
 import Logica.Socio;
@@ -42,9 +43,13 @@ public class CClase implements ICClase {
     }
 
     @Override
-    public void registroSocio(DtClase dtClase, Registro registro){
-        for(Clase clase : manejador.obtenerClases()){
-            if(clase.getNombre().equals(dtClase.getNombre())) clase.agregarRegistro(registro);
+    public void registroSocio(DtClase dtClase, Registro registro) throws RegistroExistenteException {
+        Clase clase = manejador.buscarClase(dtClase.getNombre());
+
+        for(Registro reg : clase.getRegistros()) {
+            if (reg.getSocio().equals(registro.getSocio())) throw new RegistroExistenteException("Socio ya registado.");
         }
+
+        manejador.agregarRegistro(clase, registro);
     }
 }

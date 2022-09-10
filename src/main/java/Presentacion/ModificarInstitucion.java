@@ -163,7 +163,7 @@ public class ModificarInstitucion extends javax.swing.JFrame {
             //TODO:Arreglar problema con descripcion y URL
             controlador.modificarInstitucion(new DtInstitucionDeportiva(txtFieldNombre.getText(), textDescripcion.getText(), txtFieldURL.getText()));
         }catch (InstitucionExistenteException e){
-            JOptionPane.showMessageDialog(this, "La institucion no existe!", "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
         }
 
         dispose();

@@ -2,6 +2,8 @@ package Manejadores;
 
 import Logica.ActividadDeportiva;
 import Logica.Clase;
+import Logica.Registro;
+import Logica.Socio;
 import Persistencia.Conexion;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
@@ -40,5 +42,14 @@ public class ManejadorClase {
     }
     public Clase buscarClase(String nombre) {
         return entityManager.find(Clase.class, nombre);
+    }
+
+    public void agregarRegistro(Clase clase, Registro registro) {
+        clase.agregarRegistro(registro);
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(registro);
+        entityManager.persist(clase);
+        entityManager.getTransaction().commit();
     }
 }
