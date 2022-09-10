@@ -18,7 +18,6 @@ public class ActividadDeportiva {
     private int duracion;
     private float costo;
     private Date fechaReg;
-
     @OneToMany
     private List<Clase> clases;
 
@@ -76,8 +75,7 @@ public class ActividadDeportiva {
         return clases;
     }
 
-    public void setClase(Clase clase) {
+    public void agregarClase(Clase clase) {
         this.clases.add(clase);
     }
-
 }

@@ -4,6 +4,7 @@ import Controlador.Interfaces.ICUsuario;
 import Datatypes.DtClase;
 import Datatypes.DtInstitucionDeportiva;
 import Datatypes.DtProfesor;
+import Excepciones.RegistroExistenteException;
 import Logica.*;
 import Datatypes.DtSocio;
 import Datatypes.DtUsuario;
@@ -85,14 +86,31 @@ public class CUsuario implements ICUsuario {
         
         return listaDts;
     }
-    @Override
-    public void registroClase(DtUsuario socio, Registro registro) {
-        ManejadorUsuario manejador = ManejadorUsuario.getInstancia();
 
-        for (Usuario usuario : manejador.getUsuarios()) {
-            if (usuario instanceof Socio && usuario.getNickname().equals(socio.getNickname()))
-                ((Socio) usuario).agregarRegistro(registro);
+    public List<DtSocio> getSocios(){
+        ManejadorUsuario manejadorUsuario = ManejadorUsuario.getInstancia();
+
+        List<DtSocio> socios = new ArrayList<>();
+
+        for(Usuario usuario : manejadorUsuario.getUsuarios())
+        {
+            if(usuario instanceof Socio) socios.add(new DtSocio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac()));
         }
+
+        return socios;
+    }
+
+    @Override
+    public void registroClase(DtUsuario dtSocio, Registro registro) throws RegistroExistenteException {
+        ManejadorUsuario manejador = ManejadorUsuario.getInstancia();
+        Socio socio = (Socio) manejador.buscarUsuario(dtSocio.getNickname());
+
+        for(Registro reg : socio.getRegistros())
+        {
+            if (reg.getClase().equals(registro.getClase())) throw new RegistroExistenteException("Socio ya registado.");
+        }
+
+        manejador.agregarRegistroSocio(socio, registro);
     }
 
     @Override

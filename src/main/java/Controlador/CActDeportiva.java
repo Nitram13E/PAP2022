@@ -14,15 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CActDeportiva implements ICActDeportiva {
-    ManejadorActDeportiva manejador;
+    ManejadorActDeportiva manejadorActDeportiva;
 
     public CActDeportiva() {
-        this.manejador = ManejadorActDeportiva.getInstancia();
+        this.manejadorActDeportiva = ManejadorActDeportiva.getInstancia();
     }
 
     @Override
     public void altaActividad(DtActividadDeportiva actividad) {
-        manejador.agegarActividad(new Logica.ActividadDeportiva(actividad.getNombre(), actividad.getDesc(), actividad.getDuracion(), actividad.getCosto(), actividad.getFechaReg()));
+        manejadorActDeportiva.agegarActividad(new Logica.ActividadDeportiva(actividad.getNombre(), actividad.getDesc(), actividad.getDuracion(), actividad.getCosto(), actividad.getFechaReg()));
     }
 
     @Override
@@ -55,25 +55,25 @@ public class CActDeportiva implements ICActDeportiva {
     @Override
     public List<DtActividadDeportiva> getActividades(){
         List<DtActividadDeportiva> actividades = new ArrayList<>();
-        manejador.getActividades().forEach(act -> actividades.add(new DtActividadDeportiva(act.getNombre(), act.getDesc(), act.getDuracion(), act.getCosto(), act.getFechaReg())));
+        manejadorActDeportiva.getActividades().forEach(act -> actividades.add(new DtActividadDeportiva(act.getNombre(), act.getDesc(), act.getDuracion(), act.getCosto(), act.getFechaReg())));
 
         return actividades;
     }
-    
+
     @Override
     public void agregarClaseAActividadDeportiva(DtClase dtClase, DtActividadDeportiva dtActividad)
     {
         ManejadorClase manejadorClase = ManejadorClase.getInstancia();
 
-        ActividadDeportiva actividad = manejador.buscarActividad(dtActividad.getNombre());
+        ActividadDeportiva actividad = manejadorActDeportiva.buscarActividad(dtActividad.getNombre());
         Clase clase = manejadorClase.buscarClase(dtClase.getNombre());
 
-        actividad.setClase(clase);
+        manejadorActDeportiva.agregarClase(clase, actividad);
     }
-    
+
     @Override
     public List<DtClase> getClases(DtActividadDeportiva dtActividad){
-        Logica.ActividadDeportiva actividad = manejador.buscarActividad(dtActividad.getNombre());
+        Logica.ActividadDeportiva actividad = manejadorActDeportiva.buscarActividad(dtActividad.getNombre());
 
         List<DtClase> clases = new ArrayList<>();
 

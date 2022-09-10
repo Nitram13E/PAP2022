@@ -163,7 +163,7 @@ public class AgregarInstitucion extends javax.swing.JFrame {
             controlador.altaInstitucion(new DtInstitucionDeportiva(txtFieldNombreInstitucion.getText(), textDescripcionInstitucion.getText(), txtFieldURLInstitucion.getText()));
             dispose();
         }catch (InstitucionExistenteException e){
-            JOptionPane.showMessageDialog(this, "La institucion ya existe!", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnAgregarInstitucionActionPerformed
 

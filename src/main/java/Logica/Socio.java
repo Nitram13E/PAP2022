@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class Socio extends Usuario {
     @OneToMany
-    private List<Registro> registros;
+    private List<Registro> registros = new ArrayList<>();
 
     public Socio() {
     }

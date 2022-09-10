@@ -4,52 +4,39 @@
  */
 package Logica;
 
-import Datatypes.DtClase;
-import Datatypes.DtSocio;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Type;
 
 import java.util.Date;
 @Entity
 @IdClass(RegistroId.class)
 public class Registro {
     @Id
-    @ManyToOne
-    private Socio socio;
+    private String socio;
 
     @Id
-    @ManyToOne
-    private Clase clase;
+    private String clase;
 
     @Temporal(TemporalType.DATE)
     private Date fechaReg;
 
-    public void setClase(Clase clase) {
-        this.clase = clase;
-    }
-
-    public void setSocio(Socio socio) {
-        this.socio = socio;
-    }
-
     public Registro(){
     }
 
-    public Registro(Clase clase, Socio socio, Date fechaReg) {
+    public Registro(String clase, String socio) {
         this.clase = clase;
         this.socio = socio;
-        this.fechaReg = fechaReg;
+        this.fechaReg = new Date();
     }
 
-    public DtSocio getSocio() {
-        return new DtSocio(socio.getNickname(), socio.getNombre(), socio.getApellido(), socio.getMail(), socio.getFechaNac());
+    public String getSocio() {
+        return socio;
     }
 
     public Date getFechaReg() {
         return this.fechaReg;
     }
 
-    public DtClase getClase() {
-        return new DtClase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(),  clase.getFechaReg());
+    public String getClase() {
+        return clase;
     }
 }
