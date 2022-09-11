@@ -10,7 +10,6 @@ import Excepciones.UsuarioNoExisteException;
 import Manejadores.ManejadorClase;
 import Manejadores.ManejadorInstDeportiva;
 import Manejadores.ManejadorUsuario;
-import Presentacion.Actividad;
 
 import java.util.ArrayList;
 import java.util.List;

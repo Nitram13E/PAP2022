@@ -190,11 +190,11 @@ public class GymAdmin extends javax.swing.JFrame {
 
     private void btnActividadDeportivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividadDeportivaActionPerformed
 
-        Actividad ActividadFrame = new Actividad(controladorInstitucion, controladorActividad);
-        ActividadFrame.setResizable(false);
-        ActividadFrame.setVisible(true);
-        ActividadFrame.setLocationRelativeTo(null);
-        ActividadFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        ActividadDeportiva actividadDeportivaFrame = new ActividadDeportiva(controladorInstitucion, controladorActividad);
+        actividadDeportivaFrame.setResizable(false);
+        actividadDeportivaFrame.setVisible(true);
+        actividadDeportivaFrame.setLocationRelativeTo(null);
+        actividadDeportivaFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnActividadDeportivaActionPerformed
     
     private void btnClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClasesActionPerformed

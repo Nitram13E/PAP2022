@@ -1,5 +1,6 @@
 package Manejadores;
 
+import Logica.ActividadDeportiva;
 import Logica.InstitucionDeportiva;
 import Persistencia.Conexion;
 import jakarta.persistence.EntityManager;
@@ -44,18 +45,17 @@ public class ManejadorInstDeportiva {
         return entityManager.find(InstitucionDeportiva.class, nombre);
     }
 
-    /*
-    public List<DtActividadDeportiva> getActividadesDeportivas(InstitucionDeportiva institucion){
-        for (InstitucionDeportiva institucion : instituciones){
-            if(institucion.getNombre().equals(nombre)) return institucion;
-        }
-    }*/
-
     public void modificarInstitucion(InstitucionDeportiva institucion) {
         entityManager.getTransaction().begin();
         entityManager.persist(institucion);
         entityManager.getTransaction().commit();
     }
+
+    public void agregarActividadDeportiva(InstitucionDeportiva institucionDeportiva, ActividadDeportiva actividadDeportiva) {
+        institucionDeportiva.agregarActividad(actividadDeportiva);
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(institucionDeportiva);
+        entityManager.getTransaction().commit();
+    }
 }
-
-

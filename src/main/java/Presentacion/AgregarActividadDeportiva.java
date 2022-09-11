@@ -4,8 +4,12 @@ import Controlador.Interfaces.ICActDeportiva;
 import Controlador.Interfaces.ICInstDeportiva;
 import Datatypes.DtActividadDeportiva;
 import Datatypes.DtInstitucionDeportiva;
+import Excepciones.ActividadExistenteException;
+import Excepciones.DuracionNegativaException;
+import Excepciones.PrecioNegativoException;
+
 import java.util.Date;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.*;
 
 /*          El caso de uso comienza cuando el administrador desea dar de alta una
              actividad deportiva. En primer lugar, el administrador indica la
@@ -188,6 +192,7 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
 
     private void btn_Agregar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Agregar
         DtInstitucionDeportiva DtInstitucion = (DtInstitucionDeportiva) comboInstitucion.getSelectedItem();
+
         String nombre = textfield_nombre.getText();
         String descripcion = textfield_descripcion.getText();
         int duracion = Integer.parseInt(intfield_duracion.getText());
@@ -195,8 +200,12 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
 
         DtActividadDeportiva nuevoDtActividad = new DtActividadDeportiva(nombre, descripcion, duracion, costo, new Date());
 
-        controladorActividad.altaActividad(nuevoDtActividad);
-        controladorInstitucion.agregarActividadDeportiva(DtInstitucion.getNombre(), nuevoDtActividad);
+        try {
+            controladorActividad.altaActividad(nuevoDtActividad);
+            controladorInstitucion.agregarActividadDeportiva(DtInstitucion.getNombre(), nuevoDtActividad);
+        } catch (ActividadExistenteException | PrecioNegativoException | DuracionNegativaException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al agregar actividad", JOptionPane.INFORMATION_MESSAGE);
+        }
 
         dispose();
     }//GEN-LAST:event_btn_Agregar

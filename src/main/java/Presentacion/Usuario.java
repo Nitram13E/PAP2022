@@ -12,7 +12,7 @@ import Datatypes.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultListModel;
+import javax.swing.*;
 
 /**
  *
@@ -221,7 +221,7 @@ public class Usuario extends javax.swing.JFrame {
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator25, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre3)
                     .addComponent(jLabel14))
@@ -260,7 +260,7 @@ public class Usuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelBiografia)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -462,6 +462,8 @@ public class Usuario extends javax.swing.JFrame {
         if (usuarioSeleccionado == null) return;
         
         BtnModificarUsuario.setEnabled(true);
+        btnInfoActividad.setEnabled(false);
+        btnInfoClase.setEnabled(false);
 
         jLabel.setText(usuarioSeleccionado.getNickname());
         jLabel13.setText(usuarioSeleccionado.getNombre());
@@ -480,7 +482,8 @@ public class Usuario extends javax.swing.JFrame {
             TextBiografia3.setText(((DtProfesor) usuarioSeleccionado).getBiografia());
 
             listaActividades.setEnabled(true);
-            
+
+            listaClases.setModel(new DefaultListModel<>());
             cargarListaActividades();
             
         } else if (usuarioSeleccionado instanceof DtSocio) {
@@ -512,11 +515,16 @@ public class Usuario extends javax.swing.JFrame {
 
     private void listaActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaActividadesMouseClicked
         cargarListaClases();
+        
+        if(listaActividades.getSelectedValue() == null) return;
+        
         btnInfoActividad.setEnabled(true);
         listaClases.setEnabled(true);
     }//GEN-LAST:event_listaActividadesMouseClicked
 
     private void listaClasesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaClasesMouseClicked
+        if(listaClases.getSelectedValue() == null) return;
+        
         btnInfoClase.setEnabled(true);
     }//GEN-LAST:event_listaClasesMouseClicked
 

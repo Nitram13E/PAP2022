@@ -11,12 +11,13 @@ import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
 import Datatypes.DtInstitucionDeportiva;
 import Datatypes.DtProfesor;
+import Excepciones.ClaseExistenteException;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.*;
 
 /**
  *
@@ -246,14 +247,18 @@ public class AgregarClase extends javax.swing.JFrame {
         
         //Agregar una clase a lista global
         DtClase claseAgregar = new DtClase(nomClase, fechaC, horaAgregar, urlclase, new Date());
-        controladorClase.altaClase(claseAgregar);
-        
-        //Agregar clase a profesor
-        controladorUsuario.agregarClaseAProfesor(profesor, claseAgregar);
-        
-        //Agregar clase a Actividad Deportiva
-        controladorActividad.agregarClaseAActividadDeportiva(claseAgregar, this.actividad);
-        
+        try {
+            controladorClase.altaClase(claseAgregar);
+            //Agregar clase a profesor
+            controladorUsuario.agregarClaseAProfesor(profesor, claseAgregar);
+
+            //Agregar clase a Actividad Deportiva
+            controladorActividad.agregarClaseAActividadDeportiva(claseAgregar, this.actividad);
+        }
+        catch (ClaseExistenteException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al agregar clase", JOptionPane.INFORMATION_MESSAGE);
+        }
+
         dispose();
     }//GEN-LAST:event_BtnAgregarClaseActionPerformed
 
