@@ -203,11 +203,11 @@ public class AgregarActividadDeportiva extends javax.swing.JFrame {
         try {
             controladorActividad.altaActividad(nuevoDtActividad);
             controladorInstitucion.agregarActividadDeportiva(DtInstitucion.getNombre(), nuevoDtActividad);
+            dispose();
         } catch (ActividadExistenteException | PrecioNegativoException | DuracionNegativaException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al agregar actividad", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al agregar actividad", JOptionPane.ERROR_MESSAGE);
         }
 
-        dispose();
     }//GEN-LAST:event_btn_Agregar
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

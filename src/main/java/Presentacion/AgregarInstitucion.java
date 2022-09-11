@@ -155,7 +155,7 @@ public class AgregarInstitucion extends javax.swing.JFrame {
 
     private void btnAgregarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarInstitucionActionPerformed
         if(txtFieldNombreInstitucion.getText().isBlank() || textDescripcionInstitucion.getText().isBlank() || txtFieldURLInstitucion.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -163,7 +163,7 @@ public class AgregarInstitucion extends javax.swing.JFrame {
             controlador.altaInstitucion(new DtInstitucionDeportiva(txtFieldNombreInstitucion.getText(), textDescripcionInstitucion.getText(), txtFieldURLInstitucion.getText()));
             dispose();
         }catch (InstitucionExistenteException e){
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al agregar", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAgregarInstitucionActionPerformed
 

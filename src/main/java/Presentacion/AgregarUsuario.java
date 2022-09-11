@@ -328,7 +328,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         if (tipoUsuario == "Profesor") {
 
             if (nickname.isBlank() || nombre.isBlank() || apellido.isBlank() || email.isBlank() || fechaNac == null || descripcion.isBlank() || institucion == null) {
-                JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -336,7 +336,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         } else if (tipoUsuario == "Socio") {
 
             if (nickname.isBlank() || nombre.isBlank() || apellido.isBlank() || email.isBlank() || fechaNac == null) {
-                JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -348,11 +348,11 @@ public class AgregarUsuario extends javax.swing.JFrame {
             controlUsuario.altaUsuario(usuario);
             dispose();
         } catch (UsuarioExistenteException e) {
-            JOptionPane.showMessageDialog(this, "Ya hay un usuario con el mismo nickname!", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ya hay un usuario con el mismo nickname!", "Error al agregar", JOptionPane.ERROR_MESSAGE);
         }
         catch(EmailExistenteException e)
         {
-            JOptionPane.showMessageDialog(this, "Ya hay un usuario con el mismo email!", "Error al agregar", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ya hay un usuario con el mismo email!", "Error al agregar", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_BtnAgregarUsuarioActionPerformed
