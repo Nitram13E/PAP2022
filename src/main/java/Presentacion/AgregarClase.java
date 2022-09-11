@@ -243,6 +243,11 @@ public class AgregarClase extends javax.swing.JFrame {
         
         String horacompleta = horainicio + ":" + minutoinicio + ":" + "00";
         
+        if (nomClase.isBlank() || fechaC == null || profesor == null || urlclase.isBlank() || horainicio.isBlank() || minutoinicio.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         LocalTime horaAgregar = LocalTime.parse(horacompleta, DateTimeFormatter.ISO_TIME);
         
         //Agregar una clase a lista global
@@ -254,12 +259,13 @@ public class AgregarClase extends javax.swing.JFrame {
 
             //Agregar clase a Actividad Deportiva
             controladorActividad.agregarClaseAActividadDeportiva(claseAgregar, this.actividad);
+            
+            dispose();
         }
         catch (ClaseExistenteException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al agregar clase", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al agregar clase", JOptionPane.ERROR_MESSAGE);
         }
 
-        dispose();
     }//GEN-LAST:event_BtnAgregarClaseActionPerformed
 
     /**

@@ -176,6 +176,11 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
     private void jButtonModificarAcitividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarAcitividadActionPerformed
         Fabrica fabrica = Fabrica.getInstancia();
         ICActDeportiva iActividad = fabrica.getICActDeportiva();
+        
+        if (jTextFieldDescripcion.getText().isBlank() || jTextFieldDuracion.getText().isBlank() || jTextFieldCosto.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al modificar", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         DtActividadDeportiva actividad = null;
 
@@ -187,14 +192,15 @@ public class ModificarActividadDeportiva extends javax.swing.JFrame {
                     this.dtActividad.getFechaReg());
 
             iActividad.modificarActividad(actividad);
+            
+            dispose();
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Error interno, intente nuevamente.", "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error interno, intente nuevamente.", "Error al modificar", JOptionPane.ERROR_MESSAGE);
         } catch (ActividadNoExisteException noExisteException) {
-            JOptionPane.showMessageDialog(this, noExisteException.getMessage(), "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, noExisteException.getMessage(), "Error al modificar", JOptionPane.ERROR_MESSAGE);
         }
 
-        dispose();
     }//GEN-LAST:event_jButtonModificarAcitividadActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed

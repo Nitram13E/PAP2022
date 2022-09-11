@@ -159,10 +159,14 @@ public class ModificarInstitucion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModificarInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarInstitucionActionPerformed
+        if (textDescripcion.getText().isBlank() || txtFieldURL.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al modificar", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         try {
             controlador.modificarInstitucion(new DtInstitucionDeportiva(txtFieldNombre.getText(), textDescripcion.getText(), txtFieldURL.getText()));
         }catch (InstitucionExistenteException e){
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al modificar", JOptionPane.ERROR_MESSAGE);
         }
 
         dispose();

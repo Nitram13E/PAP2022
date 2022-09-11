@@ -203,7 +203,12 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private void BtnModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarUsuarioActionPerformed
         Fabrica fabrica = Fabrica.getInstancia();
         ICUsuario iUsuario = fabrica.getICUsuario();
-
+        
+        if (TxFieldNombre.getText().isBlank() || TxFieldApellido.getText().isBlank() || fechaNacUsuario.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al modificar", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         DtUsuario usuario = new DtUsuario(TxFieldNickname.getText(),
                 TxFieldNombre.getText(),
                 TxFieldApellido.getText(),
@@ -213,7 +218,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
         try {
             iUsuario.modificarDatos(usuario);
         } catch (UsuarioNoExisteException noExisteException) {
-            JOptionPane.showMessageDialog(this, noExisteException.getMessage(), "Error al modificar", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, noExisteException.getMessage(), "Error al modificar", JOptionPane.ERROR_MESSAGE);
         }
         
         dispose();
