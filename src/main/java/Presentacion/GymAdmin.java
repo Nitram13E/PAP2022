@@ -182,7 +182,7 @@ public class GymAdmin extends javax.swing.JFrame {
     //CASO DE USO USUARIOS
     
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
-        Usuario usuariosFrame = new Usuario(controladorUsuario);
+        Usuario usuariosFrame = new Usuario(controladorUsuario, controladorInstitucion, controladorClase, controladorActividad);
         usuariosFrame.setVisible(true);
         usuariosFrame.setLocationRelativeTo(null);
         usuariosFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

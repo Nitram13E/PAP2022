@@ -1,10 +1,7 @@
 package Manejadores;
 
 
-import Logica.Clase;
-import Logica.Registro;
-import Logica.Socio;
-import Logica.Usuario;
+import Logica.*;
 import Persistencia.Conexion;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
@@ -61,6 +58,13 @@ public class ManejadorUsuario {
         return (List<Usuario>) query.getResultList();
     }
 
+    public void agregarClaseProfesor(Profesor profesor, Clase clase) {
+        (profesor).setClases(clase);
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(profesor);
+        entityManager.getTransaction().commit();
+    }
     public void agregarRegistroSocio(Socio socio, Registro registro) {
         socio.agregarRegistro(registro);
 

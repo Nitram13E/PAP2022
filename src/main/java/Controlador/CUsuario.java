@@ -1,19 +1,16 @@
 package Controlador;
 
 import Controlador.Interfaces.ICUsuario;
-import Datatypes.DtClase;
-import Datatypes.DtInstitucionDeportiva;
-import Datatypes.DtProfesor;
+import Datatypes.*;
 import Excepciones.RegistroExistenteException;
 import Logica.*;
-import Datatypes.DtSocio;
-import Datatypes.DtUsuario;
 import Excepciones.EmailExistenteException;
 import Excepciones.UsuarioExistenteException;
 import Excepciones.UsuarioNoExisteException;
 import Manejadores.ManejadorClase;
 import Manejadores.ManejadorInstDeportiva;
 import Manejadores.ManejadorUsuario;
+import Presentacion.Actividad;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,16 +132,51 @@ public class CUsuario implements ICUsuario {
     }
     
     @Override
-    public void agregarClaseAProfesor(DtProfesor profesor, DtClase clase)
+    public void agregarClaseAProfesor(DtProfesor dtProfesor, DtClase clase)
     {
         ManejadorUsuario mJUsuario = ManejadorUsuario.getInstancia();
         ManejadorClase manejadorClase = ManejadorClase.getInstancia();
+        Profesor profesor = (Profesor) mJUsuario.buscarUsuario(dtProfesor.getNickname());
 
-        Usuario usuario = mJUsuario.buscarUsuario(profesor.getNombre());
-        
-        if(usuario instanceof Profesor)
-        {
-            ((Profesor) usuario).setClases(manejadorClase.buscarClase(clase.getNombre()));
+        mJUsuario.agregarClaseProfesor((Profesor) profesor, manejadorClase.buscarClase(clase.getNombre()));
+    }
+
+    @Override
+    public DtInstitucionDeportiva getInstitucionProfesor(DtProfesor dtProfesor) {
+        ManejadorUsuario manejadorUsuario = ManejadorUsuario.getInstancia();
+
+        Profesor profesor = (Profesor) manejadorUsuario.buscarUsuario(dtProfesor.getNickname());
+
+        InstitucionDeportiva institucionDeportiva = profesor.getInstitucion();
+
+        return new DtInstitucionDeportiva(institucionDeportiva.getNombre(), institucionDeportiva.getDesc(), institucionDeportiva.getUrl());
+    }
+
+    @Override
+    public List<DtClase> getClasesProfesor(List<DtClase> dtClases, DtProfesor dtProfesor) {
+        ManejadorUsuario manejadorUsuario = ManejadorUsuario.getInstancia();
+
+        Profesor profesor = (Profesor) manejadorUsuario.buscarUsuario(dtProfesor.getNickname());
+        List<DtClase> clases = new ArrayList<>();
+
+        for(DtClase dtClase : dtClases) {
+            for(Clase clase : profesor.getClases()){
+                if(dtClase.getNombre().equals(clase.getNombre())) clases.add(dtClase);
+            }
         }
+
+        return clases;
+    }
+
+    @Override
+    public List<String> getClasesSocio(DtSocio dtSocio) {
+        ManejadorUsuario manejadorUsuario = ManejadorUsuario.getInstancia();
+
+        Socio socio = (Socio) manejadorUsuario.buscarUsuario(dtSocio.getNickname());
+        List<String> clases = new ArrayList<>();
+
+        socio.getRegistros().forEach(registro -> clases.add(registro.getClase()));
+
+        return clases;
     }
 }
