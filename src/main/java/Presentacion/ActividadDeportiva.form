@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowGainedFocus" listener="java.awt.event.WindowFocusListener" parameters="java.awt.event.WindowEvent" handler="formWindowGainedFocus"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -23,25 +26,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="634" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="PanelActividadDeportiva" min="-2" pref="622" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="PanelActividadDeportiva" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="453" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="PanelActividadDeportiva" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="PanelActividadDeportiva" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,50 +49,59 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jLabel10" min="-2" pref="220" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
-              </Group>
               <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel11" max="32767" attributes="0"/>
-                              <Component id="BtnAgregarActividad" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="PanelInfoUsuario3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="comboInstitucion" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane7" min="-2" pref="182" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="BtnAgregarActividad1" min="-2" pref="78" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="BtnModificarActividad" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jScrollPane7" min="-2" pref="187" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel10" min="-2" pref="185" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="BtnAgregarActividad" min="-2" pref="34" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" pref="54" max="32767" attributes="0"/>
-                          <Component id="PanelInfoUsuario3" min="-2" pref="179" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jScrollPane7" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="comboInstitucion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel1" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane7" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="BtnAgregarActividad1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="BtnModificarActividad" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -111,23 +117,18 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox3">
+        <Component class="javax.swing.JComboBox" name="comboInstitucion">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboInstitucionActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;DtInstitucionDeportiva&gt;"/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JButton" name="BtnAgregarActividad">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Agregar"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -146,241 +147,217 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="jList2">
+            <Component class="javax.swing.JList" name="listaActividades">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                    <StringItem index="4" value="Item 5"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listaActividadesMouseClicked"/>
+              </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;DtActividadDeportiva&gt;"/>
               </AuxValues>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="PanelInfoUsuario3">
+        <Component class="javax.swing.JButton" name="BtnAgregarActividad1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Agregar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAgregarActividad1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="BtnModificarActividad">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Modificar"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnModificarActividadActionPerformed"/>
+          </Events>
+        </Component>
+        <Container class="javax.swing.JPanel" name="jPanel1">
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane8" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jSeparator17" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jSeparator18" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jSeparator19" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jSeparator20" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jSeparator22" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jSeparator23" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jSeparator24" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jSeparator21" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelFechaNac2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="LabelFechaNac2" min="-2" pref="321" max="-2" attributes="0"/>
+                              <Component id="jLabelNickName3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="labelNombre" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="jSeparator25" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jSeparator26" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelDescripcion2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="LabelDescripcion2" min="-2" pref="160" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelDescripcion3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelFechaNac3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelEmail3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelCosto" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="labelDuracion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="labelFechaRegistro" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
+                          <Component id="jSeparator28" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelSitioWeb2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="LabelSitioWeb2" min="-2" pref="160" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelNickName2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="LabelNickname2" min="-2" pref="321" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelNombre2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="LabelNombre2" min="-2" pref="319" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabelBiografia2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelBiografia3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelEmail2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="21" max="32767" attributes="0"/>
-                              <Component id="LabelEmail2" min="-2" pref="321" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jScrollPane9" alignment="0" pref="403" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel12" pref="403" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelNickName2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelNickname2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelNickName3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jSeparator17" min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="jSeparator21" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelNombre2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelNombre2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelEmail3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelDuracion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jSeparator18" min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="jSeparator25" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelEmail2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelEmail2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelFechaNac3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelCosto" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jSeparator19" min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="jSeparator26" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelFechaNac2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelFechaNac2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabelDescripcion3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelFechaRegistro" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSeparator28" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabelBiografia3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jSeparator20" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelDescripcion2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelDescripcion2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPane9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="308" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jSeparator22" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelSitioWeb2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelSitioWeb2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jSeparator23" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelBiografia2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane8" pref="0" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jSeparator24" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabelNickName2">
+            <Component class="javax.swing.JLabel" name="jLabel12">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de actividad"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelFechaNac3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Costo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator26">
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator25">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelDescripcion3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Fecha registro"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="labelCosto">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="-"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="labelFechaRegistro">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="-"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="labelDuracion">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="-"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelEmail3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Duraci&#xf3;n"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelNickName3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nombre"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator17">
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator18">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelNombre2">
+            <Component class="javax.swing.JLabel" name="labelNombre">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fecha"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator19">
+            <Component class="javax.swing.JSeparator" name="jSeparator21">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelEmail2">
+            <Component class="javax.swing.JSeparator" name="jSeparator28">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelBiografia3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Hora de inicio"/>
+                <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator20">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelFechaNac2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="URL"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelDescripcion2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Descripcion"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator22">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelSitioWeb2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Sitio Web"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator23">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelBiografia2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Biografia"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator24">
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane8">
+            <Container class="javax.swing.JScrollPane" name="jScrollPane9">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="TextBiografia2">
+                <Component class="javax.swing.JTextArea" name="textDescripcion">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="LabelNickname2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="-"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabelNombre2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="-"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabelEmail2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="-"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabelFechaNac2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="-"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabelDescripcion2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="-"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabelSitioWeb2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="-"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel11">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de actividad"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

@@ -2,16 +2,11 @@ package Controlador;
 
 import Controlador.Interfaces.ICClase;
 import Datatypes.DtClase;
-import Datatypes.DtSocio;
+import Excepciones.ClaseExistenteException;
 import Excepciones.RegistroExistenteException;
 import Logica.Registro;
 import Logica.Clase;
-import Logica.Socio;
 import Manejadores.ManejadorClase;
-import Manejadores.ManejadorUsuario;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CClase implements ICClase {
     ManejadorClase manejador;
@@ -21,9 +16,11 @@ public class CClase implements ICClase {
     }
 
     @Override
-    public void altaClase(DtClase clase) {
-        ManejadorClase mc = ManejadorClase.getInstancia();
-        mc.agregarClase(new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg()));
+    public void altaClase(DtClase clase) throws ClaseExistenteException{
+        if (manejador.buscarClase(clase.getNombre()) != null)
+            throw new ClaseExistenteException("El nombre ya existe");
+
+        manejador.agregarClase(new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg()));
     }
 
     @Override

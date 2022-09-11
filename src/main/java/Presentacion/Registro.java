@@ -91,11 +91,9 @@ public class Registro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
-        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
-            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
-                formWindowGainedFocus(evt);
-            }
-            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -472,10 +470,6 @@ public class Registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        cargarComboInstitucionesDeportivas();
-    }//GEN-LAST:event_formWindowGainedFocus
-
     private void listaClaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaClaseMouseClicked
         labelNombreClase.setText(listaClase.getSelectedValue().getNombre());
         labelFechaClase.setText(listaClase.getSelectedValue().getFecha().toString());
@@ -497,7 +491,6 @@ public class Registro extends javax.swing.JFrame {
         PanelInfoSocio.setVisible(true);
 
         btnRegistrarSocio.setEnabled(true);
-        //TODO: Agregar verificacion de registro existente y confirmacion de registro mostrando la clase y el socio a registrar.
     }//GEN-LAST:event_listaSocioMouseClicked
 
     private void btnRegistrarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSocioActionPerformed
@@ -524,6 +517,10 @@ public class Registro extends javax.swing.JFrame {
     private void comboInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboInstitucionActionPerformed
         cargarComboActividadesDeportivas();
     }//GEN-LAST:event_comboInstitucionActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarComboInstitucionesDeportivas();
+    }//GEN-LAST:event_formWindowOpened
 
     public void cargarComboInstitucionesDeportivas(){
         if(controladorInstitucion.getInstituciones().isEmpty()) return;

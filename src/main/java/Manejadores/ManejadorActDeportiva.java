@@ -2,6 +2,7 @@ package Manejadores;
 
 
 
+import Datatypes.DtActividadDeportiva;
 import Logica.ActividadDeportiva;
 import Logica.Clase;
 import Persistencia.Conexion;

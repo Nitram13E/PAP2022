@@ -50,7 +50,7 @@ public class CInstDeportiva implements ICInstDeportiva {
         InstitucionDeportiva institucion = manejador.buscarInstitucion(nombreInstitucion);
         ActividadDeportiva actividad = manejadorActDeportiva.buscarActividad(dtActividad.getNombre());
 
-        institucion.agregarActividad(actividad);
+        manejador.agregarActividadDeportiva(institucion, actividad);
     }
     
     @Override
