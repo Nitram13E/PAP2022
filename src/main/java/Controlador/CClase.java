@@ -43,6 +43,15 @@ public class CClase implements ICClase {
     }
 
     @Override
+    public DtClase retornarClase(String nombre) {
+        ManejadorClase manejadorClase = ManejadorClase.getInstancia();
+
+        Clase clase = manejadorClase.buscarClase(nombre);
+
+        return new DtClase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg());
+    }
+
+    @Override
     public void registroSocio(DtClase dtClase, Registro registro) throws RegistroExistenteException {
         Clase clase = manejador.buscarClase(dtClase.getNombre());
 

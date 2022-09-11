@@ -12,5 +12,6 @@ public interface ICClase {
     public void registroDictado();
     public DtClase consultaDictado(String nombre);
     public void rankingDictado();
+    public DtClase retornarClase(String nombre);
     public void registroSocio(DtClase clase, Registro registro) throws RegistroExistenteException;
 }

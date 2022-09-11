@@ -19,4 +19,7 @@ public interface ICUsuario {
     public void registroClase(DtUsuario socio, Registro registro) throws RegistroExistenteException;
     public List<DtProfesor> retornarProfesoresInstitucion(DtInstitucionDeportiva institucion);
     public void agregarClaseAProfesor(DtProfesor profesor, DtClase clase);
+    public DtInstitucionDeportiva getInstitucionProfesor(DtProfesor dtProfesor);
+    public List<DtClase> getClasesProfesor(List<DtClase> dtClases, DtProfesor dtProfesor);
+    public List<String> getClasesSocio(DtSocio dtSocio);
 }
