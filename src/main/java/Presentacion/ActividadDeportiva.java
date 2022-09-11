@@ -436,7 +436,7 @@ public class ActividadDeportiva extends javax.swing.JFrame {
         List<DtClase> clases = controladorActividad.getClases(listaActividades.getSelectedValue());
 
         if(clases.isEmpty()) {
-            btnInfoClase.setEnabled(false);
+            panelClases.setVisible(false);
             return;
         }
 
