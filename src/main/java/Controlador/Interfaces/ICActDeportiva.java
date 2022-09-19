@@ -17,4 +17,5 @@ public interface ICActDeportiva {
     public List<DtActividadDeportiva> getActividades();
     public void agregarClaseAActividadDeportiva(DtClase clase, DtActividadDeportiva actividad);
     public List<DtClase> getClases(DtActividadDeportiva dtActividad);
+    public List<DtActividadDeportiva> getActividadesRanking();
 }

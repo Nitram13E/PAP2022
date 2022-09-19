@@ -10,6 +10,10 @@ public class RegistroId implements Serializable {
 
     public RegistroId(){}
 
+    public RegistroId(String socio, String clase) {
+        this.socio = socio;
+        this.clase = clase;
+    }
 
     public String getSocio() {
         return socio;

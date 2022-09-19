@@ -48,7 +48,6 @@ public class ManejadorClase {
         clase.agregarRegistro(registro);
 
         entityManager.getTransaction().begin();
-        entityManager.persist(registro);
         entityManager.persist(clase);
         entityManager.getTransaction().commit();
     }
