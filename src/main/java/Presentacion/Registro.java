@@ -479,6 +479,7 @@ public class Registro extends javax.swing.JFrame {
         PanelInfoClase.setVisible(true);
 
         cargarListaSocios();
+        listaSocio.setVisible(true);
     }//GEN-LAST:event_listaClaseMouseClicked
 
     private void listaSocioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaSocioMouseClicked
@@ -512,14 +513,16 @@ public class Registro extends javax.swing.JFrame {
 
     private void comboActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActividadActionPerformed
         cargarListaClases();
+        listaClase.setVisible(true);
     }//GEN-LAST:event_comboActividadActionPerformed
 
     private void comboInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboInstitucionActionPerformed
         cargarComboActividadesDeportivas();
-        listaClase.setModel(new DefaultListModel<>());
+        listaClase.setVisible(false);
         PanelInfoClase.setVisible(false);
-        listaSocio.setModel(new DefaultListModel<>());
+        listaSocio.setVisible(false);
         PanelInfoSocio.setVisible(false);
+        btnRegistrarSocio.setEnabled(false);
     }//GEN-LAST:event_comboInstitucionActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
