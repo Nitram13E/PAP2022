@@ -10,11 +10,11 @@ import Datatypes.DtActividadDeportiva;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
-public class RankingActividadeDeportiva extends javax.swing.JFrame {
+public class RankingActividadDeportiva extends javax.swing.JFrame {
 
     ICActDeportiva controladorActividad;
     
-    public RankingActividadeDeportiva(ICActDeportiva controladorActividad) {
+    public RankingActividadDeportiva(ICActDeportiva controladorActividad) {
         this.controladorActividad = controladorActividad;
         
         initComponents();

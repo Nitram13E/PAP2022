@@ -243,7 +243,7 @@ public class GymAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRankingClasesActionPerformed
 
     private void btnRankingActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRankingActividadesActionPerformed
-        RankingActividadeDeportiva RankingDictadosClaseFrame = new RankingActividadeDeportiva(controladorActividad);
+        RankingActividadDeportiva RankingDictadosClaseFrame = new RankingActividadDeportiva(controladorActividad);
         RankingDictadosClaseFrame.setVisible(true);
         RankingDictadosClaseFrame.setLocationRelativeTo(null);
         RankingDictadosClaseFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
