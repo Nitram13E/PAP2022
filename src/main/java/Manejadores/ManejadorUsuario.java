@@ -69,8 +69,6 @@ public class ManejadorUsuario {
         socio.agregarRegistro(registro);
 
         entityManager.getTransaction().begin();
-        //TODO: Buscar mejor forma de hacerlo!
-        //if(entityManager.find(Registro.class, registro) == null) entityManager.persist(registro);
         entityManager.persist(socio);
         entityManager.getTransaction().commit();
     }

@@ -4,10 +4,7 @@
  */
 package Presentacion;
 
-import Controlador.Interfaces.ICActDeportiva;
-import Controlador.Interfaces.ICClase;
-import Controlador.Interfaces.ICInstDeportiva;
-import Controlador.Interfaces.ICUsuario;
+import Controlador.Interfaces.*;
 import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
 import Datatypes.DtInstitucionDeportiva;
@@ -22,12 +19,14 @@ public class Registro extends javax.swing.JFrame {
     ICActDeportiva controladorActividad;
     ICClase controladorClase;
     ICUsuario controladorUsuario;
+    ICRegistro controladorRegistro;
 
-    public Registro(ICInstDeportiva controladorInstitucion, ICActDeportiva controladorActividad, ICClase controladorClase, ICUsuario controladorUsuario) {
+    public Registro(ICInstDeportiva controladorInstitucion, ICActDeportiva controladorActividad, ICClase controladorClase, ICUsuario controladorUsuario, ICRegistro controladorRegistro) {
         this.controladorInstitucion = controladorInstitucion;
         this.controladorActividad = controladorActividad;
         this.controladorClase = controladorClase;
         this.controladorUsuario = controladorUsuario;
+        this.controladorRegistro = controladorRegistro;
 
         initComponents();
     }
@@ -497,9 +496,10 @@ public class Registro extends javax.swing.JFrame {
         DtClase clase = listaClase.getSelectedValue();
         DtSocio socio = listaSocio.getSelectedValue();
 
-        Logica.Registro registro = new Logica.Registro(clase.getNombre(), socio.getNombre());
+        Logica.Registro registro = new Logica.Registro(clase.getNombre(), socio.getNickname());
 
         try {
+            controladorRegistro.altaRegistro(registro);
             controladorClase.registroSocio(clase, registro);
             controladorUsuario.registroClase(socio, registro);
 
@@ -516,6 +516,10 @@ public class Registro extends javax.swing.JFrame {
 
     private void comboInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboInstitucionActionPerformed
         cargarComboActividadesDeportivas();
+        listaClase.setModel(new DefaultListModel<>());
+        PanelInfoClase.setVisible(false);
+        listaSocio.setModel(new DefaultListModel<>());
+        PanelInfoSocio.setVisible(false);
     }//GEN-LAST:event_comboInstitucionActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

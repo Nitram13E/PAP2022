@@ -14,6 +14,8 @@ import Manejadores.ManejadorActDeportiva;
 import Manejadores.ManejadorClase;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CActDeportiva implements ICActDeportiva {
@@ -53,6 +55,7 @@ public class CActDeportiva implements ICActDeportiva {
         mAct.modificarActividad(actividad);
     }
 
+    //TODO: Eliminar
     @Override
     public void consultaActividad() {
 
@@ -91,5 +94,17 @@ public class CActDeportiva implements ICActDeportiva {
         actividad.getClases().forEach(clase -> clases.add(new DtClase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg())));
 
         return clases;
+    }
+
+    @Override
+    public List<DtActividadDeportiva> getActividadesRanking() {
+        List<DtActividadDeportiva> listaActividades = new ArrayList<>();
+        List<ActividadDeportiva> actividades = manejadorActDeportiva.getActividades();
+
+        actividades.sort(Comparator.comparingInt(actividadDeportiva -> actividadDeportiva.getClases().size()));
+        Collections.reverse(actividades);
+        actividades.forEach(actividad -> listaActividades.add(new DtActividadDeportiva(actividad.getNombre(), actividad.getDesc(), actividad.getDuracion(), actividad.getCosto(), actividad.getFechaReg())));
+
+        return listaActividades;
     }
 }

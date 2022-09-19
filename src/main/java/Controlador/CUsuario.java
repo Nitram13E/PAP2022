@@ -159,9 +159,7 @@ public class CUsuario implements ICUsuario {
         List<DtClase> clases = new ArrayList<>();
 
         for(DtClase dtClase : dtClases) {
-            for(Clase clase : profesor.getClases()){
-                if(dtClase.getNombre().equals(clase.getNombre())) clases.add(dtClase);
-            }
+            if(profesor.getClases().stream().anyMatch(clase -> clase.getNombre().equals(dtClase.getNombre()))) clases.add(dtClase);
         }
 
         return clases;

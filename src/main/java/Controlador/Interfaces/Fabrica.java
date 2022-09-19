@@ -1,9 +1,6 @@
 package Controlador.Interfaces;
 
-import Controlador.CActDeportiva;
-import Controlador.CClase;
-import Controlador.CInstDeportiva;
-import Controlador.CUsuario;
+import Controlador.*;
 
 public class Fabrica {
 
@@ -32,5 +29,9 @@ public class Fabrica {
 
     public ICUsuario getICUsuario(){
         return new CUsuario();
+    }
+
+    public ICRegistro getICRegistro() {
+        return new CRegistro();
     }
 }
