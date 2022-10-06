@@ -1,9 +1,7 @@
 package Controlador.Interfaces;
 
 import Datatypes.DtClase;
-import Datatypes.DtSocio;
 import Excepciones.ClaseExistenteException;
-import Excepciones.RegistroExistenteException;
 import Logica.Registro;
 
 import java.util.List;

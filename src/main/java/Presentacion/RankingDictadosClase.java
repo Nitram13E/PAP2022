@@ -5,9 +5,9 @@
 package Presentacion;
 
 import Controlador.Interfaces.ICClase;
-import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
-import javax.swing.DefaultListModel;
+
+import javax.swing.*;
 
 /**
  *

@@ -1,6 +1,9 @@
 package Manejadores;
 
-import Logica.*;
+import Logica.Clase;
+import Logica.Registro;
+import Logica.RegistroId;
+import Logica.Socio;
 import Persistencia.Conexion;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;

@@ -2,11 +2,11 @@ package Controlador.Interfaces;
 
 
 import Datatypes.*;
-import Excepciones.RegistroExistenteException;
-import Logica.Registro;
 import Excepciones.EmailExistenteException;
+import Excepciones.RegistroExistenteException;
 import Excepciones.UsuarioExistenteException;
 import Excepciones.UsuarioNoExisteException;
+import Logica.Registro;
 
 import java.util.List;
 

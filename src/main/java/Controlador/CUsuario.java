@@ -2,11 +2,11 @@ package Controlador;
 
 import Controlador.Interfaces.ICUsuario;
 import Datatypes.*;
-import Excepciones.RegistroExistenteException;
-import Logica.*;
 import Excepciones.EmailExistenteException;
+import Excepciones.RegistroExistenteException;
 import Excepciones.UsuarioExistenteException;
 import Excepciones.UsuarioNoExisteException;
+import Logica.*;
 import Manejadores.ManejadorClase;
 import Manejadores.ManejadorInstDeportiva;
 import Manejadores.ManejadorUsuario;

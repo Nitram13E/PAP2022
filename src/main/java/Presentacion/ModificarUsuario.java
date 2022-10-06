@@ -10,7 +10,6 @@ import Datatypes.DtUsuario;
 import Excepciones.UsuarioNoExisteException;
 
 import javax.swing.*;
-import java.util.Date;
 
 /**
  *

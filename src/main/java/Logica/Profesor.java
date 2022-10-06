@@ -1,6 +1,5 @@
 package Logica;
-import Datatypes.DtClase;
-import Datatypes.DtInstitucionDeportiva;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;

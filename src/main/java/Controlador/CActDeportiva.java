@@ -1,7 +1,6 @@
 package Controlador;
 
 import Controlador.Interfaces.ICActDeportiva;
-
 import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
 import Excepciones.ActividadExistenteException;

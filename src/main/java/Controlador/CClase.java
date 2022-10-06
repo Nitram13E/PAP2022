@@ -3,8 +3,8 @@ package Controlador;
 import Controlador.Interfaces.ICClase;
 import Datatypes.DtClase;
 import Excepciones.ClaseExistenteException;
-import Logica.Registro;
 import Logica.Clase;
+import Logica.Registro;
 import Manejadores.ManejadorClase;
 
 import java.util.ArrayList;
