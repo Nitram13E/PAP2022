@@ -33,6 +33,7 @@ public abstract class Usuario {
         this.contrasenia = contrasenia;
         this.mail = mail;
         this.fechaNac = fechaNac;
+        this.foto = foto;
     }
 
     public String getNickname() {
