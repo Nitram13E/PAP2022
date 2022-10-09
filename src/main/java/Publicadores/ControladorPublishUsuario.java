@@ -40,8 +40,10 @@ public class ControladorPublishUsuario {
 
     @WebMethod(exclude = true)
     public void publicar() {
-        endpoint = Endpoint.publish("https://" + config.getConfigOf("WS_IP") + ":" + config.getConfigOf("WS_PORT") + "/controladorUsuario", this);
-        System.out.println("https://" + config.getConfigOf("WS_IP") + ":" + config.getConfigOf("WS_PORT") + "/controladorUsuario");
+        String address = "http://" + config.getConfigOf("WS_IP") + ":" + config.getConfigOf("WS_PORT") + "/controladorUsuario";
+
+        endpoint = Endpoint.publish(address, this);
+        System.out.println(address);
     }
 
     @WebMethod(exclude = true)
@@ -55,5 +57,10 @@ public class ControladorPublishUsuario {
         List<DtUsuario> dtUsuarios = icUsuario.retornarUsuarios();
 
         return dtUsuarios.toArray(new DtUsuario[0]);
+    }
+
+    @WebMethod
+    public String returnString() {
+        return "test";
     }
 }

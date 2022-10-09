@@ -15,8 +15,8 @@ public class Socio extends Usuario {
     public Socio() {
     }
 
-    public Socio(String nickname, String nombre, String apellido, String mail, Date fechaNac) {
-        super(nickname, nombre, apellido, mail, fechaNac);
+    public Socio(String nickname, String nombre, String apellido, String contrasenia, String mail, Date fechaNac, byte[] foto) {
+        super(nickname, nombre, apellido, contrasenia, mail, fechaNac, foto);
         this.registros = new ArrayList<Registro>();
     }
 

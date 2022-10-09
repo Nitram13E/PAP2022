@@ -27,12 +27,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -51,7 +56,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabelNickName" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="249" max="32767" attributes="0"/>
+                          <EmptySpace pref="237" max="32767" attributes="0"/>
                           <Component id="TxFieldNickname" min="-2" pref="242" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
@@ -61,6 +66,24 @@
                           <Component id="TxFieldNombre" min="-2" pref="242" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabelApellido" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="TxFieldApellido" min="-2" pref="240" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jSeparator5" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jSeparatorApellido2" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabelEmail1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jpasswd" min="-2" pref="240" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabelEmail2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jpassConfirmar" min="-2" pref="240" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jSeparatorApellido3" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabelEmail" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -79,12 +102,6 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="BtnCancelar" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabelApellido" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="TxFieldApellido" min="-2" pref="242" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jSeparator5" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -117,6 +134,20 @@
                   <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabelEmail1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jpasswd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jSeparatorApellido2" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabelEmail2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jpassConfirmar" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jSeparatorApellido3" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="TxFieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -134,7 +165,7 @@
                       <Component id="BtnModificarUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BtnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -170,6 +201,41 @@
         </Component>
         <Component class="javax.swing.JTextField" name="TxFieldNombre">
         </Component>
+        <Component class="javax.swing.JTextField" name="TxFieldApellido">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelApellido">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Apellido"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator5">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelEmail1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelEmail2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Confirmar contrase&#xf1;a"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparatorApellido2">
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jpasswd">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jpassConfirmar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparatorApellido3">
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="fechaNacUsuario">
+        </Component>
         <Component class="javax.swing.JLabel" name="jLabelEmail">
           <Properties>
             <Property name="text" type="java.lang.String" value="Email"/>
@@ -204,17 +270,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCancelarActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="TxFieldApellido">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelApellido">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Apellido"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSeparator" name="jSeparator5">
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="fechaNacUsuario">
         </Component>
       </SubComponents>
     </Container>

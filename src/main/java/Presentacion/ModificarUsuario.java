@@ -49,6 +49,16 @@ public class ModificarUsuario extends javax.swing.JFrame {
         jLabelNombre = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         TxFieldNombre = new javax.swing.JTextField();
+        TxFieldApellido = new javax.swing.JTextField();
+        jLabelApellido = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabelEmail1 = new javax.swing.JLabel();
+        jLabelEmail2 = new javax.swing.JLabel();
+        jSeparatorApellido2 = new javax.swing.JSeparator();
+        jpasswd = new javax.swing.JPasswordField();
+        jpassConfirmar = new javax.swing.JPasswordField();
+        jSeparatorApellido3 = new javax.swing.JSeparator();
+        fechaNacUsuario = new com.toedter.calendar.JDateChooser();
         jLabelEmail = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         TxFieldEmail = new javax.swing.JTextField();
@@ -56,10 +66,6 @@ public class ModificarUsuario extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         BtnModificarUsuario = new javax.swing.JButton();
         BtnCancelar = new javax.swing.JButton();
-        TxFieldApellido = new javax.swing.JTextField();
-        jLabelApellido = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        fechaNacUsuario = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -74,6 +80,16 @@ public class ModificarUsuario extends javax.swing.JFrame {
         TxFieldNickname.setEnabled(false);
 
         jLabelNombre.setText("Nombre");
+
+        jLabelApellido.setText("Apellido");
+
+        jLabelEmail1.setText("Contraseña");
+
+        jLabelEmail2.setText("Confirmar contraseña");
+
+        jpasswd.setText("jPasswordField1");
+
+        jpassConfirmar.setText("jPasswordField1");
 
         jLabelEmail.setText("Email");
 
@@ -95,8 +111,6 @@ public class ModificarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabelApellido.setText("Apellido");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,7 +121,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelNickName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
                         .addComponent(TxFieldNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -115,6 +129,21 @@ public class ModificarUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(TxFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelApellido)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TxFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator5)
+                    .addComponent(jSeparatorApellido2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelEmail1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jpasswd, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelEmail2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jpassConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparatorApellido3)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -129,12 +158,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(BtnModificarUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnCancelar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelApellido)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TxFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator5))
+                        .addComponent(BtnCancelar)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -161,6 +185,18 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEmail1)
+                    .addComponent(jpasswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparatorApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelEmail2)
+                    .addComponent(jpassConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparatorApellido3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelEmail))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -175,18 +211,22 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnModificarUsuario)
                     .addComponent(BtnCancelar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -211,8 +251,11 @@ public class ModificarUsuario extends javax.swing.JFrame {
         DtUsuario usuario = new DtUsuario(TxFieldNickname.getText(),
                 TxFieldNombre.getText(),
                 TxFieldApellido.getText(),
+                new String(jpasswd.getPassword()),
                 TxFieldEmail.getText(),
-                fechaNacUsuario.getDate());
+                fechaNacUsuario.getDate(),
+                null //TODO: Reemplazar!
+        );
 
         try {
             iUsuario.modificarDatos(usuario);
@@ -264,6 +307,8 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelApellido;
     private javax.swing.JLabel jLabelEmail;
+    private javax.swing.JLabel jLabelEmail1;
+    private javax.swing.JLabel jLabelEmail2;
     private javax.swing.JLabel jLabelFechaNac;
     private javax.swing.JLabel jLabelNickName;
     private javax.swing.JLabel jLabelNombre;
@@ -273,5 +318,9 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparatorApellido2;
+    private javax.swing.JSeparator jSeparatorApellido3;
+    private javax.swing.JPasswordField jpassConfirmar;
+    private javax.swing.JPasswordField jpasswd;
     // End of variables declaration//GEN-END:variables
 }

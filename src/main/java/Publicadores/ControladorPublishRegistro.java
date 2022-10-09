@@ -29,12 +29,19 @@ public class ControladorPublishRegistro {
 
     @WebMethod(exclude = true)
     public void publicar() {
-        endpoint = Endpoint.publish("https://" + config.getConfigOf("WS_IP") + ":" + config.getConfigOf("WS_PORT") + "/controladorRegistro", this);
-        System.out.println("https://" + config.getConfigOf("WS_IP") + ":" + config.getConfigOf("WS_PORT") + "/controladorRegistro");
+        String address = "http://" + config.getConfigOf("WS_IP") + ":" + config.getConfigOf("WS_PORT") + "/controladorRegistro";
+
+        endpoint = Endpoint.publish(address, this);
+        System.out.println(address);
     }
 
     @WebMethod(exclude = true)
     public Endpoint getEndpoint() {
         return endpoint;
+    }
+
+    @WebMethod
+    public String returnString() {
+        return "test";
     }
 }

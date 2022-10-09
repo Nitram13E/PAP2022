@@ -33,9 +33,9 @@ public class CUsuario implements ICUsuario {
 
         if (usuario instanceof DtProfesor) {
             InstitucionDeportiva  institucionDeportiva = manejadorInstDeportiva.buscarInstitucion(((DtProfesor) usuario).getInstitucion().getNombre());
-            mJUsuario.agregarUsuario(new Profesor(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac(), ((DtProfesor) usuario).getDescripcion(), ((DtProfesor) usuario).getSitioWeb(), ((DtProfesor) usuario).getBiografia(), institucionDeportiva));
+            mJUsuario.agregarUsuario(new Profesor(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getContrasenia(), usuario.getMail(), usuario.getFechaNac(), usuario.getFoto(), ((DtProfesor) usuario).getDescripcion(), ((DtProfesor) usuario).getSitioWeb(), ((DtProfesor) usuario).getBiografia(), institucionDeportiva));
         } else if (usuario instanceof DtSocio) {
-            mJUsuario.agregarUsuario(new Socio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac()));
+            mJUsuario.agregarUsuario(new Socio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getContrasenia(), usuario.getMail(), usuario.getFechaNac(), usuario.getFoto()));
         }
     }
 
@@ -71,11 +71,11 @@ public class CUsuario implements ICUsuario {
                 InstitucionDeportiva institucion = ((Profesor) s).getInstitucion();
                 DtInstitucionDeportiva dtInstitucion = new DtInstitucionDeportiva(institucion.getNombre(), institucion.getDesc(), institucion.getUrl());
 
-                listaDts.add(new DtProfesor(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac(), dtInstitucion, ((Profesor) s).getDescripcion(), ((Profesor) s).getSitioWeb(), ((Profesor) s).getBiografia()));
+                listaDts.add(new DtProfesor(s.getNickname(), s.getNombre(), s.getApellido(), s.getContrasenia(), s.getMail(), s.getFechaNac(),s.getFoto(), dtInstitucion, ((Profesor) s).getDescripcion(), ((Profesor) s).getSitioWeb(), ((Profesor) s).getBiografia()));
             }
             else if (s instanceof Socio)
             {
-                listaDts.add(new DtSocio(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac()));
+                listaDts.add(new DtSocio(s.getNickname(), s.getNombre(), s.getApellido(), s.getContrasenia(), s.getMail(), s.getFechaNac(), s.getFoto()));
             }
             
         }
@@ -90,7 +90,7 @@ public class CUsuario implements ICUsuario {
 
         for(Usuario usuario : manejadorUsuario.getUsuarios())
         {
-            if(usuario instanceof Socio) socios.add(new DtSocio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getMail(), usuario.getFechaNac()));
+            if(usuario instanceof Socio) socios.add(new DtSocio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getContrasenia(), usuario.getMail(), usuario.getFechaNac(), usuario.getFoto()));
         }
 
         return socios;
@@ -122,7 +122,7 @@ public class CUsuario implements ICUsuario {
            {
                if(((Profesor) s).getInstitucion().getNombre().equals(institucion.getNombre()))
                {
-                   resultado.add(new DtProfesor(s.getNickname(), s.getNombre(), s.getApellido(), s.getMail(), s.getFechaNac(), institucion, ((Profesor) s).getDescripcion(), ((Profesor) s).getSitioWeb(), ((Profesor) s).getBiografia()));
+                   resultado.add(new DtProfesor(s.getNickname(), s.getNombre(), s.getApellido(), s.getContrasenia(), s.getMail(), s.getFechaNac(), s.getFoto(), institucion, ((Profesor) s).getDescripcion(), ((Profesor) s).getSitioWeb(), ((Profesor) s).getBiografia()));
                }
            }
        }

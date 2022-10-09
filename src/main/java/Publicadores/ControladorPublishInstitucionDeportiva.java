@@ -30,12 +30,19 @@ public class ControladorPublishInstitucionDeportiva {
 
     @WebMethod(exclude = true)
     public void publicar() {
-        endpoint = Endpoint.publish("https://" + config.getConfigOf("WS_IP") + ":" + config.getConfigOf("WS_PORT") + "/controladorInstitucionDeportiva", this);
-        System.out.println("https://" + config.getConfigOf("WS_IP") + ":" + config.getConfigOf("WS_PORT") + "/controladorInstitucionDeportiva");
+        String address = "http://" + config.getConfigOf("WS_IP") + ":" + config.getConfigOf("WS_PORT") + "/controladorInstitucionDeportiva";
+
+        endpoint = Endpoint.publish(address, this);
+        System.out.println(address);
     }
 
     @WebMethod(exclude = true)
     public Endpoint getEndpoint() {
         return endpoint;
+    }
+
+    @WebMethod
+    public String returnString() {
+        return "test";
     }
 }
