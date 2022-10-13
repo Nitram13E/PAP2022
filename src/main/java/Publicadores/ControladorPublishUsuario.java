@@ -14,22 +14,13 @@ import java.util.List;
 @SOAPBinding(style= SOAPBinding.Style.RPC)
 public class ControladorPublishUsuario {
     private Fabrica fabrica;
-    private ICActDeportiva icActDeportiva;
-    private ICClase icClase;
-    private ICInstDeportiva icInstDeportiva;
-    private ICRegistro icRegistro;
     private ICUsuario icUsuario;
     private WebServiceConfig config;
     private Endpoint endpoint;
 
     public ControladorPublishUsuario() {
         fabrica = Fabrica.getInstancia();
-
-        ICActDeportiva icActDeportiva = fabrica.getICActDeportiva();
-        ICClase icClase = fabrica.getICClase();
-        ICInstDeportiva icInstDeportiva = fabrica.getICInstDeportiva();
-        ICRegistro icRegistro = fabrica.getICRegistro();
-        ICUsuario icUsuario = fabrica.getICUsuario();
+        icUsuario = fabrica.getICUsuario();
 
         try {
             this.config = new WebServiceConfig();

@@ -18,7 +18,7 @@ public class ControladorPublishRegistro {
 
     public ControladorPublishRegistro() {
         fabrica = Fabrica.getInstancia();
-        ICRegistro icRegistro = fabrica.getICRegistro();
+        icRegistro = fabrica.getICRegistro();
 
         try {
             this.config = new WebServiceConfig();

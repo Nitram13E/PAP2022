@@ -18,8 +18,8 @@ public class ControladorPublishActividadDeportiva {
 
     public ControladorPublishActividadDeportiva() {
         fabrica = Fabrica.getInstancia();
+        icActDeportiva = fabrica.getICActDeportiva();
 
-        ICActDeportiva icActDeportiva = fabrica.getICActDeportiva();
         try {
             this.config = new WebServiceConfig();
         } catch (Exception e) {

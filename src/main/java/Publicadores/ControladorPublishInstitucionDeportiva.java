@@ -19,7 +19,7 @@ public class ControladorPublishInstitucionDeportiva {
 
     public ControladorPublishInstitucionDeportiva() {
         fabrica = Fabrica.getInstancia();
-        ICInstDeportiva icInstDeportiva = fabrica.getICInstDeportiva();
+        icInstDeportiva = fabrica.getICInstDeportiva();
 
         try {
             this.config = new WebServiceConfig();

@@ -18,7 +18,7 @@ public class ControladorPublishClase {
 
     public ControladorPublishClase() {
         fabrica = Fabrica.getInstancia();
-        ICClase icClase = fabrica.getICClase();
+        icClase = fabrica.getICClase();
 
         try {
             this.config = new WebServiceConfig();
