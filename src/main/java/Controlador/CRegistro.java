@@ -1,15 +1,18 @@
 package Controlador;
 
 import Controlador.Interfaces.ICRegistro;
+import Datatypes.DtClase;
 import Excepciones.RegistroExistenteException;
 import Logica.Clase;
 import Logica.Registro;
+import Manejadores.ManejadorClase;
 import Manejadores.ManejadorRegistro;
 
 import java.util.List;
 
 public class CRegistro implements ICRegistro {
     ManejadorRegistro manejadorRegistro;
+    ManejadorClase manejadorClase;
 
     public CRegistro() {
         this.manejadorRegistro = ManejadorRegistro.getInstancia();
@@ -31,7 +34,9 @@ public class CRegistro implements ICRegistro {
     }
 
     @Override
-    public List<Registro> obtenerRegistrosClase(Clase clase) {
-        return null;
+    public List<Registro> obtenerRegistrosClase(DtClase dtClase) {
+        Clase clase = manejadorClase.buscarClase(dtClase.getNombre());
+
+        return manejadorRegistro.obtenerRegistrosClase(clase);
     }
 }

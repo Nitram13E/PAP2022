@@ -1,5 +1,6 @@
 package Manejadores;
 
+import Datatypes.DtClase;
 import Logica.Clase;
 import Logica.Registro;
 import Logica.RegistroId;

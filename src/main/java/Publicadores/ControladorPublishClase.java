@@ -3,6 +3,8 @@ package Publicadores;
 import Configuraciones.WebServiceConfig;
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICClase;
+import Datatypes.DtClase;
+import Logica.Clase;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
@@ -41,7 +43,7 @@ public class ControladorPublishClase {
     }
 
     @WebMethod
-    public String returnString() {
-        return "test";
+    public DtClase buscarClase(String nombre) {
+        return icClase.retornarClase(nombre);
     }
 }

@@ -3,10 +3,14 @@ package Publicadores;
 import Configuraciones.WebServiceConfig;
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICRegistro;
+import Datatypes.DtClase;
+import Logica.Registro;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.xml.ws.Endpoint;
+
+import java.util.List;
 
 @WebService
 @SOAPBinding(style= SOAPBinding.Style.RPC)
@@ -41,7 +45,9 @@ public class ControladorPublishRegistro {
     }
 
     @WebMethod
-    public String returnString() {
-        return "test";
+    public Registro[] getRegistrosClase(DtClase clase) {
+        List<Registro> registros = icRegistro.obtenerRegistrosClase(clase);
+
+        return registros.toArray(new Registro[0]);
     }
 }
