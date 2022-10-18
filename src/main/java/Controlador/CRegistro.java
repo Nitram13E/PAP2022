@@ -16,6 +16,7 @@ public class CRegistro implements ICRegistro {
 
     public CRegistro() {
         this.manejadorRegistro = ManejadorRegistro.getInstancia();
+        this.manejadorClase = ManejadorClase.getInstancia();
     }
     @Override
     public void altaRegistro(Registro registro) throws RegistroExistenteException {

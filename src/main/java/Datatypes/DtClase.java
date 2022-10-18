@@ -1,9 +1,12 @@
 package Datatypes;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.time.LocalTime;
 import java.util.Date;
 
-
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtClase {
     private String nombre;
     private Date fecha;
@@ -38,7 +41,7 @@ public class DtClase {
         return fechaReg;
     }
 
-    public LocalTime getHoraInicio() {
+    public LocalTime getHoraInicio() { //TODO: Cambiar
         return horaInicio;
     }
     

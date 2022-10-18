@@ -4,12 +4,16 @@
  */
 package Datatypes;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.util.Date;
 
 /**
  *
  * @author Shifter
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtProfesor extends DtUsuario {
     
     private DtInstitucionDeportiva institucion;

@@ -5,10 +5,13 @@
 package Logica;
 
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
 import java.util.Date;
 @Entity
 @IdClass(RegistroId.class)
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Registro {
     @Id
     private String socio;

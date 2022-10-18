@@ -1,12 +1,14 @@
 package Datatypes;
 
 import Logica.Clase;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtActividadDeportiva {
 
     private String nombre;

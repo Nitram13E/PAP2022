@@ -1,7 +1,11 @@
 package Datatypes;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 import java.util.Date;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtUsuario {
     private String nickname;
     private String nombre;
