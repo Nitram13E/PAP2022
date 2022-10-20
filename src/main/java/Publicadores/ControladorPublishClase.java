@@ -4,17 +4,19 @@ import Configuraciones.WebServiceConfig;
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICClase;
 import Datatypes.DtClase;
-import Logica.Clase;
+import Excepciones.ClaseExistenteException;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.xml.ws.Endpoint;
 
+import java.util.List;
+
 @WebService
 @SOAPBinding(style= SOAPBinding.Style.RPC)
 public class ControladorPublishClase {
     private Fabrica fabrica;
-    private ICClase icClase;
+    private final ICClase icClase;
     private WebServiceConfig config;
     private Endpoint endpoint;
 
@@ -43,7 +45,19 @@ public class ControladorPublishClase {
     }
 
     @WebMethod
+    public void agregarClase(DtClase dtClase) throws ClaseExistenteException {
+        icClase.altaClase(dtClase);
+    }
+
+    @WebMethod
     public DtClase buscarClase(String nombre) {
         return icClase.retornarClase(nombre);
+    }
+
+    @WebMethod
+    public DtClase[] getClasesRanking() {
+        List<DtClase> clases = icClase.getClasesRanking();
+
+        return clases.toArray(new DtClase[0]);
     }
 }

@@ -2,12 +2,16 @@ package Publicadores;
 
 import Configuraciones.WebServiceConfig;
 import Controlador.Interfaces.*;
+import Datatypes.DtClase;
+import Datatypes.DtProfesor;
 import Datatypes.DtUsuario;
+import Excepciones.UsuarioNoExisteException;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.xml.ws.Endpoint;
 
+import java.util.Arrays;
 import java.util.List;
 
 @WebService
@@ -51,7 +55,14 @@ public class ControladorPublishUsuario {
     }
 
     @WebMethod
-    public String returnString() {
-        return "test";
+    public void modificarUsuario(DtUsuario dtUsuario) throws UsuarioNoExisteException {
+        icUsuario.modificarDatos(dtUsuario);
+    }
+
+    @WebMethod
+    public DtClase[] getClasesProfesor(DtClase[] dtClases, DtProfesor dtProfesor) {
+        List<DtClase> clases = icUsuario.getClasesProfesor(Arrays.stream(dtClases).toList(), dtProfesor);
+
+        return clases.toArray(new DtClase[0]);
     }
 }

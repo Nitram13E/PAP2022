@@ -16,7 +16,6 @@ public class DtActividadDeportiva {
     private Integer duracion;
     private Float costo;
     private Date fechaReg;
-    private List<Clase> clases;
 
     public DtActividadDeportiva() {}
 
@@ -26,7 +25,6 @@ public class DtActividadDeportiva {
         this.duracion = duracion;
         this.costo = costo;
         this.fechaReg = fechaReg;
-        this.clases = new ArrayList<Clase>();
     }
 
     public String getNombre() {
@@ -47,10 +45,6 @@ public class DtActividadDeportiva {
 
     public Date getFechaReg() {
         return this.fechaReg;
-    }
-
-    public List<Clase> getClases() {
-        return this.clases;
     }
 
     @Override

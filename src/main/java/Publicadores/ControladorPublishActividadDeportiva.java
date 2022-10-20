@@ -3,10 +3,14 @@ package Publicadores;
 import Configuraciones.WebServiceConfig;
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICActDeportiva;
+import Datatypes.DtActividadDeportiva;
+import Datatypes.DtClase;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.xml.ws.Endpoint;
+
+import java.util.List;
 
 @WebService
 @SOAPBinding(style= SOAPBinding.Style.RPC)
@@ -41,7 +45,16 @@ public class ControladorPublishActividadDeportiva {
     }
 
     @WebMethod
-    public String returnString() {
-        return "test";
+    public DtActividadDeportiva[] retornarActividadDeportiva() {
+        List<DtActividadDeportiva> dtActividadesDeportivas = icActDeportiva.getActividades();
+
+        return dtActividadesDeportivas.toArray(new DtActividadDeportiva[0]);
+    }
+
+    @WebMethod
+    public DtClase[] getClases(DtActividadDeportiva dtActividadDeportiva) {
+        List<DtClase> dtClases = icActDeportiva.getClases(dtActividadDeportiva);
+
+        return dtClases.toArray(new DtClase[0]);
     }
 }
