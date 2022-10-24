@@ -44,10 +44,18 @@ public class ManejadorRegistro {
     }
 
     public List<Registro> obtenerRegistrosClase(Clase clase) {
-        return (List<Registro>) entityManager.find(Registro.class, clase);
+        //return (List<Registro>) entityManager.find(Registro.class, clase.getNombre());
+
+        Query query = entityManager.createQuery("select c from Registro c where c.clase =" + "'" + clase.getNombre() + "'");
+
+        return (List<Registro>) query.getResultList();
     }
 
     public List<Registro> obtenerRegistrosSocio(Socio socio) {
-        return (List<Registro>) entityManager.find(Registro.class, socio);
+        //return (List<Registro>) entityManager.find(Registro.class, socio.getNickname());
+
+        Query query = entityManager.createQuery("select c from Registro c where c.socio =" + "'" + socio.getNickname() + "'");
+
+        return (List<Registro>) query.getResultList();
     }
 }

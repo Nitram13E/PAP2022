@@ -15,14 +15,12 @@ import java.util.List;
 @WebService
 @SOAPBinding(style= SOAPBinding.Style.RPC)
 public class ControladorPublishInstitucionDeportiva {
-    private Fabrica fabrica;
-
-    private ICInstDeportiva icInstDeportiva;
+    private final ICInstDeportiva icInstDeportiva;
     private WebServiceConfig config;
     private Endpoint endpoint;
 
     public ControladorPublishInstitucionDeportiva() {
-        fabrica = Fabrica.getInstancia();
+        Fabrica fabrica = Fabrica.getInstancia();
         icInstDeportiva = fabrica.getICInstDeportiva();
 
         try {

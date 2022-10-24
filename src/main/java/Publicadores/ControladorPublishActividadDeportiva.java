@@ -15,13 +15,12 @@ import java.util.List;
 @WebService
 @SOAPBinding(style= SOAPBinding.Style.RPC)
 public class ControladorPublishActividadDeportiva {
-    private Fabrica fabrica;
-    private ICActDeportiva icActDeportiva;
+    private final ICActDeportiva icActDeportiva;
     private WebServiceConfig config;
     private Endpoint endpoint;
 
     public ControladorPublishActividadDeportiva() {
-        fabrica = Fabrica.getInstancia();
+        Fabrica fabrica = Fabrica.getInstancia();
         icActDeportiva = fabrica.getICActDeportiva();
 
         try {
@@ -45,7 +44,7 @@ public class ControladorPublishActividadDeportiva {
     }
 
     @WebMethod
-    public DtActividadDeportiva[] retornarActividadDeportiva() {
+    public DtActividadDeportiva[] getActividadesDeportivas() {
         List<DtActividadDeportiva> dtActividadesDeportivas = icActDeportiva.getActividades();
 
         return dtActividadesDeportivas.toArray(new DtActividadDeportiva[0]);

@@ -2,10 +2,7 @@ package Datatypes;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import java.time.LocalTime;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)

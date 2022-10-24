@@ -2,8 +2,12 @@ package Publicadores;
 
 import Configuraciones.WebServiceConfig;
 import Controlador.Interfaces.Fabrica;
+import Controlador.Interfaces.ICClase;
 import Controlador.Interfaces.ICRegistro;
+import Controlador.Interfaces.ICUsuario;
 import Datatypes.DtClase;
+import Datatypes.DtSocio;
+import Excepciones.RegistroExistenteException;
 import Logica.Registro;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
@@ -15,14 +19,18 @@ import java.util.List;
 @WebService
 @SOAPBinding(style= SOAPBinding.Style.RPC)
 public class ControladorPublishRegistro {
-    private Fabrica fabrica;
-    private ICRegistro icRegistro;
+    private final ICRegistro icRegistro;
+    private final ICClase icClase;
+    private final ICUsuario icUsuario;
     private WebServiceConfig config;
     private Endpoint endpoint;
 
     public ControladorPublishRegistro() {
-        fabrica = Fabrica.getInstancia();
+        Fabrica fabrica = Fabrica.getInstancia();
+
         icRegistro = fabrica.getICRegistro();
+        icClase = fabrica.getICClase();
+        icUsuario = fabrica.getICUsuario();
 
         try {
             this.config = new WebServiceConfig();
@@ -45,8 +53,31 @@ public class ControladorPublishRegistro {
     }
 
     @WebMethod
-    public Registro[] getRegistrosClase(DtClase clase) {
-        List<Registro> registros = icRegistro.obtenerRegistrosClase(clase);
+    public void registrarSocioClase(DtClase dtClase, DtSocio dtSocio) throws RegistroExistenteException {
+        Registro registro = new Registro(dtClase.getNombre(), dtSocio.getNombre());
+
+        icClase.registroSocio(dtClase, registro);
+        icUsuario.registroClase(dtSocio, registro);
+        icRegistro.altaRegistro(registro);
+    }
+
+    @WebMethod
+    public Registro[] obtenerRegistros() {
+        List<Registro> registros = icRegistro.obtenerRegistros();
+
+        return registros.toArray(new Registro[0]);
+    }
+
+    @WebMethod
+    public Registro[] obtenerRegistrosSocio(DtSocio dtSocio) {
+        List<Registro> registros = icRegistro.obtenerRegistrosSocio(dtSocio);
+
+        return registros.toArray(new Registro[0]);
+    }
+
+    @WebMethod
+    public Registro[] getRegistrosClase(DtClase dtClase) {
+        List<Registro> registros = icRegistro.obtenerRegistrosClase(dtClase);
 
         return registros.toArray(new Registro[0]);
     }

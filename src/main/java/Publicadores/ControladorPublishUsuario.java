@@ -17,13 +17,12 @@ import java.util.List;
 @WebService
 @SOAPBinding(style= SOAPBinding.Style.RPC)
 public class ControladorPublishUsuario {
-    private Fabrica fabrica;
-    private ICUsuario icUsuario;
+    private final ICUsuario icUsuario;
     private WebServiceConfig config;
     private Endpoint endpoint;
 
     public ControladorPublishUsuario() {
-        fabrica = Fabrica.getInstancia();
+        Fabrica fabrica = Fabrica.getInstancia();
         icUsuario = fabrica.getICUsuario();
 
         try {
@@ -48,7 +47,7 @@ public class ControladorPublishUsuario {
 
 
     @WebMethod
-    public DtUsuario[] retornarUsuarios() {
+    public DtUsuario[] getUsuarios() {
         List<DtUsuario> dtUsuarios = icUsuario.retornarUsuarios();
 
         return dtUsuarios.toArray(new DtUsuario[0]);

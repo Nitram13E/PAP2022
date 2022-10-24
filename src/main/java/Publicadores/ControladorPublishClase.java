@@ -15,13 +15,12 @@ import java.util.List;
 @WebService
 @SOAPBinding(style= SOAPBinding.Style.RPC)
 public class ControladorPublishClase {
-    private Fabrica fabrica;
     private final ICClase icClase;
     private WebServiceConfig config;
     private Endpoint endpoint;
 
     public ControladorPublishClase() {
-        fabrica = Fabrica.getInstancia();
+        Fabrica fabrica = Fabrica.getInstancia();
         icClase = fabrica.getICClase();
 
         try {
