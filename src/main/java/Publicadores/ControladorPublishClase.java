@@ -2,8 +2,12 @@ package Publicadores;
 
 import Configuraciones.WebServiceConfig;
 import Controlador.Interfaces.Fabrica;
+import Controlador.Interfaces.ICActDeportiva;
 import Controlador.Interfaces.ICClase;
+import Controlador.Interfaces.ICUsuario;
+import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
+import Datatypes.DtProfesor;
 import Excepciones.ClaseExistenteException;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
@@ -16,12 +20,16 @@ import java.util.List;
 @SOAPBinding(style= SOAPBinding.Style.RPC)
 public class ControladorPublishClase {
     private final ICClase icClase;
+    private final ICActDeportiva icActDeportiva;
+    private final ICUsuario icUsuario;
     private WebServiceConfig config;
     private Endpoint endpoint;
 
     public ControladorPublishClase() {
         Fabrica fabrica = Fabrica.getInstancia();
         icClase = fabrica.getICClase();
+        icActDeportiva = fabrica.getICActDeportiva();
+        icUsuario = fabrica.getICUsuario();
 
         try {
             this.config = new WebServiceConfig();
@@ -44,8 +52,10 @@ public class ControladorPublishClase {
     }
 
     @WebMethod
-    public void agregarClase(DtClase dtClase) throws ClaseExistenteException {
+    public void agregarClase(DtClase dtClase, DtProfesor dtProfesor, DtActividadDeportiva dtActividadDeportiva) throws ClaseExistenteException {
         icClase.altaClase(dtClase);
+        icUsuario.agregarClaseAProfesor(dtProfesor, dtClase);
+        icActDeportiva.agregarClaseAActividadDeportiva(dtClase, dtActividadDeportiva);
     }
 
     @WebMethod

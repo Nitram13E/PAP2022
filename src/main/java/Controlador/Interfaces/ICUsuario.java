@@ -15,7 +15,6 @@ public interface ICUsuario {
     public void modificarDatos(DtUsuario dtUsuario) throws UsuarioNoExisteException;
     public List<DtUsuario> retornarUsuarios();
     public List<DtSocio> getSocios();
-
     public void registroClase(DtUsuario socio, Registro registro) throws RegistroExistenteException;
     public List<DtProfesor> retornarProfesoresInstitucion(DtInstitucionDeportiva institucion);
     public void agregarClaseAProfesor(DtProfesor profesor, DtClase clase);
