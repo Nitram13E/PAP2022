@@ -52,6 +52,7 @@ public class ControladorPublishActividadDeportiva {
 
     @WebMethod
     public DtClase[] getClases(DtActividadDeportiva dtActividadDeportiva) {
+
         List<DtClase> dtClases = icActDeportiva.getClases(dtActividadDeportiva);
 
         return dtClases.toArray(new DtClase[0]);

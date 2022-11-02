@@ -53,15 +53,11 @@ public class CActDeportiva implements ICActDeportiva {
         mAct.modificarActividad(actividad);
     }
 
-    //TODO: Eliminar
     @Override
-    public void consultaActividad() {
+    public DtActividadDeportiva buscarActividadDeportiva(String nombre) {
+        ActividadDeportiva actividadDeportiva = manejadorActDeportiva.buscarActividad(nombre);
 
-    }
-
-    @Override
-    public void rankingActividad() {
-
+        return new DtActividadDeportiva(actividadDeportiva.getNombre(), actividadDeportiva.getDesc(),actividadDeportiva.getDuracion(), actividadDeportiva.getCosto(), actividadDeportiva.getFechaReg());
     }
 
     @Override

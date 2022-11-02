@@ -8,6 +8,7 @@ import Controlador.Interfaces.ICUsuario;
 import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
 import Datatypes.DtProfesor;
+import Datatypes.DtUsuario;
 import Excepciones.ClaseExistenteException;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
@@ -52,10 +53,14 @@ public class ControladorPublishClase {
     }
 
     @WebMethod
-    public void agregarClase(DtClase dtClase, DtProfesor dtProfesor, DtActividadDeportiva dtActividadDeportiva) throws ClaseExistenteException {
+    public void agregarClase(DtClase dtClase, DtUsuario dtUsuario, String nombreActividadDeportiva) throws ClaseExistenteException {
         icClase.altaClase(dtClase);
-        icUsuario.agregarClaseAProfesor(dtProfesor, dtClase);
+        icUsuario.agregarClaseAProfesor((DtProfesor) dtUsuario, dtClase);
+
+        DtActividadDeportiva dtActividadDeportiva = icActDeportiva.buscarActividadDeportiva(nombreActividadDeportiva);
         icActDeportiva.agregarClaseAActividadDeportiva(dtClase, dtActividadDeportiva);
+
+        System.out.println("Clase " + dtClase.getNombre() + "agregada a la actividad " + dtActividadDeportiva.getNombre() + "del profesor" + dtUsuario.getNickname());
     }
 
     @WebMethod

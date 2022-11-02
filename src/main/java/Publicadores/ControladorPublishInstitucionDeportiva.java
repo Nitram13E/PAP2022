@@ -44,6 +44,13 @@ public class ControladorPublishInstitucionDeportiva {
     }
 
     @WebMethod
+    public DtInstitucionDeportiva[] getInstitucionesDeportivas() {
+        List<DtInstitucionDeportiva> dtInstitucionesDeportivas = icInstDeportiva.getInstituciones();
+
+        return dtInstitucionesDeportivas.toArray(new DtInstitucionDeportiva[0]);
+    }
+
+    @WebMethod
     public DtActividadDeportiva[] getActividadesDeInstitucion(DtInstitucionDeportiva dtInstitucionDeportiva) {
         List<DtActividadDeportiva> dtActividadesDeportivas = icInstDeportiva.getActividadesDeInstitucion(dtInstitucionDeportiva.getNombre());
 
