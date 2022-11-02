@@ -13,6 +13,7 @@ import jakarta.xml.ws.Endpoint;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @WebService
 @SOAPBinding(style= SOAPBinding.Style.RPC)
@@ -45,6 +46,17 @@ public class ControladorPublishUsuario {
         return endpoint;
     }
 
+    @WebMethod
+    public DtUsuario loginUsuario(String email, String password) throws UsuarioNoExisteException {
+        Optional<DtUsuario> usuario = icUsuario.retornarUsuarios().stream().filter(dtUsuario -> dtUsuario.getMail().equals(email) && dtUsuario.getContrasenia().equals(password)).findFirst();
+
+        if(usuario.isPresent()) {
+            return usuario.get();
+        }
+        else {
+            throw new UsuarioNoExisteException("Credenciales incorrectas.");
+        }
+    }
 
     @WebMethod
     public DtUsuario[] getUsuarios() {
