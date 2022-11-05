@@ -10,9 +10,9 @@ import Controlador.Interfaces.ICInstDeportiva;
 import Controlador.Interfaces.ICUsuario;
 import Datatypes.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
 
 /**
  *
@@ -74,6 +74,7 @@ public class Usuario extends javax.swing.JFrame {
         jLabelNombre3 = new javax.swing.JLabel();
         jSeparator27 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
+        imagenPerfil = new javax.swing.JLabel();
         panelActividades = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         listaActividades = new javax.swing.JList<>();
@@ -153,6 +154,11 @@ public class Usuario extends javax.swing.JFrame {
         jLabel14.setText("-");
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
+        imagenPerfil.setBackground(new java.awt.Color(204, 204, 204));
+        imagenPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagenPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/generic-user.png"))); // NOI18N
+        imagenPerfil.setEnabled(false);
+
         javax.swing.GroupLayout PanelInfoUsuarioLayout = new javax.swing.GroupLayout(PanelInfoUsuario);
         PanelInfoUsuario.setLayout(PanelInfoUsuarioLayout);
         PanelInfoUsuarioLayout.setHorizontalGroup(
@@ -182,16 +188,7 @@ public class Usuario extends javax.swing.JFrame {
                             .addComponent(jLabelEmail)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(JLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
-                            .addComponent(jLabelNombre)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabelBiografia)
-                        .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
-                            .addComponent(jLabelNickName)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator1)
                         .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
                             .addComponent(jLabelInstitucion)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -201,7 +198,20 @@ public class Usuario extends javax.swing.JFrame {
                             .addComponent(jLabelNombre3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator27)))
+                        .addComponent(jSeparator27)
+                        .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                            .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                                    .addComponent(jLabelNombre)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                                    .addComponent(jLabelNickName)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jSeparator1))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(imagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         PanelInfoUsuarioLayout.setVerticalGroup(
@@ -210,15 +220,18 @@ public class Usuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNickName)
-                    .addComponent(jLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNombre)
-                    .addComponent(jLabel13))
+                .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelInfoUsuarioLayout.createSequentialGroup()
+                        .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelNickName)
+                            .addComponent(jLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelInfoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelNombre)
+                            .addComponent(jLabel13)))
+                    .addComponent(imagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator25, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -260,7 +273,7 @@ public class Usuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelBiografia)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -492,6 +505,13 @@ public class Usuario extends javax.swing.JFrame {
             panelActividades.setVisible(false);
             cargarListaClases();
         }
+        
+        if(usuarioSeleccionado.getFoto() != null){
+            imagenPerfil.setIcon(new ImageIcon(usuarioSeleccionado.getFoto()));
+        }
+        else {
+            imagenPerfil.setIcon(new ImageIcon("src/main/resources/META-INF/generic-user.png")); //TODO: Path hardcodeado
+        }
     }//GEN-LAST:event_JListUsuariosMouseClicked
 
     private void BtnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarUsuarioActionPerformed
@@ -616,6 +636,7 @@ public class Usuario extends javax.swing.JFrame {
     private javax.swing.JTextArea TextDescripcion;
     private javax.swing.JButton btnInfoActividad;
     private javax.swing.JButton btnInfoClase;
+    private javax.swing.JLabel imagenPerfil;
     private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;

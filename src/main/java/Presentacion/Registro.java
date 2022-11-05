@@ -562,8 +562,6 @@ public class Registro extends javax.swing.JFrame {
     }
     
     public void cargarListaSocios(){
-        DtClase claseSeleccionada = listaClase.getSelectedValue();
-
         if(controladorUsuario.getSocios().isEmpty()) return;
         
         DefaultListModel<DtSocio> listModel = new DefaultListModel<DtSocio>();

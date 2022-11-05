@@ -8,8 +8,8 @@ import Excepciones.ActividadExistenteException;
 import Excepciones.DuracionNegativaException;
 import Excepciones.PrecioNegativoException;
 
-import java.util.Date;
 import javax.swing.*;
+import java.util.Date;
 
 /*          El caso de uso comienza cuando el administrador desea dar de alta una
              actividad deportiva. En primer lugar, el administrador indica la

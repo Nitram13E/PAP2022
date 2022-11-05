@@ -2,12 +2,12 @@ package Presentacion;
 
 import Controlador.Interfaces.ICActDeportiva;
 import Controlador.Interfaces.ICInstDeportiva;
-import Datatypes.*;
+import Datatypes.DtActividadDeportiva;
+import Datatypes.DtClase;
+import Datatypes.DtInstitucionDeportiva;
 
-import java.util.ArrayList;
+import javax.swing.*;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 
 public class ActividadDeportiva extends javax.swing.JFrame {
     ICActDeportiva controladorActividad;
