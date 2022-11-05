@@ -51,7 +51,7 @@ public class ControladorPublishUsuario {
         Optional<DtUsuario> usuario = icUsuario.retornarUsuarios().stream().filter(dtUsuario -> dtUsuario.getMail().equals(email) && dtUsuario.getContrasenia().equals(password)).findFirst();
 
         if(usuario.isPresent()) {
-            System.out.println("Usuario " + usuario.get().getNickname() + "inició sesión");
+            System.out.println("Usuario " + usuario.get().getNickname() + " inició sesión");
             return usuario.get();
         }
         else {
