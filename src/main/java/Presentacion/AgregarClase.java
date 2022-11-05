@@ -13,11 +13,11 @@ import Datatypes.DtInstitucionDeportiva;
 import Datatypes.DtProfesor;
 import Excepciones.ClaseExistenteException;
 
+import javax.swing.*;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
-import javax.swing.*;
 
 /**
  *
@@ -247,9 +247,9 @@ public class AgregarClase extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error al agregar", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        LocalTime horaAgregar = LocalTime.parse(horacompleta, DateTimeFormatter.ISO_TIME);
-        
+
+        Date horaAgregar = new Date(fechaC.getYear(), fechaC.getMonth(), fechaC.getDate(), Integer.parseInt(horainicio), Integer.parseInt(minutoinicio));
+
         //Agregar una clase a lista global
         DtClase claseAgregar = new DtClase(nomClase, fechaC, horaAgregar, urlclase, new Date());
         try {

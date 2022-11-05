@@ -1,6 +1,10 @@
 package Manejadores;
 
-import Logica.*;
+import Datatypes.DtClase;
+import Logica.Clase;
+import Logica.Registro;
+import Logica.RegistroId;
+import Logica.Socio;
 import Persistencia.Conexion;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
@@ -40,10 +44,18 @@ public class ManejadorRegistro {
     }
 
     public List<Registro> obtenerRegistrosClase(Clase clase) {
-        return (List<Registro>) entityManager.find(Registro.class, clase);
+        //return (List<Registro>) entityManager.find(Registro.class, clase.getNombre());
+
+        Query query = entityManager.createQuery("select c from Registro c where c.clase =" + "'" + clase.getNombre() + "'");
+
+        return (List<Registro>) query.getResultList();
     }
 
     public List<Registro> obtenerRegistrosSocio(Socio socio) {
-        return (List<Registro>) entityManager.find(Registro.class, socio);
+        //return (List<Registro>) entityManager.find(Registro.class, socio.getNickname());
+
+        Query query = entityManager.createQuery("select c from Registro c where c.socio =" + "'" + socio.getNickname() + "'");
+
+        return (List<Registro>) query.getResultList();
     }
 }

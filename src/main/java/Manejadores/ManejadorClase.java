@@ -1,14 +1,11 @@
 package Manejadores;
 
-import Logica.ActividadDeportiva;
 import Logica.Clase;
 import Logica.Registro;
-import Logica.Socio;
 import Persistencia.Conexion;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ManejadorClase {

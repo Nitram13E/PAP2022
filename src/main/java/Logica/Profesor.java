@@ -1,6 +1,5 @@
 package Logica;
-import Datatypes.DtClase;
-import Datatypes.DtInstitucionDeportiva;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -25,8 +24,8 @@ public class Profesor extends Usuario {
 
     }
 
-    public Profesor(String nickname, String nombre, String apellido, String mail, Date fechaNac,String descripcion, String sitioWeb, String biografia, InstitucionDeportiva institucion) {
-        super(nickname, nombre, apellido, mail, fechaNac);
+    public Profesor(String nickname, String nombre, String apellido, String contrasenia, String mail, Date fechaNac, byte[] foto, String descripcion, String sitioWeb, String biografia, InstitucionDeportiva institucion) {
+        super(nickname, nombre, apellido, contrasenia, mail, fechaNac, foto);
         this.descripcion = descripcion;
         this.biografia = biografia;
         this.sitioWeb = sitioWeb;

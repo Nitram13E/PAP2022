@@ -1,7 +1,6 @@
 package Controlador;
 
 import Controlador.Interfaces.ICActDeportiva;
-
 import Datatypes.DtActividadDeportiva;
 import Datatypes.DtClase;
 import Excepciones.ActividadExistenteException;
@@ -13,10 +12,9 @@ import Logica.Clase;
 import Manejadores.ManejadorActDeportiva;
 import Manejadores.ManejadorClase;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
 
 public class CActDeportiva implements ICActDeportiva {
     ManejadorActDeportiva manejadorActDeportiva;
@@ -55,15 +53,11 @@ public class CActDeportiva implements ICActDeportiva {
         mAct.modificarActividad(actividad);
     }
 
-    //TODO: Eliminar
     @Override
-    public void consultaActividad() {
+    public DtActividadDeportiva buscarActividadDeportiva(String nombre) {
+        ActividadDeportiva actividadDeportiva = manejadorActDeportiva.buscarActividad(nombre);
 
-    }
-
-    @Override
-    public void rankingActividad() {
-
+        return new DtActividadDeportiva(actividadDeportiva.getNombre(), actividadDeportiva.getDesc(),actividadDeportiva.getDuracion(), actividadDeportiva.getCosto(), actividadDeportiva.getFechaReg());
     }
 
     @Override
@@ -91,7 +85,7 @@ public class CActDeportiva implements ICActDeportiva {
 
         List<DtClase> clases = new ArrayList<>();
 
-        actividad.getClases().forEach(clase -> clases.add(new DtClase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg())));
+        actividad.getClases().forEach(clase -> clases.add(new DtClase(clase.getNombre(), clase.getFecha(), Date.from(clase.getHoraInicio().atDate(LocalDate.of(clase.getFecha().getYear(), clase.getFecha().getMonth(), clase.getFecha().getDate())).atZone(ZoneId.systemDefault()).toInstant()), clase.getUrl(), clase.getFechaReg())));
 
         return clases;
     }

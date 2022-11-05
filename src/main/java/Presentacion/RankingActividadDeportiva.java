@@ -7,8 +7,8 @@ package Presentacion;
 import Controlador.Interfaces.ICActDeportiva;
 import Datatypes.DtActividadDeportiva;
 
+import javax.swing.*;
 import java.util.List;
-import javax.swing.DefaultListModel;
 
 public class RankingActividadDeportiva extends javax.swing.JFrame {
 

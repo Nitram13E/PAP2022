@@ -2,11 +2,11 @@ package Controlador.Interfaces;
 
 
 import Datatypes.*;
-import Excepciones.RegistroExistenteException;
-import Logica.Registro;
 import Excepciones.EmailExistenteException;
+import Excepciones.RegistroExistenteException;
 import Excepciones.UsuarioExistenteException;
 import Excepciones.UsuarioNoExisteException;
+import Logica.Registro;
 
 import java.util.List;
 
@@ -15,7 +15,6 @@ public interface ICUsuario {
     public void modificarDatos(DtUsuario dtUsuario) throws UsuarioNoExisteException;
     public List<DtUsuario> retornarUsuarios();
     public List<DtSocio> getSocios();
-
     public void registroClase(DtUsuario socio, Registro registro) throws RegistroExistenteException;
     public List<DtProfesor> retornarProfesoresInstitucion(DtInstitucionDeportiva institucion);
     public void agregarClaseAProfesor(DtProfesor profesor, DtClase clase);

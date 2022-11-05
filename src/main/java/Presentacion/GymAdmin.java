@@ -5,6 +5,7 @@
 package Presentacion;
 
 import Controlador.Interfaces.*;
+import Publicadores.*;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
 public class GymAdmin extends javax.swing.JFrame {
@@ -14,6 +15,12 @@ public class GymAdmin extends javax.swing.JFrame {
     ICClase controladorClase;
     ICRegistro controladorRegistro;
 
+    ControladorPublishInstitucionDeportiva publishInstitucionDeportiva;
+    ControladorPublishActividadDeportiva publishActividadDeportiva;
+    ControladorPublishUsuario publishUsuario;
+    ControladorPublishClase publishClase;
+    ControladorPublishRegistro publishRegistro;
+
     public GymAdmin() {
         Fabrica fabrica = Fabrica.getInstancia();
         this.controladorInstitucion = fabrica.getICInstDeportiva();
@@ -21,6 +28,21 @@ public class GymAdmin extends javax.swing.JFrame {
         this.controladorUsuario = fabrica.getICUsuario();
         this.controladorClase = fabrica.getICClase();
         this.controladorRegistro = fabrica.getICRegistro();
+
+        this.publishInstitucionDeportiva = new ControladorPublishInstitucionDeportiva();
+        this.publishInstitucionDeportiva.publicar();
+
+        this.publishActividadDeportiva = new ControladorPublishActividadDeportiva();
+        this.publishActividadDeportiva.publicar();
+
+        this.publishUsuario = new ControladorPublishUsuario();
+        this.publishUsuario.publicar();
+
+        this.publishClase = new ControladorPublishClase();
+        this.publishClase.publicar();
+
+        this.publishRegistro = new ControladorPublishRegistro();
+        this.publishRegistro.publicar();
 
         initComponents();
     }

@@ -1,15 +1,14 @@
 package Datatypes;
 
 import Logica.Clase;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtActividadDeportiva {
 
     private String nombre;
@@ -17,7 +16,6 @@ public class DtActividadDeportiva {
     private Integer duracion;
     private Float costo;
     private Date fechaReg;
-    private List<Clase> clases;
 
     public DtActividadDeportiva() {}
 
@@ -27,7 +25,6 @@ public class DtActividadDeportiva {
         this.duracion = duracion;
         this.costo = costo;
         this.fechaReg = fechaReg;
-        this.clases = new ArrayList<Clase>();
     }
 
     public String getNombre() {
@@ -48,10 +45,6 @@ public class DtActividadDeportiva {
 
     public Date getFechaReg() {
         return this.fechaReg;
-    }
-
-    public List<Clase> getClases() {
-        return this.clases;
     }
 
     @Override

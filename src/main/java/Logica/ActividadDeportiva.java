@@ -1,9 +1,7 @@
 package Logica;
 
-import Datatypes.DtClase;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
