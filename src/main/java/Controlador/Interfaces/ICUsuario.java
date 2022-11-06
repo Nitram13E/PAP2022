@@ -13,6 +13,7 @@ import java.util.List;
 public interface ICUsuario {
     public void altaUsuario(DtUsuario usuario) throws UsuarioExistenteException,EmailExistenteException;
     public void modificarDatos(DtUsuario dtUsuario) throws UsuarioNoExisteException;
+    public DtUsuario buscarUsuario(String nickname) throws UsuarioNoExisteException;
     public List<DtUsuario> retornarUsuarios();
     public List<DtSocio> getSocios();
     public void registroClase(DtUsuario socio, Registro registro) throws RegistroExistenteException;

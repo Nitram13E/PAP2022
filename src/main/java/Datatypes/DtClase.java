@@ -13,8 +13,7 @@ public class DtClase {
     private String url;
     private Date fechaReg;
 
-    public DtClase() {
-    }
+    public DtClase() {}
 
     public DtClase(String nombre, Date fecha, Date horaInicio, String url, Date fechaReg) {
         this.nombre = nombre;
