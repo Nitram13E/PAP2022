@@ -8,12 +8,14 @@ import Controlador.Interfaces.ICUsuario;
 import Datatypes.DtClase;
 import Datatypes.DtSocio;
 import Excepciones.RegistroExistenteException;
+import Excepciones.UsuarioNoExisteException;
 import Logica.Registro;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.xml.ws.Endpoint;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @WebService
@@ -76,9 +78,35 @@ public class ControladorPublishRegistro {
     }
 
     @WebMethod
+    public DtClase[] obtenerClasesSocio(DtSocio dtSocio) {
+        List<Registro> registros = icRegistro.obtenerRegistrosSocio(dtSocio);
+
+        List<DtClase> clases = new ArrayList<>();
+        registros.forEach(registro -> clases.add(icClase.consultaDictado(registro.getClase())));
+
+        return clases.toArray(new DtClase[0]);
+    }
+
+    @WebMethod
     public Registro[] getRegistrosClase(DtClase dtClase) {
         List<Registro> registros = icRegistro.obtenerRegistrosClase(dtClase);
 
         return registros.toArray(new Registro[0]);
+    }
+
+    @WebMethod
+    public DtSocio[] obtenerSociosClase(DtClase dtClase) {
+        List<Registro> registros = icRegistro.obtenerRegistrosClase(dtClase);
+        List<DtSocio> socios = new ArrayList<>();
+
+        for(Registro registro : registros) {
+            try {
+                socios.add((DtSocio) icUsuario.buscarUsuario(registro.getSocio()));
+            } catch (UsuarioNoExisteException e) {
+                throw new RuntimeException(e);
+            }
+        };
+
+        return socios.toArray(new DtSocio[0]);
     }
 }

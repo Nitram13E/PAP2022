@@ -10,6 +10,8 @@ public class DtInstitucionDeportiva {
     private String url;
 
 
+    public DtInstitucionDeportiva() {}
+
     public DtInstitucionDeportiva(String nombre, String descripcion, String url) {
         this.nombre = nombre;
         this.descripcion = descripcion;
