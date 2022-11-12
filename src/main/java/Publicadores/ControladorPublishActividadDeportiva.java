@@ -3,25 +3,33 @@ package Publicadores;
 import Configuraciones.WebServiceConfig;
 import Controlador.Interfaces.Fabrica;
 import Controlador.Interfaces.ICActDeportiva;
-import Datatypes.DtActividadDeportiva;
-import Datatypes.DtClase;
+import Controlador.Interfaces.ICInstDeportiva;
+import Controlador.Interfaces.ICUsuario;
+import Datatypes.*;
+import Excepciones.UsuarioNoExisteException;
+import Logica.Profesor;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.xml.ws.Endpoint;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @WebService
 @SOAPBinding(style= SOAPBinding.Style.RPC)
 public class ControladorPublishActividadDeportiva {
     private final ICActDeportiva icActDeportiva;
+    private final ICUsuario icUsuario;
+    private final ICInstDeportiva icInstDeportiva;
     private WebServiceConfig config;
     private Endpoint endpoint;
 
     public ControladorPublishActividadDeportiva() {
         Fabrica fabrica = Fabrica.getInstancia();
         icActDeportiva = fabrica.getICActDeportiva();
+        icInstDeportiva = fabrica.getICInstDeportiva();
+        icUsuario = fabrica.getICUsuario();
 
         try {
             this.config = new WebServiceConfig();
@@ -52,9 +60,23 @@ public class ControladorPublishActividadDeportiva {
 
     @WebMethod
     public DtClase[] getClases(DtActividadDeportiva dtActividadDeportiva) {
-
         List<DtClase> dtClases = icActDeportiva.getClases(dtActividadDeportiva);
 
         return dtClases.toArray(new DtClase[0]);
+    }
+
+    @WebMethod
+    public DtActividadDeportiva[] getActividadesDeportivasProfesor(DtProfesor dtProfesor) throws UsuarioNoExisteException {
+        List<DtActividadDeportiva> dtActividadesInstitucion = icInstDeportiva.getActividadesDeInstitucion(dtProfesor.getInstitucion().getNombre());
+        DtProfesor profesor = (DtProfesor) icUsuario.buscarUsuario(dtProfesor.getNickname());
+
+        List<DtActividadDeportiva> dtActividadesDeportivas = new ArrayList<>();
+
+        for(DtActividadDeportiva dtActividadDeportiva : dtActividadesInstitucion) {
+            List<DtClase> clasesActividad = icActDeportiva.getClases(dtActividadDeportiva);
+            if(!icUsuario.getClasesProfesor(clasesActividad, profesor).isEmpty()) dtActividadesDeportivas.add(dtActividadDeportiva);
+        }
+
+        return dtActividadesDeportivas.toArray(new DtActividadDeportiva[0]);
     }
 }

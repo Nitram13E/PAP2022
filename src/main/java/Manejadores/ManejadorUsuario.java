@@ -1,6 +1,7 @@
 package Manejadores;
 
 
+import Datatypes.DtActividadDeportiva;
 import Logica.*;
 import Persistencia.Conexion;
 import jakarta.persistence.EntityManager;

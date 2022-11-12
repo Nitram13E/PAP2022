@@ -49,6 +49,7 @@ public class CUsuario implements ICUsuario {
             throw new UsuarioNoExisteException("No existe usuario con este nickname");
         }
 
+        usuario.setFoto(dtUsuario.getFoto());
         usuario.setNombre(dtUsuario.getNombre());
         usuario.setApellido(dtUsuario.getApellido());
         usuario.setFechaNac(dtUsuario.getFechaNac());

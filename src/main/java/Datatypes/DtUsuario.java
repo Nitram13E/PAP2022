@@ -3,6 +3,8 @@ package Datatypes;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -50,6 +52,10 @@ public class DtUsuario {
 
     public Date getFechaNac() {
         return fechaNac;
+    }
+
+    public void setFechaNac(String fechaNac) throws ParseException {
+        this.fechaNac = new SimpleDateFormat("yyyy-MM-dd").parse(fechaNac);
     }
 
     public byte[] getFoto() {
