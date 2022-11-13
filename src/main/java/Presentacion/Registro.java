@@ -472,7 +472,7 @@ public class Registro extends javax.swing.JFrame {
     private void listaClaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaClaseMouseClicked
         labelNombreClase.setText(listaClase.getSelectedValue().getNombre());
         labelFechaClase.setText(listaClase.getSelectedValue().getFecha().toString());
-        labelHoraInicioClase.setText(listaClase.getSelectedValue().getHoraInicio().toString());
+        labelHoraInicioClase.setText(listaClase.getSelectedValue().getHoraInicio().toString().substring(11,16));
         labelURLClase.setText(listaClase.getSelectedValue().getUrl());
         labelFechaRegistroClase.setText(listaClase.getSelectedValue().getFechaReg().toString());
 

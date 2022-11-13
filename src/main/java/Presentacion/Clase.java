@@ -354,7 +354,7 @@ public class Clase extends javax.swing.JFrame {
         }
         nombreClase.setText(claseSeleccionada.getNombre());
         fechaClase.setText(claseSeleccionada.getFecha().toString());
-        horaClase.setText(claseSeleccionada.getHoraInicio().toString());
+        horaClase.setText(claseSeleccionada.getHoraInicio().toString().substring(11,16));
         urlClase.setText(claseSeleccionada.getUrl());
                 
         listaClases.setEnabled(true);    

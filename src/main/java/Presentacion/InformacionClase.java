@@ -21,7 +21,7 @@ public class InformacionClase extends javax.swing.JFrame {
 
         labelNombre.setText(clase.getNombre());
         labelFecha.setText(clase.getFecha().toString());
-        labelHoraInicio.setText(clase.getHoraInicio().toString());
+        labelHoraInicio.setText(clase.getHoraInicio().toString().substring(11,16));
         labelUrl.setText(clase.getUrl());
     }
 

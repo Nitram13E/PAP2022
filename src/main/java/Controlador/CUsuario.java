@@ -49,13 +49,36 @@ public class CUsuario implements ICUsuario {
             throw new UsuarioNoExisteException("No existe usuario con este nickname");
         }
 
+        usuario.setFoto(dtUsuario.getFoto());
         usuario.setNombre(dtUsuario.getNombre());
         usuario.setApellido(dtUsuario.getApellido());
         usuario.setFechaNac(dtUsuario.getFechaNac());
 
         mU.modificarUsuario(usuario);
     }
-    
+
+    public DtUsuario buscarUsuario(String nickname) throws UsuarioNoExisteException {
+        ManejadorUsuario manejador = ManejadorUsuario.getInstancia();
+        Usuario usuario = manejador.buscarUsuario(nickname);
+        DtUsuario dtUsuario = null;
+
+        if(usuario == null) {
+            throw new UsuarioNoExisteException("No existe usuario con este nickname");
+        }
+
+        if(usuario instanceof Socio) {
+            dtUsuario = new DtSocio(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getContrasenia(), usuario.getMail(), usuario.getFechaNac(), usuario.getFoto());
+        }
+        else if(usuario instanceof Profesor) {
+            InstitucionDeportiva institucionDeportiva = ((Profesor) usuario).getInstitucion();
+            DtInstitucionDeportiva dtInstitucionDeportiva = new DtInstitucionDeportiva(institucionDeportiva.getNombre(), institucionDeportiva.getDesc(), institucionDeportiva.getUrl());
+
+            dtUsuario = new DtProfesor(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getContrasenia(), usuario.getMail(), usuario.getFechaNac(), usuario.getFoto(), dtInstitucionDeportiva, ((Profesor) usuario).getDescripcion(), ((Profesor) usuario).getSitioWeb(), ((Profesor) usuario).getBiografia());
+        }
+
+        return dtUsuario;
+    }
+
     @Override
     public List<DtUsuario> retornarUsuarios()
     {

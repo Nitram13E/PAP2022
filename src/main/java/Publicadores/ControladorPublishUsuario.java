@@ -11,7 +11,9 @@ import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.xml.ws.Endpoint;
 
+import java.text.ParseException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,7 +69,9 @@ public class ControladorPublishUsuario {
     }
 
     @WebMethod
-    public void modificarUsuario(DtUsuario dtUsuario) throws UsuarioNoExisteException {
+    public void modificarUsuario(DtUsuario dtUsuario, String fechaNac) throws UsuarioNoExisteException, ParseException {
+        dtUsuario.setFechaNac(fechaNac); //Necesario por problemas con XMLGregorianCalendar, java querido
+
         icUsuario.modificarDatos(dtUsuario);
     }
 
