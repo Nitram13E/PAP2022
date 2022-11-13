@@ -79,4 +79,14 @@ public class ControladorPublishActividadDeportiva {
 
         return dtActividadesDeportivas.toArray(new DtActividadDeportiva[0]);
     }
+
+    @WebMethod
+    public DtActividadDeportiva buscarActividadDeportiva(String nombre) {
+        return icActDeportiva.buscarActividadDeportiva(nombre);
+    }
+
+    @WebMethod
+    public DtActividadDeportiva[] getActividadesRanking() {
+        return icActDeportiva.getActividadesRanking().toArray(new DtActividadDeportiva[0]);
+    }
 }

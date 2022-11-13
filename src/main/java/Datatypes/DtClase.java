@@ -3,6 +3,8 @@ package Datatypes;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -31,17 +33,26 @@ public class DtClase {
         return nombre;
     }
 
+    public void setFecha(String fechaNac) throws ParseException {
+        this.fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fechaNac);
+    }
     public Date getFecha() {
         return fecha;
     }
 
+    public void setFechaReg(Date fechaReg) {
+        this.fechaReg = fechaReg;
+    }
     public Date getFechaReg() {
         return fechaReg;
     }
 
+    public void setHoraInicio(String horaInicio) throws ParseException {
+        this.fecha = new SimpleDateFormat("hh:mm:ss").parse(horaInicio);
+    }
     public Date getHoraInicio() { //TODO: Cambiar
         return horaInicio;
-    }//TODO: verificar
+    }
     
     @Override
     public String toString(){

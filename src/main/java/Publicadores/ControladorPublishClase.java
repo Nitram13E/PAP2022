@@ -15,6 +15,9 @@ import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.xml.ws.Endpoint;
 
+import java.text.ParseException;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 @WebService
@@ -53,14 +56,16 @@ public class ControladorPublishClase {
     }
 
     @WebMethod
-    public void agregarClase(DtClase dtClase, DtUsuario dtUsuario, String nombreActividadDeportiva) throws ClaseExistenteException {
-        icClase.altaClase(dtClase);
-        icUsuario.agregarClaseAProfesor((DtProfesor) dtUsuario, dtClase);
+    public void agregarClase(DtClase dtClase, DtProfesor dtProfesor, DtActividadDeportiva dtActividadDeportiva, String fechaHora) throws ClaseExistenteException, ParseException {
+        dtClase.setFecha(fechaHora);
+        dtClase.setHoraInicio(fechaHora.substring(11,19));
+        dtClase.setFechaReg(new Date());
 
-        DtActividadDeportiva dtActividadDeportiva = icActDeportiva.buscarActividadDeportiva(nombreActividadDeportiva);
+        icClase.altaClase(dtClase);
+        icUsuario.agregarClaseAProfesor(dtProfesor, dtClase);
         icActDeportiva.agregarClaseAActividadDeportiva(dtClase, dtActividadDeportiva);
 
-        System.out.println("Clase " + dtClase.getNombre() + "agregada a la actividad " + dtActividadDeportiva.getNombre() + "del profesor" + dtUsuario.getNickname());
+        System.out.println("Clase " + dtClase.getNombre() + "agregada a la actividad " + dtActividadDeportiva.getNombre() + "del profesor" + dtProfesor.getNickname());
     }
 
     @WebMethod
