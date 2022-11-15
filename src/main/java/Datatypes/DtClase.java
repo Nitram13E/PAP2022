@@ -34,7 +34,7 @@ public class DtClase {
     }
 
     public void setFecha(String fechaNac) throws ParseException {
-        this.fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fechaNac);
+        this.fecha = new SimpleDateFormat("dd-MM-yyyy").parse(fechaNac);
     }
     public Date getFecha() {
         return fecha;

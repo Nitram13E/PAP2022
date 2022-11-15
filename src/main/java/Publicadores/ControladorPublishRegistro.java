@@ -58,9 +58,9 @@ public class ControladorPublishRegistro {
     public void registrarSocioClase(DtClase dtClase, DtSocio dtSocio) throws RegistroExistenteException {
         Registro registro = new Registro(dtClase.getNombre(), dtSocio.getNombre());
 
+        icRegistro.altaRegistro(registro);
         icClase.registroSocio(dtClase, registro);
         icUsuario.registroClase(dtSocio, registro);
-        icRegistro.altaRegistro(registro);
     }
 
     @WebMethod

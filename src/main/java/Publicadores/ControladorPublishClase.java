@@ -57,8 +57,8 @@ public class ControladorPublishClase {
 
     @WebMethod
     public void agregarClase(DtClase dtClase, DtProfesor dtProfesor, DtActividadDeportiva dtActividadDeportiva, String fechaHora) throws ClaseExistenteException, ParseException {
-        dtClase.setFecha(fechaHora);
-        dtClase.setHoraInicio(fechaHora.substring(11,19));
+        //dtClase.setFecha(fechaHora.substring(0,10));
+        //dtClase.setHoraInicio(fechaHora.substring(11,19));
         dtClase.setFechaReg(new Date());
 
         icClase.altaClase(dtClase);
